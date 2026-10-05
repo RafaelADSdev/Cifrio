@@ -30,7 +30,11 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
       generation.current++; setState(emptyState()); setSession(next); setMode(next ? 'remote' : 'welcome'); setLoading(false); setError('');
     };
     supabase.auth.getSession().then(({ data, error }) => { if (error) setError('Não foi possível recuperar a sessão.'); update(data.session); });
-    const { data } = supabase.auth.onAuthStateChange((event, next) => { if (event !== 'TOKEN_REFRESHED') update(next); });
+    const { data } = supabase.auth.onAuthStateChange((event, next) => {
+      // Editing presentation metadata must not clear an already loaded ledger.
+      if (event === 'USER_UPDATED' || event === 'TOKEN_REFRESHED') setSession(next);
+      else update(next);
+    });
     return () => { mounted = false; data.subscription.unsubscribe(); };
   }, []);
   useEffect(() => { if (mode === 'remote' && session) void refresh(); }, [mode, session?.user.id]);

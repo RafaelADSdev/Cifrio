@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, ColorValue, Dimensions, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, TextInputProps, useWindowDimensions, View } from 'react-native';
+import { ActivityIndicator, ColorValue, Dimensions, Image, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, TextInputProps, useWindowDimensions, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import { router, useSegments } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useProfile } from '../state/ProfileProvider';
+export const brandMark = require('../../assets/brand/cifrio-mark.png');
 
 export const colors = { bg: '#F4F6F8', surface: '#FFFFFF', ink: '#172B42', muted: '#56677B', primary: '#17664F', soft: '#E8F2ED', border: '#DDE4EA', negative: '#B2403B', dark: '#142A40', onDark: '#FFFFFF', mutedDark: '#BACBD8', accent: '#D9EFB6', pale: '#EDF1F5' };
 export const fonts = { regular: Platform.OS === 'ios' ? undefined : 'Manrope_400Regular', medium: 'Manrope_500Medium', bold: 'Manrope_700Bold', display: 'Manrope_800ExtraBold' };
@@ -28,18 +30,28 @@ export function systemBottomInset(reported: number) {
   const reserved = Dimensions.get('screen').height - Dimensions.get('window').height;
   return reserved > 24 ? reported : ANDROID_GESTURE_INSET;
 }
-export function Brand({ dark = false }: { dark?: boolean }) { return <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}><View style={{ width: 32, height: 32, borderRadius: 10, backgroundColor: dark ? colors.accent : colors.dark, alignItems: 'center', justifyContent: 'center' }}><Icon name="layers" size={19} color={dark ? colors.dark : colors.onDark} /></View><Text style={{ fontFamily: fonts.display, fontSize: 20, color: dark ? colors.onDark : colors.ink, letterSpacing: -0.5 }}>gestão</Text></View>; }
+export function Brand({ dark = false }: { dark?: boolean }) { return <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}><Image source={brandMark} accessible={false} style={{ width: 32, height: 32, backgroundColor: dark ? colors.surface : undefined, borderRadius: 6 }} /><Text style={{ fontFamily: fonts.display, fontSize: 20, color: dark ? colors.onDark : colors.ink, letterSpacing: -0.5 }}>cifrio</Text></View>; }
+export function Avatar({ size = 40, name = '', uri }: { size?: number; name?: string; uri?: string | null }) {
+  const [failedUri, setFailedUri] = useState<string | null>(null);
+  const initials = name.trim().split(/\s+/).slice(0, 2).map(part => part[0] ?? '').join('').toUpperCase();
+  return uri && failedUri !== uri ? <Image source={{ uri }} accessibilityLabel="Foto do perfil" onError={() => setFailedUri(uri)} style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: colors.pale }} /> : <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: colors.pale, alignItems: 'center', justifyContent: 'center' }}>{initials ? <Text style={{ fontFamily: fonts.bold, color: colors.ink, fontSize: size * 0.32 }}>{initials}</Text> : <Icon name="user" size={size * 0.45} />}</View>;
+}
 export function Page({ title, subtitle, children, action }: { title: string; subtitle?: string; children: React.ReactNode; action?: React.ReactNode }) {
   const insets = useSafeAreaInsets(), { width } = useWindowDimensions();
   const inTabs = (useSegments() as readonly string[]).includes('(tabs)');
+  const { profile } = useProfile();
   return <View style={[styles.page, { paddingTop: inTabs ? 0 : insets.top, paddingBottom: inTabs ? 0 : systemBottomInset(insets.bottom), paddingLeft: insets.left, paddingRight: insets.right }]}><ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={[styles.content, { paddingHorizontal: width < 360 ? 16 : width > 900 ? 36 : 20 }]}>
-    <View style={[styles.row, { paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: colors.border }]}><Brand />{inTabs ? <Pressable accessibilityRole="button" accessibilityLabel="Abrir suas contas" onPress={() => router.navigate('/accounts')} style={{ minHeight: 48, minWidth: 48, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surface, borderRadius: 12 }}><Icon name="user" /></Pressable> : <Icon name="shield" color={colors.primary} />}</View>
+    <View style={[styles.row, { paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: colors.border }]}><Brand />{inTabs ? <Pressable accessibilityRole="button" accessibilityLabel="Abrir perfil" onPress={() => router.push('/profile')} style={{ minHeight: 48, minWidth: 48, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.surface, borderRadius: 24 }}><Avatar name={profile.displayName} uri={profile.avatarUrl} /></Pressable> : <Icon name="shield" color={colors.primary} />}</View>
     <View style={styles.row}><View style={{ gap: 4, flex: 1 }}><Text accessibilityRole="header" style={styles.title}>{title}</Text>{subtitle && <Text style={styles.muted}>{subtitle}</Text>}</View>{action}</View>{children}
   </ScrollView></View>;
 }
 export function Button({ title, onPress, disabled, secondary, icon, label, danger }: { title: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: IconName; label?: string; danger?: boolean }) {
   const [focused, setFocused] = useState(false);
   return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ disabled: !!disabled }} disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={({ pressed }) => [styles.button, secondary && { backgroundColor: colors.pale }, danger && { backgroundColor: '#FAECEB' }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }, { opacity: disabled ? 0.5 : pressed ? 0.75 : 1 }]}>{icon && <Icon name={icon} size={18} color={danger ? colors.negative : secondary ? colors.ink : colors.onDark} />}<Text style={[styles.buttonText, secondary && { color: colors.ink }, danger && { color: colors.negative }]}>{label ?? title}</Text></Pressable>;
+}
+export function GoogleButton({ onPress, disabled }: { onPress: () => void; disabled?: boolean }) {
+  const [focused, setFocused] = useState(false);
+  return <Pressable accessibilityRole="button" accessibilityLabel="Continuar com Google" disabled={disabled} aria-disabled={!!disabled} accessibilityState={{ disabled: !!disabled }} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={({ pressed }) => [styles.button, { backgroundColor: colors.surface, borderWidth: 1, borderColor: '#747775', opacity: disabled ? 0.5 : pressed ? 0.75 : 1 }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }]}><Image source={require('../../assets/brand/google-g.png')} accessible={false} style={{ width: 20, height: 20 }} /><Text style={{ color: '#1F1F1F', fontSize: 14, fontWeight: '500' }}>Continuar com Google</Text></Pressable>;
 }
 export function Field({ label, ...props }: TextInputProps & { label: string }) {
   const [focused, setFocused] = useState(false);

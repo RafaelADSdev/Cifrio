@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Gestão",
+    "name": "Cifrio",
     "slug": "gestao-financeira",
     "scheme": "gestao",
     "version": "0.1.0",
@@ -12,11 +12,14 @@
       "expo-document-picker",
       "expo-status-bar",
       "expo-sharing",
-      "expo-font"
+      "expo-font",
+      "expo-web-browser",
+      ["expo-image-picker", { "photosPermission": "Permita ao Cifrio selecionar uma foto para o seu perfil.", "cameraPermission": false, "microphonePermission": false }]
     ],
     "web": {
       "bundler": "metro",
-      "output": "single"
+      "output": "single",
+      "favicon": "./assets/brand/cifrio-mark.png"
     },
     "ios": {
       "supportsTablet": true

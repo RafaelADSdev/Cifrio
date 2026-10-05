@@ -5,6 +5,9 @@ import { FinanceState } from '../domain/model';
 export async function exportRecords(state: FinanceState) {
   const name = `gestao-registros-${new Date().toISOString().slice(0, 10)}.json`;
   const content = JSON.stringify({ format: 'gestao-export-v1', exportedAt: new Date().toISOString(), currency: 'BRL', amountsInCents: true, ...state }, null, 2);
+  return exportJson(name, content);
+}
+export async function exportJson(name: string, content: string) {
   if (Platform.OS === 'web') {
     const url = URL.createObjectURL(new Blob([content], { type: 'application/json' }));
     const link = document.createElement('a'); link.href = url; link.download = name; link.click();
