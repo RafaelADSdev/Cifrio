@@ -12,7 +12,7 @@ export default function Welcome() {
   async function google() {
     setMessage(''); setBusy(true);
     try { if (await signInGoogle() === 'cancelled') setMessage('Acesso cancelado. Você pode tentar novamente.'); }
-    catch { setMessage('Não foi possível abrir o acesso Google. Confira a conexão e a configuração do provedor.'); }
+    catch (error) { setMessage(error instanceof Error ? error.message : 'Não foi possível abrir o acesso Google. Confira a conexão e a configuração do provedor.'); }
     finally { setBusy(false); }
   }
   if (mode !== 'welcome') return <Redirect href="/(tabs)" />;

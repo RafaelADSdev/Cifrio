@@ -1,6 +1,6 @@
 import { expect, it } from 'vitest';
 import { avatarType, googleAvatar, localProfile, MAX_AVATAR_BYTES, metadataProfile, ownAvatarPath, profileName } from '../src/domain/profile';
-import { callbackCode, previewAuthStorage } from '../src/domain/oauth';
+import { callbackCode, googleWebStartError, previewAuthStorage } from '../src/domain/oauth';
 const userId = '00000000-0000-4000-8000-000000000001';
 it('validates names and ignores malformed presentation metadata', () => {
   expect(profileName('  Ana Silva  ')).toBe('Ana Silva');
@@ -27,6 +27,11 @@ it('local profile does not render external URL or invalid data URI', () => {
   expect(localProfile('{"displayName":"Ana","avatarUrl":"https://attacker.test/pixel"}').avatarUrl).toBeNull();
   expect(() => localProfile('null')).toThrow();
   expect(localProfile('{"displayName":"Ana","avatarUrl":"data:image/png;base64,iVBORw=="}').avatarUrl).toBeTruthy();
+});
+it('Google da prévia só começa em localhost:8081', () => {
+  expect(googleWebStartError('http://localhost:8081')).toBeNull();
+  expect(googleWebStartError('http://localhost:8082')).toMatch(/8081/);
+  expect(googleWebStartError('http://192.168.2.9:8081')).toMatch(/IP da rede/);
 });
 it('OAuth callback rejects unexpected origin, path, credential injection, errors and ambiguous codes', () => {
   const expected = 'http://localhost:8081/auth/callback';

@@ -6,9 +6,9 @@
   "main": "expo-router/entry",
   "scripts": {
     "predev": "node scripts/prepare-pdfjs.mjs",
-    "dev": "expo start",
+    "dev": "expo start --port 8081",
     "preweb": "node scripts/prepare-pdfjs.mjs",
-    "web": "expo start --web",
+    "web": "expo start --web --port 8081",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "prebuild": "node scripts/prepare-pdfjs.mjs",

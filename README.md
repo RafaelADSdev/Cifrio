@@ -60,7 +60,7 @@ Abra a URL do Expo e escolha **Abrir teste local**. A sessão nasce vazia: cadas
 | `npm.cmd run test:browser` | Jornada no Chromium. Antes: `npx.cmd playwright install chromium`. |
 | `npm.cmd run build` | Export web. |
 
-Validação nativa pede development build compatível com o SDK 57. Compilar iOS localmente exige macOS e Xcode. No Windows o código anda; o binário nativo, quando chegar, sai de um serviço de nuvem.
+No Windows, o APK Android pode ser compilado localmente com JDK 21 e Android SDK: `powershell.exe -ExecutionPolicy Bypass -File scripts/build-apk.ps1`. O script usa uma cópia em caminho curto, limita o consumo de memória e salva o APK em `artifacts/`. A configuração atual usa assinatura de teste. Compilar iOS localmente exige macOS e Xcode. Instruções e limites: [APK Android](.project/ANDROID-APK.md).
 
 ---
 
