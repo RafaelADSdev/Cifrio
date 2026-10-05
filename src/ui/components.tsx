@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, ColorValue, Dimensions, Image, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, TextInputProps, useWindowDimensions, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import { router, useSegments } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useProfile } from '../state/ProfileProvider';
+import { SlidingLabel } from './motion';
 export const brandMark = require('../../assets/brand/cifrio-mark.png');
+export const brandLogo = require('../../assets/brand/cifrio-logo.png');
 
-export const colors = { bg: '#F4F6F8', surface: '#FFFFFF', ink: '#172B42', muted: '#56677B', primary: '#17664F', soft: '#E8F2ED', border: '#DDE4EA', negative: '#B2403B', dark: '#142A40', onDark: '#FFFFFF', mutedDark: '#BACBD8', accent: '#D9EFB6', pale: '#EDF1F5' };
+export const colors = { bg: '#F4F8FC', surface: '#FFFFFF', ink: '#042453', muted: '#3E5674', primary: '#0474E0', soft: '#D7E9FB', border: '#D5E3F0', negative: '#B2403B', dark: '#042453', onDark: '#FFFFFF', mutedDark: '#D5E4F5', accent: '#23D2BF', pale: '#E7F2FC', lineOnDark: '#5C8FBE', errorSurface: '#FAECEB' };
 export const fonts = { regular: Platform.OS === 'ios' ? undefined : 'Manrope_400Regular', medium: 'Manrope_500Medium', bold: 'Manrope_700Bold', display: 'Manrope_800ExtraBold' };
 export type IconName = React.ComponentProps<typeof Feather>['name'];
 export function Icon({ name, size = 20, color = colors.ink }: { name: IconName; size?: number; color?: ColorValue }) { return <Feather name={name} size={size} color={color} accessible={false} aria-hidden accessibilityElementsHidden importantForAccessibility="no-hide-descendants" />; }
@@ -14,7 +16,7 @@ export const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.bg }, content: { width: '100%', maxWidth: 1120, alignSelf: 'center', padding: 20, gap: 24, paddingBottom: 40 },
   title: { fontSize: 28, fontFamily: fonts.display, color: colors.ink, letterSpacing: -0.7 }, heading: { fontSize: 18, fontFamily: fonts.bold, color: colors.ink },
   text: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 23, color: colors.ink }, muted: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 21, color: colors.muted },
-  box: { backgroundColor: colors.surface, borderRadius: 16, padding: 20, gap: 16 },
+  box: { backgroundColor: colors.surface, borderRadius: 16, padding: 20, gap: 16, boxShadow: '0 8px 18px rgba(4, 36, 83, 0.08)', elevation: 2 },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' },
   value: { fontSize: 28, fontFamily: fonts.display, color: colors.ink, letterSpacing: -0.6, fontVariant: ['tabular-nums'] },
   button: { backgroundColor: colors.primary, borderRadius: 12, paddingHorizontal: 18, minHeight: 48, paddingVertical: 12, flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center' },
@@ -30,7 +32,7 @@ export function systemBottomInset(reported: number) {
   const reserved = Dimensions.get('screen').height - Dimensions.get('window').height;
   return reserved > 24 ? reported : ANDROID_GESTURE_INSET;
 }
-export function Brand({ dark = false }: { dark?: boolean }) { return <View style={{ flexDirection: 'row', gap: 10, alignItems: 'center' }}><Image source={brandMark} accessible={false} style={{ width: 32, height: 32, backgroundColor: dark ? colors.surface : undefined, borderRadius: 6 }} /><Text style={{ fontFamily: fonts.display, fontSize: 20, color: dark ? colors.onDark : colors.ink, letterSpacing: -0.5 }}>cifrio</Text></View>; }
+export function Brand() { return <Image source={brandLogo} accessibilityLabel="Cifrio" style={{ width: 132, height: 70 }} />; }
 export function Avatar({ size = 40, name = '', uri }: { size?: number; name?: string; uri?: string | null }) {
   const [failedUri, setFailedUri] = useState<string | null>(null);
   const initials = name.trim().split(/\s+/).slice(0, 2).map(part => part[0] ?? '').join('').toUpperCase();
@@ -47,7 +49,7 @@ export function Page({ title, subtitle, children, action }: { title: string; sub
 }
 export function Button({ title, onPress, disabled, secondary, icon, label, danger }: { title: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: IconName; label?: string; danger?: boolean }) {
   const [focused, setFocused] = useState(false);
-  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ disabled: !!disabled }} disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={({ pressed }) => [styles.button, secondary && { backgroundColor: colors.pale }, danger && { backgroundColor: '#FAECEB' }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }, { opacity: disabled ? 0.5 : pressed ? 0.75 : 1 }]}>{icon && <Icon name={icon} size={18} color={danger ? colors.negative : secondary ? colors.ink : colors.onDark} />}<Text style={[styles.buttonText, secondary && { color: colors.ink }, danger && { color: colors.negative }]}>{label ?? title}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ disabled: !!disabled }} disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={({ pressed }) => [styles.button, secondary && { backgroundColor: colors.pale }, danger && { backgroundColor: colors.errorSurface }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }, { opacity: disabled ? 0.5 : pressed ? 0.75 : 1 }]}>{icon && <Icon name={icon} size={18} color={danger ? colors.negative : secondary ? colors.ink : colors.onDark} />}<Text style={[styles.buttonText, secondary && { color: colors.ink }, danger && { color: colors.negative }]}>{label ?? title}</Text></Pressable>;
 }
 export function GoogleButton({ onPress, disabled }: { onPress: () => void; disabled?: boolean }) {
   const [focused, setFocused] = useState(false);
@@ -61,10 +63,14 @@ export function Choices<T extends string>({ label, options, value, onChange }: {
   return <View style={{ gap: 8 }}><Text style={[styles.text, { fontFamily: fonts.medium, fontSize: 13 }]}>{label}</Text><View accessibilityRole="radiogroup" accessibilityLabel={label} style={[styles.row, { justifyContent: 'flex-start', gap: 8 }]}>{options.map(option => <Pressable key={option.value} accessibilityRole="radio" aria-checked={value === option.value} accessibilityState={{ checked: value === option.value }} onPress={() => onChange(option.value)} style={[styles.chip, value === option.value && { backgroundColor: colors.dark, borderColor: colors.dark }]}><Text style={{ fontFamily: fonts.medium, fontSize: 13, color: value === option.value ? colors.onDark : colors.ink }}>{option.label}</Text></Pressable>)}</View></View>;
 }
 export function Box({ title, children }: { title?: string; children: React.ReactNode }) { return <View style={styles.box}>{title && <Text accessibilityRole="header" aria-level={2} style={styles.heading}>{title}</Text>}{children}</View>; }
-export function Notice({ children, error }: { children: React.ReactNode; error?: boolean }) { return <View style={[styles.note, error && { backgroundColor: '#FAECEB' }]}><Icon name={error ? 'alert-circle' : 'info'} size={17} color={error ? colors.negative : colors.muted} /><Text accessibilityRole={error ? 'alert' : undefined} accessibilityLiveRegion="polite" style={[error ? styles.error : styles.muted, { flex: 1 }]}>{children}</Text></View>; }
+export function Notice({ children, error }: { children: React.ReactNode; error?: boolean }) { return <View style={[styles.note, error && { backgroundColor: colors.errorSurface }]}><Icon name={error ? 'alert-circle' : 'info'} size={17} color={error ? colors.negative : colors.muted} /><Text accessibilityRole={error ? 'alert' : undefined} accessibilityLiveRegion="polite" style={[error ? styles.error : styles.muted, { flex: 1 }]}>{children}</Text></View>; }
 export function Empty({ icon, title, detail, children }: { icon: IconName; title: string; detail: string; children?: React.ReactNode }) { return <View style={{ alignItems: 'center', paddingVertical: 24, gap: 12 }}><View style={{ width: 56, height: 56, backgroundColor: colors.pale, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}><Icon name={icon} size={25} color={colors.muted} /></View><Text style={[styles.heading, { textAlign: 'center' }]}>{title}</Text><Text style={[styles.muted, { maxWidth: 320, textAlign: 'center' }]}>{detail}</Text>{children}</View>; }
 export function MonthPicker({ month, previous, next, labelPrevious = 'Mês anterior', labelNext = 'Próximo mês' }: { month: string; previous: () => void; next: () => void; labelPrevious?: string; labelNext?: string }) {
   const label = new Intl.DateTimeFormat('pt-BR', { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(`${month}-01T12:00:00Z`));
-  return <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.surface, borderRadius: 12, paddingHorizontal: 4 }}><Pressable accessibilityRole="button" accessibilityLabel={labelPrevious} onPress={previous} style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}><Icon name="chevron-left" /></Pressable><View style={{ flexDirection: 'row', gap: 8, alignItems: 'center', flexShrink: 1 }}><Icon name="calendar" size={16} color={colors.muted} /><Text style={[styles.text, { fontFamily: fonts.bold, fontSize: 13, textTransform: 'capitalize', flexShrink: 1 }]}>{label}</Text></View><Pressable accessibilityRole="button" accessibilityLabel={labelNext} onPress={next} style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}><Icon name="chevron-right" /></Pressable></View>;
+  const seen = useRef(month);
+  const direction = month >= seen.current ? 1 : -1;
+  useEffect(() => { seen.current = month; }, [month]);
+  const labelStyle = [styles.text, { fontFamily: fonts.bold, fontSize: 13, textTransform: 'capitalize' as const, flexShrink: 1 }];
+  return <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: colors.surface, borderRadius: 12, paddingHorizontal: 4, boxShadow: '0 8px 18px rgba(4, 36, 83, 0.08)' }}><Pressable accessibilityRole="button" accessibilityLabel={labelPrevious} onPress={previous} style={({ pressed }) => ({ width: 48, height: 48, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.55 : 1 })}><Icon name="chevron-left" /></Pressable><View style={{ flexDirection: 'row', gap: 8, alignItems: 'center', flexShrink: 1 }}><Icon name="calendar" size={16} color={colors.muted} /><SlidingLabel month={month} direction={direction} style={labelStyle}>{label}</SlidingLabel></View><Pressable accessibilityRole="button" accessibilityLabel={labelNext} onPress={next} style={({ pressed }) => ({ width: 48, height: 48, alignItems: 'center', justifyContent: 'center', opacity: pressed ? 0.55 : 1 })}><Icon name="chevron-right" /></Pressable></View>;
 }
 export function Loading() { return <View style={{ padding: 24 }}><ActivityIndicator accessibilityLabel="Carregando dados" color={colors.primary} /><Text style={styles.muted}>Carregando seus registros…</Text></View>; }

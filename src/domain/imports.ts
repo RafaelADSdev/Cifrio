@@ -1,6 +1,6 @@
-import { Entry } from './model';
+import { categories, Entry } from './model';
 import { assertDate, parseMoney } from './money';
-export type ImportRow = { line: number; date: string; description: string; amount: number; externalId?: string; error?: string };
+export type ImportRow = { line: number; date: string; description: string; amount: number; category?: string; externalId?: string; error?: string };
 export type ImportPreview = { headers: string[]; rawRows: string[][] };
 export function splitCsv(text: string): ImportPreview {
   if (text.length > 2_000_000) throw new Error('Arquivo muito grande. Use até 2 MB.');
@@ -52,7 +52,7 @@ export function parseOfx(text: string): ImportRow[] {
     } catch (e) { return { line: i + 1, date: '', amount: 0, description: '', error: (e as Error).message }; }
   });
 }
-export function importEntries(rows: ImportRow[], accountId: string, fileKey: string, createId: () => string): Entry[] {
+export function importEntries(rows: ImportRow[], accountId: string, fileKey: string, createId: () => string, origin: 'csv' | 'pdf' = 'csv'): Entry[] {
   if (rows.some(row => row.error)) throw new Error('Corrija ou desmarque as linhas inválidas.');
-  return rows.map(row => ({ id: createId(), kind: row.amount > 0 ? 'income' : 'expense', accountId, amount: Math.abs(row.amount), date: row.date, description: row.description, category: 'Outros', method: 'debit', source: 'Arquivo importado', sourceKey: row.externalId ? `ofx:${row.externalId}` : `csv:${fileKey}:${row.line}` }));
+  return rows.map(row => ({ id: createId(), kind: row.amount > 0 ? 'income' : 'expense', accountId, amount: Math.abs(row.amount), date: row.date, description: row.description, category: categories.find(category => category === row.category) ?? 'Outros', method: 'debit', source: 'Arquivo importado', sourceKey: row.externalId ? `ofx:${row.externalId}` : `${origin}:${fileKey}:${row.line}` }));
 }

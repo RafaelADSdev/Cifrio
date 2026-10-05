@@ -1,8 +1,14 @@
 import 'react-native-url-polyfill/auto';
 import { AppState, Platform } from 'react-native';
+import * as ExpoCrypto from 'expo-crypto';
 import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
 import { previewAuthStorage } from '../domain/oauth';
+if (!globalThis.crypto?.subtle?.digest) {
+  const subtle = { digest: (_algorithm: AlgorithmIdentifier, data: BufferSource) => ExpoCrypto.digest(ExpoCrypto.CryptoDigestAlgorithm.SHA256, data) };
+  if (globalThis.crypto) Object.defineProperty(globalThis.crypto, 'subtle', { value: subtle, configurable: true });
+  else Object.defineProperty(globalThis, 'crypto', { value: { subtle, getRandomValues: ExpoCrypto.getRandomValues, randomUUID: ExpoCrypto.randomUUID }, configurable: true });
+}
 const url = process.env.EXPO_PUBLIC_SUPABASE_URL;
 const key = process.env.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 if (key && !key.startsWith('sb_publishable_')) throw new Error('Use apenas a chave publicável do Supabase no aplicativo.');

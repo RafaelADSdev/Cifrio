@@ -1,78 +1,147 @@
-# Cifrio — piloto de finanças pessoais
+<p align="center">
+  <img src="assets/brand/cifrio-mark.png" alt="Marca Cifrio" width="88" />
+</p>
 
-React Native + Expo + TypeScript, com adapter Supabase Auth/PostgreSQL. Nome e identidade comerciais provisórios.
+<h1 align="center">Cifrio</h1>
 
-## Rodar
+<p align="center">
+  <strong>Seu dinheiro, com clareza.</strong><br />
+  Contas, gastos e o que ainda está por vir — num só lugar, em centavos, sem número inventado.
+</p>
 
-Requisitos: Node.js 24, npm e navegador. As dependências e o lockfile estão fixados.
+<p align="center">
+  <img alt="React Native" src="https://img.shields.io/badge/React_Native-0.86-042453?style=flat-square" />
+  <img alt="Expo" src="https://img.shields.io/badge/Expo-SDK_57-0474E0?style=flat-square" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-6-23D2BF?style=flat-square&labelColor=042453" />
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-Auth_%2B_Postgres-3E5674?style=flat-square" />
+</p>
+
+Cifrio é o piloto de finanças pessoais: uma mesa clara para registrar o que entrou, o que saiu e o que o cartão ainda vai cobrar. Nada de saldo “consultado no banco” disfarçado de lançamento manual. Nada de dashboard preenchido com dinheiro fictício. Você coloca o dado. O app mostra o mês.
+
+Identidade de trabalho: azul profundo, verde de acento, Manrope. Marca e domínio ainda não estão validados.
+
+---
+
+## O que ele faz
+
+| | |
+| --- | --- |
+| **Contas** | Saldo inicial e saldo registrado até hoje. |
+| **Movimentações** | Receita, despesa, Pix manual, transferência entre contas. Editar e excluir. |
+| **Cartões** | Nome, compras parceladas, faturas projetadas, pagamento parcial ou integral. |
+| **Mês** | Relatório por categoria. Parcela entra. Transferência e pagamento de fatura não viram gasto duas vezes. |
+| **Importar** | CSV, OFX e PDF de texto, com revisão antes de gravar. Reimportar não duplica. |
+| **Exportar** | JSON dos registros, valores em centavos. |
+| **Conta** | Login e cadastro no Supabase, Google via OAuth PKCE, perfil com nome e foto. |
+
+Fechamento manual: compra no dia do fechamento cai na competência seguinte. Dias de fechamento e vencimento vão de 1 a 28. Fatura projetada é estimativa, não o PDF do banco. Limite cadastrado não é limite disponível.
+
+PDF de foto, com senha ou de layout desconhecido não entra. Fatura com mais de um cartão só importa a parte de quem está no perfil.
+
+---
+
+## Como rodar
+
+Node.js 24, npm e um navegador. Dependências e lockfile estão fixados.
 
 ```powershell
 npm.cmd ci
 npm.cmd run web
 ```
 
-Abra a URL exibida pelo Expo e escolha **Abrir teste local**. A sessão de teste começa vazia; cadastre contas e cartões. Os dados demonstrativos persistem no dispositivo via AsyncStorage. Esse modo não é armazenamento seguro para informações financeiras reais. Não há contas bancárias conectadas nem dados inventados carregados automaticamente.
+Abra a URL do Expo e escolha **Abrir teste local**. A sessão nasce vazia: cadastre contas e cartões. Os dados da prévia ficam no aparelho, via AsyncStorage. Esse modo não é cofre para extrato real.
 
-Para desenvolvimento no celular: `npm.cmd run dev`. Usar development build compatível com SDK 57 para validação nativa. `npm.cmd run android` e `npm.cmd run ios` são atalhos do servidor Expo; não geram APK/IPA. Compilação iOS local depende de macOS/Xcode; o Windows permite trabalhar no código e usar builds por serviço de nuvem quando configurado.
+| Comando | Para quê |
+| --- | --- |
+| `npm.cmd run web` | Prévia no navegador. |
+| `npm.cmd run dev` | Servidor Expo, inclusive celular. |
+| `npm.cmd run android` / `ios` | Atalhos do mesmo servidor. Não geram APK nem IPA. |
+| `npm.cmd run check` | Typecheck e testes. |
+| `npm.cmd run test:browser` | Jornada no Chromium. Antes: `npx.cmd playwright install chromium`. |
+| `npm.cmd run build` | Export web. |
 
-## Funcionalidades desta entrega
+Validação nativa pede development build compatível com o SDK 57. Compilar iOS localmente exige macOS e Xcode. No Windows o código anda; o binário nativo, quando chegar, sai de um serviço de nuvem.
 
-- Contas com saldo inicial e saldo registrado até hoje.
-- Receitas, despesas, Pix manual, transferências entre contas, edição e exclusão.
-- Cartões identificados por nome, compras parceladas, faturas projetadas e pagamentos parciais/integral.
-- Relatório mensal por categoria, com parcelas do cartão e exclusão de transferências/pagamentos de fatura dos gastos.
-- CSV com mapeamento de colunas, revisão, seleção de linhas e reimportação idempotente por arquivo/conta/linha.
-- OFX com preservação de FITID para evitar repetição na mesma conta.
-- Exportação dos registros em JSON, valores em centavos. Não é backup gerenciado nem restauração implementada.
-- Cliente de login/cadastro Supabase e migração com RLS, referências por proprietário e operações atômicas.
+---
 
-Fechamento manual: compra no dia de fechamento entra na próxima competência. Dias de fechamento/vencimento inicialmente limitados a 1–28. Faturas são estimativas, não documentos obtidos do banco. Limite cadastrado não é limite disponível consultado.
+## Importar sem se arrepender
 
-## CSV / OFX
+O arquivo é lido no dispositivo. O original não sobe. No modo online, só o lançamento que você confirmar vai para o Supabase.
 
-CSV em UTF-8, até 2 MB e 500 linhas. Cabeçalhos livres com seleção das colunas; data `DD/MM/AAAA` ou `AAAA-MM-DD`; valor positivo para receita e negativo para despesa. Exemplo sintético: `samples/extrato-teste.csv`.
+**CSV** — UTF-8, até 2 MB e 500 linhas. Você escolhe as colunas. Data `DD/MM/AAAA` ou `AAAA-MM-DD`. Positivo é receita, negativo é despesa. Exemplo sintético: [`samples/extrato-teste.csv`](samples/extrato-teste.csv). A reimportação é idempotente por arquivo, conta e linha.
 
-O parser OFX aceita blocos STMTTRN com DTPOSTED, TRNAMT, MEMO/NAME e FITID opcional; não se declara suporte a todos os formatos/exportações de cada banco. Arquivos distintos e períodos sobrepostos exigem revisão humana. Data e valor iguais não são descartados automaticamente.
+**OFX** — blocos `STMTTRN` com `DTPOSTED`, `TRNAMT`, `MEMO`/`NAME` e `FITID` opcional. O `FITID` evita repetir o mesmo lançamento na mesma conta. Não é uma promessa de ler todo banco do país. Períodos sobrepostos pedem olho humano. Data e valor iguais, sozinhos, não são descartados.
 
-Arquivos são lidos no dispositivo, sem upload do original. No modo online, apenas os lançamentos confirmados vão ao Supabase. A extração não detecta Pix por heurística e usa categoria Outros; classifique após importar. PDF bancário e OCR ainda não implementados.
+**PDF** — texto selecionável, até 500 movimentações. Data e valor na mesma linha; saldo, subtotal e total ficam de fora. Crédito e débito respeitam o sinal, o sufixo `C`/`D` e, em fatura de cartão, o sentido da compra. Fatura com vários portadores usa o nome do perfil para ficar só com a sua parte.
 
-## Configurar Supabase
+A extração não adivinha Pix. Categoria inicial: Outros. Classifique depois.
 
-Nenhum projeto externo foi alterado. O usuário informou o projeto `dhoptxnfzxpocgxmgdrs`, configurado no `.env` local ignorado pelo Git. A chave foi aceita pelo endpoint de configurações do Auth; cadastro por e-mail está habilitado e requer confirmação. O conector administrativo não tem acesso a esse projeto. A API não encontrou `finance_accounts`/`read_finance` no schema cache; a migração continua pendente. O mapa `C:\Users\alexa\Desktop\Cofre\04-Guias\Acessos-Master.md` não foi encontrado neste computador.
+Extratos e faturas reais estão no `.gitignore` (`*.pdf`). O teste que lê uma fatura de exemplo só roda se o arquivo estiver na sua máquina.
 
-1. Selecionar o projeto correto de desenvolvimento e revisar a migração `supabase/migrations/20261005151013_financial_core.sql` antes de aplicar. Não aplicar em outro produto.
-2. Copiar `.env.example` para `.env` e preencher URL HTTPS do projeto e **publishable key**. O app recusa chaves que não sejam publicáveis. Não colocar `service_role`, secret key ou credenciais bancárias em `EXPO_PUBLIC_*`.
-3. Aplicar a migração no projeto correto usando a ferramenta Supabase apropriada e verificar advisors/grants/schema cache.
-4. Reiniciar o servidor Expo e testar cadastro/login e duas contas de usuários diferentes.
-5. Confirmar leitura/escrita real, falhas de rede, sessões mobile e isolamento pela API antes de tratar a integração como validada.
+---
 
-As tabelas expostas têm RLS e ownership; referências de conta/cartão usam chave composta com proprietário. Os RPCs são SECURITY INVOKER. Leitura usa um snapshot atômico para não truncar o extrato no limite de linhas da Data API. Novas versões do schema devem usar nova migração, não editar uma migração já aplicada.
+## Conta online
 
-Os originais do extrato não são enviados ao servidor. O perfil online prevê um bucket privado para fotos na migração `20261005164334_profile_avatars.sql`, ainda não aplicada remotamente. Sessões nativas usam SecureStore; tokens web da prévia ficam em memória, e somente o verificador PKCE temporário usa sessionStorage para o retorno do OAuth. Recuperação de senha, exclusão de conta, consentimentos e política de retenção ainda são tarefas do produto.
+Copie [`.env.example`](.env.example) para `.env`:
 
-## Identidade, perfil e Google
-
-O app agora se chama **Cifrio**, com símbolo original em `assets/brand/`. Nome de trabalho sem validação de marca ou domínio. Abra o avatar do cabeçalho para editar nome e escolher/remover foto; salve para persistir. No piloto local, o perfil fica separado dos registros financeiros e pode ser exportado em JSON. Não use dados sensíveis na prévia local.
-
-O login Google usa Supabase OAuth PKCE, não login simulado na interface. A configuração pública do projeto informou Google habilitado, e a autorização inicial redirecionou ao Google; consentimento/login real, retorno em aparelho e isolamento do Storage hospedado ainda não foram testados. Para liberar o online, siga [.project/GOOGLE-PROFILE-SETUP.md](.project/GOOGLE-PROFILE-SETUP.md), incluindo migrações e redirects. Não coloque client secret ou chave secret do Supabase no aplicativo.
-
-## Verificar
-
-```powershell
-npm.cmd run check
-npx.cmd playwright install chromium
-npm.cmd run test:browser
-npm.cmd run build
-npx.cmd expo-doctor
-npx.cmd expo export --platform android --platform ios --output-dir dist-native
+```env
+EXPO_PUBLIC_SUPABASE_URL=https://seu-projeto.supabase.co
+EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sua-chave-publicavel
 ```
 
-Testes de banco usam PGlite (PostgreSQL embarcado) com contexto auth simulado e executam a migração real. Não equivalem a testar Supabase hospedado, PostgREST, autenticação real ou concorrência entre sessões PostgreSQL independentes. Export de bundles Android/iOS não é compilação/distribuição de APK/IPA nem teste em aparelho.
+O app recusa chave que não seja publicável. `service_role`, secret e credencial bancária não entram em `EXPO_PUBLIC_*`.
 
-## Sistema visual
+1. Revise `supabase/migrations/` e aplique no projeto de desenvolvimento certo.
+2. Confira advisors, grants e schema cache.
+3. Reinicie o Expo. Teste cadastro, login e duas contas de pessoas diferentes.
+4. Google: siga [`.project/GOOGLE-PROFILE-SETUP.md`](.project/GOOGLE-PROFILE-SETUP.md). Sem client secret no aplicativo.
 
-Remake com referências reais da Tekton e do Conta Gotas: identidade original em azul profundo/verde, Manrope, Feather e controles compartilhados. Sistema atual em [DESIGN.md](DESIGN.md), contexto em [PRODUCT.md](PRODUCT.md), pesquisa em [.project/REMAKE-BRIEF.md](.project/REMAKE-BRIEF.md) e evidências em [.impeccable/review/](.impeccable/review/). As capturas são da prévia web, com registros sintéticos inseridos pelos testes; não representam conta bancária conectada nem homologação nativa.
+RLS e dono em toda tabela exposta. Conta e cartão referenciam o proprietário. RPCs são `SECURITY INVOKER`. A leitura usa um snapshot atômico para o extrato não ser cortado no limite da Data API. Schema novo = migração nova. Não edite migração já aplicada.
 
-## Próximas fases
+Sessão nativa usa SecureStore. Na web, o token da prévia fica em memória; só o verificador PKCE temporário usa `sessionStorage`. Fotos de perfil, no online, vão para um bucket privado — a migração existe, a aplicação remota é passo seu.
 
-Orçamentos, recorrências/lembretes, estornos explícitos, PDF por layout, recuperação de conta, política de privacidade, teste nativo e Open Finance. Elegibilidade PF/PJ das contas BB/Mercado Pago/PicPay/Inter e fornecedor ainda pendentes. Detalhes em `tasks/plan.md`, `tasks/todo.md` e `.project/STATUS.md`.
+Testes de banco rodam em PGlite, com a migração real e auth simulado. Isso não substitui Supabase hospedado, PostgREST, login de verdade nem duas sessões PostgreSQL ao mesmo tempo.
+
+---
+
+## Mapa
+
+```text
+src/app          telas (Expo Router): entrada, perfil, abas
+src/domain       dinheiro: contas, cartão, importação, PDF, perfil
+src/state        sessão local e online
+src/lib          Supabase, texto de PDF, exportação, foto
+src/ui           visual compartilhado
+supabase/        migrações
+tests/           Vitest e jornada Playwright
+samples/         CSV sintético
+assets/brand/    símbolo e logo
+```
+
+```mermaid
+flowchart LR
+  tela[Telas] --> estado[Estado]
+  estado --> dominio[Domínio em centavos]
+  dominio --> local[AsyncStorage no teste local]
+  dominio --> remoto[Supabase com RLS]
+  arquivo[CSV / OFX / PDF] --> revisao[Revisão na tela]
+  revisao --> dominio
+```
+
+Início, Extrato, Cartões, Importar, Contas. No largo, a barra vai para a esquerda. No estreito, fica embaixo, com a safe area do Android respeitada.
+
+Visual, voz e decisões: [DESIGN.md](DESIGN.md), [PRODUCT.md](PRODUCT.md), [`.project/REMAKE-BRIEF.md`](.project/REMAKE-BRIEF.md). Plano: [`tasks/plan.md`](tasks/plan.md), [`tasks/todo.md`](tasks/todo.md), [`.project/STATUS.md`](.project/STATUS.md).
+
+---
+
+## O que ainda não é
+
+Orçamento, recorrência, estorno explícito, Open Finance, recuperação e exclusão de conta, política de privacidade, teste em aparelho. Banco do Brasil, Mercado Pago, PicPay e Inter são prioridade de produto, não conexão ligada.
+
+Registro manual não é saldo do banco. Projeção não é fatura oficial. Prévia web não é homologação nativa. JSON exportado não é backup com restauração.
+
+---
+
+<p align="center">
+  <sub>Piloto. Feito para ver o mês inteiro sem contar o mesmo real duas vezes.</sub>
+</p>

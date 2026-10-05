@@ -36,7 +36,7 @@ test('CSV é revisado e reimportação não duplica lançamentos', async ({ page
   await start(page); await account(page, 'Conta importação', '0'); await tab(page, 'Importar');
   const file = { name: 'teste.csv', mimeType: 'text/csv', buffer: Buffer.from('data;descricao;valor\n01/10/2026;Receita importada;100\n02/10/2026;Despesa importada;-10,50') };
   for (let i = 0; i < 2; i++) {
-    const chooser = page.waitForEvent('filechooser'); await page.getByRole('button', { name: 'Escolher CSV ou OFX' }).click(); await (await chooser).setFiles(file);
+    const chooser = page.waitForEvent('filechooser'); await page.getByRole('button', { name: 'Escolher CSV, OFX ou PDF' }).click(); await (await chooser).setFiles(file);
     await expect(page.getByRole('button', { name: 'Confirmar importação' })).toBeVisible();
     const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(accessibility.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.html) }))).toEqual([]);

@@ -2,11 +2,22 @@ import React, { createContext, useContext, useEffect, useRef, useState } from 'r
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from 'expo-crypto';
 import { Session } from '@supabase/supabase-js';
-import { FinanceState, emptyState } from '../domain/model';
+import { FinanceState, emptyState, hydrateState } from '../domain/model';
 import { Operation, applyOperation } from '../domain/operations';
 import { supabase } from '../lib/supabase';
 import { loadRemote, saveRemote } from '../lib/repository';
 const DEMO_KEY = 'gestao.demo.v1';
+const prefsKey = (userId: string) => `gestao.prefs.v1.${userId}`;
+async function readPrefs(userId: string) {
+  try {
+    const raw = await AsyncStorage.getItem(prefsKey(userId));
+    const data = raw ? JSON.parse(raw) : {};
+    return { budgets: Array.isArray(data.budgets) ? data.budgets : [], categoryMemory: Array.isArray(data.categoryMemory) ? data.categoryMemory : [] };
+  } catch { return { budgets: [], categoryMemory: [] }; }
+}
+async function writePrefs(userId: string, state: FinanceState) {
+  await AsyncStorage.setItem(prefsKey(userId), JSON.stringify({ budgets: state.budgets ?? [], categoryMemory: state.categoryMemory ?? [] }));
+}
 type Context = { state: FinanceState; mode: 'welcome' | 'demo' | 'remote'; loading: boolean; busy: boolean; error: string; session: Session | null; startDemo: () => Promise<void>; leave: () => Promise<void>; refresh: () => Promise<void>; mutate: (action: Operation['action'], records: Operation['records'], operationId?: string) => Promise<void> };
 const FinanceContext = createContext<Context | null>(null);
 export const newId = () => Crypto.randomUUID();
@@ -18,7 +29,11 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
   async function refresh() {
     const current = generation.current;
     setLoading(true); setError('');
-    try { const data = await loadRemote(); if (generation.current === current) setState(data); }
+    try {
+      const remote = hydrateState(await loadRemote());
+      const prefs = session?.user.id ? await readPrefs(session.user.id) : { budgets: [], categoryMemory: [] };
+      if (generation.current === current) setState({ ...remote, ...prefs });
+    }
     catch (e) { if (generation.current === current) setError((e as Error).message); }
     finally { if (generation.current === current) setLoading(false); }
   }
@@ -40,7 +55,7 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => { if (mode === 'remote' && session) void refresh(); }, [mode, session?.user.id]);
   async function startDemo() {
     setLoading(true); setError('');
-    try { const raw = await AsyncStorage.getItem(DEMO_KEY); setState(raw ? JSON.parse(raw) : emptyState()); generation.current++; setMode('demo'); }
+    try { const raw = await AsyncStorage.getItem(DEMO_KEY); setState(hydrateState(raw ? JSON.parse(raw) : undefined)); generation.current++; setMode('demo'); }
     catch { setError('Não foi possível abrir o teste local.'); }
     finally { setLoading(false); }
   }
@@ -59,8 +74,17 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
       if (mode === 'demo') await AsyncStorage.setItem(DEMO_KEY, JSON.stringify(next));
       let saved = next;
       if (mode === 'remote') {
-        try { await saveRemote(operation); saved = await loadRemote(); }
-        catch (e) { if (current === generation.current) setError('Não foi possível confirmar a operação online. Atualize os dados na aba Contas antes de continuar.'); throw e; }
+        try {
+          if (operation.action === 'budget') {
+            if (!session?.user.id) throw new Error('Entre na conta para salvar o limite.');
+            await writePrefs(session.user.id, next);
+          } else {
+            await saveRemote(operation);
+            saved = { ...hydrateState(await loadRemote()), budgets: next.budgets ?? [], categoryMemory: next.categoryMemory ?? [] };
+            if (session?.user.id) await writePrefs(session.user.id, saved);
+          }
+        }
+        catch (e) { if (current === generation.current && operation.action !== 'budget') setError('Não foi possível confirmar a operação online. Atualize os dados na aba Contas antes de continuar.'); throw e; }
       }
       if (current === generation.current) setState(saved);
     } finally { lock.current = false; setBusy(false); }

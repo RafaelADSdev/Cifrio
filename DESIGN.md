@@ -2,19 +2,19 @@
 name: Cifrio
 description: Mesa financeira clara para contas, registros e compromissos pessoais.
 colors:
-  bg: "#F4F6F8"
+  bg: "#F4F8FC"
   surface: "#FFFFFF"
-  ink: "#172B42"
-  muted: "#56677B"
-  primary: "#17664F"
-  soft: "#E8F2ED"
-  border: "#DDE4EA"
+  ink: "#042453"
+  muted: "#3E5674"
+  primary: "#0474E0"
+  soft: "#D7E9FB"
+  border: "#D5E3F0"
   negative: "#B2403B"
-  dark: "#142A40"
+  dark: "#042453"
   onDark: "#FFFFFF"
-  mutedDark: "#BACBD8"
-  accent: "#D9EFB6"
-  pale: "#EDF1F5"
+  mutedDark: "#D5E4F5"
+  accent: "#23D2BF"
+  pale: "#E7F2FC"
   errorSurface: "#FAECEB"
 typography:
   display:
@@ -137,7 +137,7 @@ components:
 
 A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo, ainda sem validação de marca ou domínio.
 
-Superfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.
+Superfícies claras, azul-marinho da logo e azul de ação sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.
 
 **Key Characteristics:**
 
@@ -153,13 +153,13 @@ A paleta combina papel frio e tinta azul com um verde de ação; vermelho sinali
 
 ### Primary
 
-- **Verde operacional** (`primary`): ações principais, receitas, resultado positivo, foco e seleção da navegação.
+- **Azul da logo** (`primary`): ações principais, receitas, resultado positivo, foco e seleção da navegação.
 - **Verde suave** (`soft`): faixa de teste local e fundo do item ativo na navegação lateral.
 
 ### Secondary
 
-- **Azul profundo** (`dark`): saldo, apresentação inicial e fatura estimada; também escolha selecionada.
-- **Lima suave** (`accent`): ícones dentro dos painéis escuros.
+- **Azul-marinho** (`dark`): saldo, apresentação inicial e fatura estimada; também escolha selecionada. É a cor da palavra cifrio.
+- **Ciano** (`accent`): ícones dentro dos painéis escuros, a cor das barras da logo.
 
 ### Tertiary
 
@@ -168,15 +168,15 @@ A paleta combina papel frio e tinta azul com um verde de ação; vermelho sinali
 
 ### Neutral
 
-- **Papel frio** (`bg`): página e campos em repouso.
+- **Papel azul** (`bg`): página e campos em repouso, tirados do azul da logo.
 - **Branco de superfície** (`surface`): containers e navegação; `onDark` é seu papel de conteúdo claro.
 - **Tinta azul** (`ink`): títulos, texto e valores gerais.
 - **Tinta secundária** (`muted`): contexto, legendas e navegação inativa.
-- **Linha fria** (`border`): divisores e contornos.
-- **Azul claro de contexto** (`pale`): avisos, ações secundárias e apoios de ícones.
+- **Linha azul** (`border`): divisores e contornos no mesmo azul do papel.
+- **Azul de apoio** (`pale`): avisos, ações secundárias e apoios de ícones.
 - **Texto sobre azul** (`mutedDark`): legendas dos painéis escuros.
 
-Há dois detalhes locais compartilhados entre telas: divisor sobre azul (`#405365`) e categoria secundária (`#738B9C`). Não constituem uma escala adicional de identidade.
+O divisor sobre o azul da logo usa `lineOnDark` (`#5C8FBE`). A segunda categoria do mês usa a tinta secundária, com rótulo ao lado da cor. A logo em uso é o arquivo `assets/brand/cifrio-logo.png`.
 
 **The Context Rule.** Cor nunca substitui o rótulo: saldo registrado, fatura estimada, receita, despesa e teste local devem continuar explícitos.
 
