@@ -1,12 +1,23 @@
-import { Account, Budget, Card, Entry, FinanceState } from './model';
+import { Account, Budget, Card, Entry, FinanceState, Recurring } from './model';
+import { accountDeleteReason, validateRecurring } from './recurring';
 import { insertEntries, installmentsFor, statement, validateAccount, validateCard, validateEntry } from './finance';
 import { rememberFromEntry, upsertBudget } from './planning';
-export type Operation = { id: string; action: 'account' | 'card' | 'entries' | 'edit' | 'delete' | 'budget'; records: (Account | Card | Entry | Budget | { id: string })[] };
+export type Operation = { id: string; action: 'account' | 'card' | 'entries' | 'edit' | 'delete' | 'budget' | 'account_delete' | 'recurring' | 'recurring_delete'; records: (Account | Card | Entry | Budget | Recurring | { id: string })[] };
 export function applyOperation(state: FinanceState, operation: Operation): FinanceState {
   let next = state;
   if (operation.action === 'account') {
     const account = operation.records[0] as Account; validateAccount(account);
     next = { ...state, accounts: [...state.accounts.filter(a => a.id !== account.id), account] };
+  } else if (operation.action === 'account_delete') {
+    const id = (operation.records[0] as { id: string }).id;
+    if (!state.accounts.some(account => account.id === id)) throw new Error('Conta não encontrada.');
+    const reason = accountDeleteReason(state, id); if (reason) throw new Error(reason);
+    next = { ...state, accounts: state.accounts.filter(account => account.id !== id) };
+  } else if (operation.action === 'recurring') {
+    const item = operation.records[0] as Recurring; validateRecurring(state, item);
+    next = { ...state, recurring: [...(state.recurring ?? []).filter(old => old.id !== item.id), item] };
+  } else if (operation.action === 'recurring_delete') {
+    next = { ...state, recurring: (state.recurring ?? []).filter(item => item.id !== (operation.records[0] as { id: string }).id) };
   } else if (operation.action === 'card') {
     const card = operation.records[0] as Card; validateCard(card);
     next = { ...state, cards: [...state.cards.filter(c => c.id !== card.id), card] };

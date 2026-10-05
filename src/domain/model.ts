@@ -8,8 +8,9 @@ export type Entry = {
   source?: string; sourceKey?: string;
 };
 export type Budget = { category: string; limit: number };
+export type Recurring = { id: string; accountId: string; description: string; kind: 'income' | 'expense'; category: string; amount: number; day: number; startMonth: string; active: boolean };
 export type CategoryRule = { key: string; category: string };
-export type FinanceState = { accounts: Account[]; cards: Card[]; entries: Entry[]; budgets?: Budget[]; categoryMemory?: CategoryRule[] };
+export type FinanceState = { accounts: Account[]; cards: Card[]; entries: Entry[]; budgets?: Budget[]; categoryMemory?: CategoryRule[]; recurring?: Recurring[] };
 export function hydrateState(raw: unknown): FinanceState {
   const data = raw && typeof raw === 'object' ? raw as Partial<FinanceState> : {};
   return {
@@ -18,6 +19,7 @@ export function hydrateState(raw: unknown): FinanceState {
     entries: Array.isArray(data.entries) ? data.entries : [],
     budgets: Array.isArray(data.budgets) ? data.budgets : [],
     categoryMemory: Array.isArray(data.categoryMemory) ? data.categoryMemory : [],
+    recurring: Array.isArray(data.recurring) ? data.recurring : [],
   };
 }
 export const emptyState = (): FinanceState => hydrateState(undefined);
