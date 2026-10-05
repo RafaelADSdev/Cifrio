@@ -34,9 +34,9 @@ export function statement(state: FinanceState, cardId: string, month: string) {
   const paid = state.entries.filter(e => e.kind === 'card_payment' && e.cardId === cardId && e.statementMonth === month).reduce((s, e) => s + e.amount, 0);
   return { total, paid, remaining: total - paid, items };
 }
-export function balance(state: FinanceState, accountId: string) {
+export function balance(state: FinanceState, accountId: string, through = '9999-12-31') {
   return (state.accounts.find(a => a.id === accountId)?.openingBalance ?? 0) + state.entries.reduce((sum, e) => {
-    if (e.kind === 'card_purchase') return sum;
+    if (e.kind === 'card_purchase' || e.date > through) return sum;
     if (e.kind === 'transfer' && e.destinationId === accountId) return sum + e.amount;
     if (e.accountId !== accountId) return sum;
     return sum + (e.kind === 'income' ? e.amount : -e.amount);

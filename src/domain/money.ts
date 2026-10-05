@@ -1,5 +1,6 @@
 export function parseMoney(input: string): number {
   const text = input.trim().replace(/^R\$\s*/, '');
+  if (text.includes(',') && !/^-?(?:\d+|\d{1,3}(?:\.\d{3})+),\d{1,2}$/.test(text)) throw new Error('Use o formato 1.234,56 para valores em reais.');
   const normalized = text.includes(',') ? text.replace(/\./g, '').replace(',', '.') : text;
   if (!/^-?\d+(\.\d{1,2})?$/.test(normalized)) throw new Error('Informe um valor válido com até duas casas decimais.');
   const negative = normalized.startsWith('-');
