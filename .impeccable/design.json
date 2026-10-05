@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T20:00:00-03:00",
-  "title": "Design System: Gestão",
+  "generatedAt": "2026-10-05T17:18:57Z",
+  "title": "Design System: Cifrio",
   "extensions": {
     "colorMeta": {
       "bg": {
@@ -279,7 +279,7 @@
         "value": "1000px"
       }
     ],
-    "implementationNotes": "Light theme in React Native; CSS snippets are self-contained illustrative translations, not runtime CSS. No custom motion/shadow tokens. Native device validation pending. Tonal ramps are documentation only."
+    "implementationNotes": "Light theme in React Native; CSS snippets are self-contained illustrative translations, not runtime CSS. No custom motion/shadow tokens. Tonal ramps are documentation only. Cifrio extends incumbent seed 4a6b2fab without primitive changes. Brand runtime PNG: assets/brand/cifrio-mark.png, generated provenance and exact prompt in assets/brand/README.md and logo-prompt.txt; no vector or commercial clearance implied. Google runtime PNG: assets/brand/google-g.png, official source recorded in README; panel SVG illustrative. Avatar header routes to /profile, 40 inside48 target; profile preview104. Seven web screens reviewed ship in .impeccable/review/PROFILE-REVIEW.md. Real Google login, online Storage and native device verification pending per .project/GOOGLE-PROFILE-SETUP.md."
   },
   "components": [
     {
@@ -345,11 +345,29 @@
       "description": "Tradução ilustrativa da seleção lateral; sem roteamento no painel.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a class=\"ds-nav-item ds-nav-active\" href=\"#inicio\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"21\" height=\"21\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"/></svg>Início</a><a class=\"ds-nav-item\" href=\"#extrato\">Extrato</a></nav>",
       "css": ".ds-nav{width:188px;min-width:188px;background:#FFFFFF;padding:28px 12px;font-family:Manrope,system-ui,sans-serif}.ds-nav-item{display:flex;align-items:center;gap:12px;min-height:52px;margin:4px 0;padding:0 12px;border-radius:12px;color:#56677B;text-decoration:none;font-size:13px;font-weight:700}.ds-nav-active{background:#E8F2ED;color:#17664F}.ds-nav-item:hover{cursor:pointer}.ds-nav-item:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-nav-item:active{opacity:.75}"
+    },
+    {
+      "name": "Avatar",
+      "kind": "custom",
+      "refersTo": "avatar",
+      "description": "Tradução de Avatar(size=40,name,uri): foto circular no runtime; fallback de iniciais sintéticas aqui. Cabeçalho usa wrapper clicável48 para /profile; perfil usa104 e ações separadas.",
+      "html": "<button class=\"ds-avatar-link\" aria-label=\"Abrir perfil\"><span class=\"ds-avatar\" aria-hidden=\"true\">AB</span></button>",
+      "css": ".ds-avatar-link{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border:0;border-radius:24px;background:#FFFFFF;cursor:pointer}.ds-avatar{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:20px;background:#EDF1F5;color:#172B42;font:700 12.8px Manrope,system-ui,sans-serif}.ds-avatar-link:hover{cursor:pointer}.ds-avatar-link:focus-visible{outline:2px solid #17664F;outline-offset:3px}",
+      "usage": "Avatar é apresentação; foto/remoção só persistem ao salvar. Foto carregada usa Image no RN e onError leva a iniciais/user. Sem foto padrão."
+    },
+    {
+      "name": "GoogleButton",
+      "kind": "button",
+      "refersTo": "google-button",
+      "description": "Tradução ilustrativa de GoogleButton: SVG inline no painel, PNG Google oficial20 no runtime. Uso exclusivo de autenticação; não comprova OAuth real.",
+      "html": "<button class=\"ds-google\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path fill=\"#4285F4\" d=\"M21.6 12.2c0-.7-.1-1.4-.2-2.1H12v4h5.4c-.2 1.3-.9 2.3-2 3.1v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.6z\"/><path fill=\"#34A853\" d=\"M12 22c2.7 0 5-0.9 6.7-2.5l-3.3-2.6c-.9.6-2.1.9-3.4.9-2.6 0-4.8-1.8-5.6-4.1H3v2.7C4.7 19.8 8.1 22 12 22z\"/><path fill=\"#FBBC05\" d=\"M6.4 13.7c-.2-.6-.3-1.1-.3-1.7s.1-1.2.3-1.7V7.6H3C2.4 8.9 2 10.4 2 12s.4 3.1 1 4.4z\"/><path fill=\"#EA4335\" d=\"M12 6.2c1.5 0 2.8.5 3.9 1.5l2.9-2.9C17 3.1 14.7 2 12 2 8.1 2 4.7 4.2 3 7.6l3.4 2.7C7.2 7.9 9.4 6.2 12 6.2z\"/></svg><span>Continuar com Google</span></button>",
+      "css": ".ds-google{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border:1px solid #747775;border-radius:12px;background:#FFFFFF;color:#1F1F1F;font:500 14px system-ui,sans-serif;cursor:pointer}.ds-google:hover{cursor:pointer}.ds-google:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-google:active{opacity:.75}.ds-google:disabled{opacity:.5;cursor:default}",
+      "usage": "Uma instância na entrada quando Supabase está disponível, antes da alternativa e-mail. Manter rótulo, G sem recolorir e estado busy/disabled. Asset runtime: assets/brand/google-g.png, origem oficial em assets/brand/README.md."
     }
   ],
   "narrative": {
     "northStar": "Mesa financeira",
-    "overview": "A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Gestão permanece um nome provisório.\n\nSuperfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.",
+    "overview": "A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo, ainda sem validação de marca ou domínio.\n\nSuperfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.",
     "keyCharacteristics": [
       "Hierarquia forte para valores e contexto financeiro explícito.",
       "Superfícies claras com painéis de destaque em azul profundo.",

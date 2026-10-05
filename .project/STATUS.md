@@ -25,6 +25,8 @@ Tarefa 1 documentada; tarefa 2 apenas pesquisa documental. Tarefa 3 tem código 
 
 ## Dependências
 
+A extensão Cifrio adiciona logo, perfil editável com foto e fluxo Google OAuth PKCE. Detalhes de segurança e configuração em `IDENTITY-PROFILE.md` e `GOOGLE-PROFILE-SETUP.md`. Validação atual: 41 testes locais e dez testes de navegador (incluindo OAuth simulado, não consentimento real), TypeScript e exports web/Android/iOS. Google habilitado e início de autorização remoto verificados em leitura; migração de avatars, login real, retorno nativo e Storage hospedado ainda pendentes. A simulação PostgreSQL das políticas do bucket não substitui o serviço Storage real.
+
 `npm audit` após correção compatível de decode-uri-component: 27 alertas (19 high, 8 moderate), propagados de três dependências-base: braces, node-forge e uuid, na árvore do Expo/Metro/Xcode. A sugestão automática inclui downgrade incompatível do Expo; não foi aplicada. As versões publicadas consultadas de braces/node-forge permanecem nas faixas alertadas. UUID na ferramenta Xcode requer revisão específica de uso/API antes de override de major. Nenhuma afirmação de prontidão para produção enquanto esses alertas e a validação nativa/online estiverem pendentes.
 
 ## Documentação

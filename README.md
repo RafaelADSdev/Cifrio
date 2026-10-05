@@ -1,4 +1,4 @@
-# Gestão — piloto de finanças pessoais
+# Cifrio — piloto de finanças pessoais
 
 React Native + Expo + TypeScript, com adapter Supabase Auth/PostgreSQL. Nome e identidade comerciais provisórios.
 
@@ -48,7 +48,13 @@ Nenhum projeto externo foi alterado. O usuário informou o projeto `dhoptxnfzxpo
 
 As tabelas expostas têm RLS e ownership; referências de conta/cartão usam chave composta com proprietário. Os RPCs são SECURITY INVOKER. Leitura usa um snapshot atômico para não truncar o extrato no limite de linhas da Data API. Novas versões do schema devem usar nova migração, não editar uma migração já aplicada.
 
-O Storage não é usado nesta entrega, pois o original do extrato não é enviado ao servidor. Sessões nativas usam SecureStore; sessões web da prévia ficam em memória. Recuperação de senha, exclusão de conta, consentimentos e política de retenção ainda são tarefas do produto.
+Os originais do extrato não são enviados ao servidor. O perfil online prevê um bucket privado para fotos na migração `20261005164334_profile_avatars.sql`, ainda não aplicada remotamente. Sessões nativas usam SecureStore; tokens web da prévia ficam em memória, e somente o verificador PKCE temporário usa sessionStorage para o retorno do OAuth. Recuperação de senha, exclusão de conta, consentimentos e política de retenção ainda são tarefas do produto.
+
+## Identidade, perfil e Google
+
+O app agora se chama **Cifrio**, com símbolo original em `assets/brand/`. Nome de trabalho sem validação de marca ou domínio. Abra o avatar do cabeçalho para editar nome e escolher/remover foto; salve para persistir. No piloto local, o perfil fica separado dos registros financeiros e pode ser exportado em JSON. Não use dados sensíveis na prévia local.
+
+O login Google usa Supabase OAuth PKCE, não login simulado na interface. A configuração pública do projeto informou Google habilitado, e a autorização inicial redirecionou ao Google; consentimento/login real, retorno em aparelho e isolamento do Storage hospedado ainda não foram testados. Para liberar o online, siga [.project/GOOGLE-PROFILE-SETUP.md](.project/GOOGLE-PROFILE-SETUP.md), incluindo migrações e redirects. Não coloque client secret ou chave secret do Supabase no aplicativo.
 
 ## Verificar
 

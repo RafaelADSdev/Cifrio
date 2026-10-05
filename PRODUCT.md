@@ -1,4 +1,4 @@
-# Gestão
+# Cifrio
 
 <!-- impeccable:product-schema 1 -->
 
@@ -20,11 +20,11 @@ Contas, receitas/despesas/Pix manual, transferências, compras parceladas, fatur
 
 ## Brand Commitments
 
-Gestão é nome provisório; voz em português brasileiro. Usuário aprovou substituir a identidade visual usando acabamento da Tekton e organização do Conta Gotas como referências principais, sem copiar marcas.
+Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo; ainda sem validação de marca ou domínio. Símbolo C azul-marinho com detalhe verde, com origem em `assets/brand/README.md`. Voz em português brasileiro. Usuário aprovou substituir a identidade visual usando acabamento da Tekton e organização do Conta Gotas como referências principais, sem copiar marcas.
 
 ## Evidence on Hand
 
-Domínio financeiro e jornadas de navegador existentes. Pesquisa de referências em `.project/REMAKE-BRIEF.md`. Validação web não significa validação em aparelho. Preservar ajustes prévios de safe area Android.
+Domínio financeiro e jornadas de navegador existentes. Pesquisa de referências em `.project/REMAKE-BRIEF.md`. Perfil permite editar nome e escolher/remover foto, com armazenamento local separado no piloto e Storage privado previsto no online. Login Google implementado via Supabase OAuth PKCE; provider remoto habilitado e início de autorização verificado, mas login real e retorno nativo não testados. Migration de avatars ainda não aplicada no projeto remoto. Configuração e limites em `.project/GOOGLE-PROFILE-SETUP.md`. Validação web não significa validação em aparelho. Preservar ajustes prévios de safe area Android.
 
 ## Product Principles
 

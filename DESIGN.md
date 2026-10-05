@@ -1,5 +1,5 @@
 ---
-name: Gestão
+name: Cifrio
 description: Mesa financeira clara para contas, registros e compromissos pessoais.
 colors:
   bg: "#F4F6F8"
@@ -119,15 +119,23 @@ components:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.muted}"
     typography: "{typography.label}"
+  avatar:
+    backgroundColor: "{colors.pale}"
+    textColor: "{colors.ink}"
+    size: "40px"
+  google-button:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.control}"
+    padding: "12px 18px"
 ---
 
-# Design System: Gestão
+# Design System: Cifrio
 
 ## Overview
 
 **Creative North Star: "Mesa financeira"**
 
-A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Gestão permanece um nome provisório.
+A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo, ainda sem validação de marca ou domínio.
 
 Superfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.
 
@@ -227,13 +235,21 @@ Container branco: padding de 20, intervalo de 16. Saldo: painel azul, padding de
 
 ### Navigation
 
-Início, Extrato, Cartões, Importar e Contas usam Feather (21), rótulos Bold e verde ativo. Navegação inferior protege inset de sistema; lateral usa fundo tonal no item ativo. Cabeçalho inclui marca tipográfica provisória, símbolo layers e acesso às contas com alvo de 48.
+Início, Extrato, Cartões, Importar e Contas usam Feather (21), rótulos Bold e verde ativo. Navegação inferior protege inset de sistema; lateral usa fundo tonal no item ativo. Cabeçalho inclui wordmark `cifrio` em Manrope ExtraBold (20, tracking −0,5), símbolo C PNG (32, raio 6) e avatar clicável com alvo de 48 e raio 24. A ação “Abrir perfil” leva a `/profile`; não substitui o destino Contas da navegação.
+
+### Brand, Avatar and GoogleButton
+
+O símbolo `assets/brand/cifrio-mark.png` é raster gerado com fundo transparente: usar no cabeçalho e apresentação, sem redesenhar como vetor. Na apresentação mede 48, com fundo branco e raio 12. Procedência e prompt exato estão em `assets/brand/README.md` e `assets/brand/logo-prompt.txt`; isso não significa liberação comercial da marca. O wordmark permanece texto, não imagem.
+
+`Avatar` usa foto circular, tamanho padrão de 40 e tamanho de 104 no perfil. Sem foto ou com falha de carregamento, mostra iniciais das duas primeiras partes do nome em Manrope Bold (32% do tamanho), ou Feather user (45% do tamanho); fundo `pale`, tinta `ink`, raio igual à metade do tamanho. No cabeçalho é acesso ao perfil; no formulário é prévia de apresentação, não botão de upload. Nome, alterar/remover foto e salvar mantêm ações separadas. Foto escolhida só é enviada ao salvar; formatos JPEG/PNG/WebP até 2 MB. Não incluir foto pessoal como asset padrão.
+
+`GoogleButton` é exclusivo de autenticação na entrada: superfície branca, contorno de uma unidade (`#747775`), texto “Continuar com Google” (14, peso 500, `#1F1F1F`) e PNG oficial `assets/brand/google-g.png` (20), obtido sem alteração visual da fonte Google registrada no README dos assets. Usa geometria do botão compartilhado, mínimo de 48, foco verde e opacidade pressionada/desabilitada. Essas cores locais do fornecedor não alteram a paleta do produto. Não recolorir o G como marca Cifrio nem usar esse controle para ações financeiras.
 
 ### Month picker, notices and empty states
 
 Mês horizontal com calendário, nome localizado e setas de 48. Avisos combinam ícone e texto; erro usa fundo rosa e anúncio acessível. Vazio usa ícone apoiado, título, explicação centrada limitada a 320 e ação contextual. Importação mantém revisão antes da confirmação.
 
-O sidecar `.impeccable/design.json` contém traduções ilustrativas HTML/CSS dos componentes React Native para o painel de documentação. São autocontidas, não estilos do runtime nem evidência de suporte nativo. Estados CSS traduzem intenção observada; hover não introduz cor nova. Nenhuma imagem autoral ou raster gerado foi adicionado pelo remake; fontes e ícones vêm de bibliotecas.
+O sidecar `.impeccable/design.json` contém traduções ilustrativas HTML/CSS dos componentes React Native para o painel de documentação. São autocontidas, não estilos do runtime nem evidência de suporte nativo. Estados CSS traduzem intenção observada; hover não introduz cor nova. A extensão de identidade acrescentou o símbolo C gerado e o G oficial; fontes e demais ícones vêm de bibliotecas. O espécime de avatar usa iniciais sintéticas e o de Google usa SVG inline ilustrativo; o runtime usa o PNG oficial documentado.
 
 ## Do's and Don'ts
 
@@ -253,4 +269,4 @@ O sidecar `.impeccable/design.json` contém traduções ilustrativas HTML/CSS do
 - **Don't** reutilizar marcas, fotografias ou fundos das referências de qualidade.
 - **Don't** declarar validação em aparelho com base somente na prévia web.
 
-Fonte: `src/ui/components.tsx` e telas de entrada/início/cartões/extrato/importação/contas. Contrato: `.project/REMAKE-BRIEF.md`, semente `4a6b2fab`. Finish review em `.impeccable/review/REVIEW.md`: `fix` → `ship`, dois ajustes resolvidos, escopo de prévia web. Homologação nativa permanece pendente.
+Fonte: `src/ui/components.tsx` e telas de entrada/início/cartões/extrato/importação/contas/perfil. Contratos: `.project/REMAKE-BRIEF.md` e `.project/IDENTITY-PROFILE.md`; extensão da direção incumbente, semente `4a6b2fab`, sem mudança de tokens primitivos. Finish review em `.impeccable/review`: remake `fix` → `ship`; extensão Cifrio `ship` após recaptura das sete telas atuais, sem correções materiais. Escopo de prévia web. Login Google real, Storage online e homologação nativa permanecem pendentes conforme `.project/GOOGLE-PROFILE-SETUP.md`.
