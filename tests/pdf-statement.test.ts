@@ -57,6 +57,29 @@ it('mostra só a parte do nome do perfil numa fatura com vários cartões', () =
   expect(() => parseStatementText(invoice, 'Carlos')).toThrow(/Carlos/);
 });
 
+it('prioriza o primeiro nome mesmo quando outros nomes do perfil não estão na fatura', () => {
+  expect(parseStatementText(invoice, 'Rafael Pereira').map(row => row.description)).toEqual(['COMPRA DO RAFAEL', 'CREDITO LOJA']);
+  expect(parseStatementText(invoice, 'Amanda Rafael').map(row => row.description)).toEqual(['COMPRA DA AMANDA', 'ESTORNO ANUIDADE']);
+});
+
+it('tenta o segundo e os nomes seguintes quando os anteriores não são encontrados', () => {
+  expect(parseStatementText(invoice, 'Carlos Rafael').map(row => row.description)).toEqual(['COMPRA DO RAFAEL', 'CREDITO LOJA']);
+  expect(parseStatementText(invoice, 'Carlos de Pedro Ámanda').map(row => row.description)).toEqual(['COMPRA DA AMANDA', 'ESTORNO ANUIDADE']);
+  expect(() => parseStatementText(invoice, 'Rafa')).toThrow(/não encontrei/i);
+});
+
+it('desambigua nomes repetidos sem misturar titulares diferentes', () => {
+  const repeated = invoice.replace('AMANDA J D SILVA', 'RAFAEL SILVA');
+  expect(parseStatementText(repeated, 'Rafael Santos').map(row => row.description)).toEqual(['COMPRA DO RAFAEL', 'CREDITO LOJA']);
+  expect(() => parseStatementText(repeated, 'Rafael')).toThrow(/mais de um titular/i);
+  expect(() => parseStatementText(repeated, 'Carlos de')).toThrow(/não encontrei/i);
+});
+
+it('mantém todos os cartões do mesmo titular identificado', () => {
+  const same = invoice.replace('AMANDA J D SILVA', 'RAFAEL A D SANTOS');
+  expect(parseStatementText(same, 'Rafael').map(row => row.description)).toEqual(['COMPRA DA AMANDA', 'ESTORNO ANUIDADE', 'COMPRA DO RAFAEL', 'CREDITO LOJA']);
+});
+
 it('recusa foto sem texto, layout desconhecido e extrato longo demais', () => {
   expect(() => parseStatementText('apenas um comprovante sem tabela')).toThrow(/foto/);
   expect(() => parseStatementText(Array.from({ length: 501 }, (_, i) => `01/10/2026 Compra ${i} 1,00`).join('\n'))).toThrow(/500/);
@@ -97,6 +120,8 @@ it('separa os cartões da fatura Ourocard quando o arquivo de exemplo está pres
   const holders = invoiceCardholders(text);
   expect(holders.length).toBeGreaterThan(1);
   const parts = holders.map(name => parseStatementText(text, name.split(' ')[0]));
+  const fallbackParts = holders.map(name => parseStatementText(text, `NomeInexistente ${name.split(' ')[0]}`));
+  expect(fallbackParts.every((rows, index) => rows.length === parts[index].length)).toBe(true);
   expect(parts.every(rows => rows.length > 0 && rows.some(row => row.amount < 0) && rows.every(row => !/subtotal|^total\b/i.test(row.description)))).toBe(true);
   expect(new Set(parts.map(rows => rows.length)).size).toBe(holders.length);
 });

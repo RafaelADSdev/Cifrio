@@ -24,7 +24,7 @@ test('PDF externo ao Metro revisa só o cartão do perfil, sem upload do arquivo
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/'); await page.getByRole('button', { name: 'Abrir teste local' }).click();
   await page.getByRole('button', { name: 'Abrir perfil' }).click();
-  await page.getByLabel('Nome de exibição', { exact: true }).fill('Ana Teste');
+  await page.getByLabel('Nome de exibição', { exact: true }).fill('Carlos Ana Sobrenome');
   await page.getByRole('button', { name: 'Salvar perfil', exact: true }).click();
   await expect(page.getByText('Perfil salvo.', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Voltar', exact: true }).click();

@@ -49,7 +49,7 @@ function nameTokens(value: string) {
 }
 export function sameCardholder(profile: string, holder: string) {
   const wanted = nameTokens(profile), found = nameTokens(holder);
-  return wanted.length > 0 && found.length > 0 && wanted[0] === found[0] && wanted.every(token => found.includes(token));
+  return wanted.some(token => found.includes(token));
 }
 function cardSections(text: string) {
   const sections: { name: string; lines: { line: number; text: string }[] }[] = [];
@@ -93,8 +93,18 @@ export function parseStatementText(text: string, holderName = ''): ImportRow[] {
   if (sections.length > 1) {
     const name = holderName.trim();
     if (!name) throw new Error('Esta fatura tem mais de um cartão. Salve seu nome no perfil para importar só a sua parte.');
-    const matched = sections.filter(section => sameCardholder(name, section.name));
-    if (!matched.length) throw new Error(`Não encontrei uma parte da fatura para ${name}. Confira o nome salvo no perfil.`);
+    let candidates = [...new Set(sections.map(section => foldName(section.name)))];
+    let identified: string[] = [];
+    // Try profile names in order; later names only narrow an ambiguous match.
+    for (const token of nameTokens(name)) {
+      const matching = candidates.filter(holder => sameCardholder(token, holder));
+      if (!matching.length) continue;
+      candidates = matching; identified = matching;
+      if (identified.length === 1) break;
+    }
+    if (!identified.length) throw new Error(`Não encontrei uma parte da fatura para ${name}. Confira o nome salvo no perfil.`);
+    if (identified.length > 1) throw new Error('Encontrei mais de um titular para os nomes do perfil. Inclua um nome que diferencie seu titular antes de importar.');
+    const matched = sections.filter(section => foldName(section.name) === identified[0]);
     source = matched.flatMap(section => section.lines);
   }
   const rows = source.flatMap(item => {

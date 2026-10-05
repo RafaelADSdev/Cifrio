@@ -1,6 +1,8 @@
 # Leitor PDF fora do Metro
 
-O navegador carrega PDF.js 5.4.296 e worker como ESM estático da própria origem (`/pdfjs/5.4.296/`). Não há CDN nem envio do arquivo original a servidor. Só bytes locais são entregues ao worker. O domínio/parser e a revisão antes da gravação não foram alterados.
+O navegador carrega PDF.js 5.4.296 e worker como ESM estático da própria origem (`/pdfjs/5.4.296/`). Não há CDN nem envio do arquivo original a servidor. Só bytes locais são entregues ao worker. Regras de valores/datas, exclusão de totais e revisão antes da gravação permanecem preservadas.
+
+Identificação atual de titulares: tenta as palavras do nome do perfil em ordem, ignorando acentos, caixa, partículas (de/da/do etc.) e iniciais isoladas. Cada palavra precisa corresponder a uma palavra inteira no cabeçalho do titular, não a um trecho. Sem correspondência, tenta o próximo nome. Ao identificar um único titular, mantém todos os cartões desse titular; com nomes repetidos entre titulares, os nomes seguintes refinam apenas esses candidatos. Ambiguidade final bloqueia a importação, sem misturar pessoas. Esta é uma heurística para organizar a revisão, não prova de identidade ou autorização.
 
 `scripts/prepare-pdfjs.mjs` copia a versão instalada/lockada e licença para `public/pdfjs/`, diretório gerado ignorado pelo Git. Executado automaticamente por `npm run dev`, `npm run web` e `npm run build`. Se usar `npx expo` diretamente, execute antes `node scripts/prepare-pdfjs.mjs`. Publique o `dist` inteiro, incluindo esses módulos e worker com MIME JavaScript; CSP precisa permitir script/worker da própria origem. Caminho atualmente considera publicação na raiz, não subdiretório.
 
