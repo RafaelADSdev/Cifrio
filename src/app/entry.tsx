@@ -4,7 +4,7 @@ import { Entry, EntryKind, categories } from '../domain/model';
 import { parseMoney, today } from '../domain/money';
 import { statement } from '../domain/finance';
 import { newId, useFinance } from '../state/FinanceProvider';
-import { Box, Button, Choices, Field, Notice, Page } from '../ui/components';
+import { Box, Button, Choices, Field, fonts, Notice, Page } from '../ui/components';
 const kinds: { value: EntryKind; label: string }[] = [{ value: 'expense', label: 'Despesa' }, { value: 'income', label: 'Receita' }, { value: 'transfer', label: 'Transferência' }, { value: 'card_purchase', label: 'Compra no cartão' }, { value: 'card_payment', label: 'Pagamento de fatura' }];
 export default function EntryForm() {
   const params = useLocalSearchParams<{ id?: string; kind?: EntryKind; cardId?: string; month?: string }>();
@@ -27,13 +27,13 @@ export default function EntryForm() {
     } catch (e) { setMessage((e as Error).message); }
   }
   return <Page title={existing ? 'Editar movimentação' : 'Nova movimentação'} subtitle="Registre agora. Entenda depois.">
-    <Button title="Voltar" secondary onPress={() => router.canGoBack() ? router.back() : router.replace('/')} />
+    <Button title="Voltar" icon="arrow-left" secondary onPress={() => router.canGoBack() ? router.back() : router.replace('/')} />
     <Box><Choices label="Tipo" options={kinds} value={kind} onChange={setKind} />
       {kind !== 'card_purchase' && (state.accounts.length ? <Choices label="Conta de origem" options={state.accounts.map(a => ({ value: a.id, label: a.name }))} value={accountId} onChange={setAccount} /> : <Notice>Cadastre uma conta na aba Contas antes de registrar.</Notice>)}
       {kind === 'transfer' && <Choices label="Conta de destino" options={state.accounts.map(a => ({ value: a.id, label: a.name }))} value={destinationId} onChange={setDestination} />}
       {kind.startsWith('card_') && <Choices label="Cartão" options={state.cards.map(c => ({ value: c.id, label: c.name }))} value={cardId} onChange={setCard} />}
       {kind === 'card_payment' && <><Field label="Competência da fatura (AAAA-MM)" value={month} onChangeText={setMonth} /><Notice>Saldo em aberto: {(statement(state, cardId, month).remaining / 100).toFixed(2).replace('.', ',')} reais.</Notice></>}
-      <Field label="Valor (R$)" value={amount} onChangeText={setAmount} keyboardType="decimal-pad" placeholder="0,00" /><Field label="Descrição" value={description} onChangeText={setDescription} maxLength={160} placeholder="Ex.: Mercado da semana" /><Field label="Data (AAAA-MM-DD)" value={date} onChangeText={setDate} autoCapitalize="none" />
+      <Field label="Valor (R$)" value={amount} onChangeText={setAmount} keyboardType="decimal-pad" placeholder="0,00" style={{ fontFamily: fonts.display, fontSize: 28 }} /><Field label="Descrição" value={description} onChangeText={setDescription} maxLength={160} placeholder="Ex.: Mercado da semana" /><Field label="Data (AAAA-MM-DD)" value={date} onChangeText={setDate} autoCapitalize="none" />
       {!['transfer', 'card_payment'].includes(kind) && <Choices label="Categoria" options={categories.map(c => ({ value: c, label: c }))} value={category} onChange={setCategory} />}
       {kind === 'card_purchase' ? <Field label="Número de parcelas" value={parts} onChangeText={setParts} keyboardType="number-pad" /> : <Choices label="Forma de movimentação" options={[{ value: 'pix', label: 'Pix' }, { value: 'debit', label: 'Débito' }, { value: 'cash', label: 'Dinheiro' }]} value={method} onChange={setMethod} />}
       {!!message && <Notice error>{message}</Notice>}<Button title={busy ? 'Salvando…' : 'Salvar movimentação'} disabled={busy} onPress={() => void save()} />
