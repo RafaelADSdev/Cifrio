@@ -2,7 +2,14 @@ import { expect, test, Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFile } from 'node:fs/promises';
 import { capture, readyImages } from './capture';
-async function start(page: Page) { await page.clock.setFixedTime(new Date('2026-10-05T12:00:00-03:00')); await page.goto('/'); await page.getByRole('button', { name: 'Abrir teste local' }).click(); await expect(page.getByRole('heading', { name: 'Visão geral' })).toBeVisible(); }
+async function start(page: Page) {
+  const viewport = page.viewportSize();
+  // The incumbent welcome screen exposes the local pilot only below 800px.
+  // Enter there, then test the requested desktop layout without altering that screen.
+  if (viewport && viewport.width >= 800) await page.setViewportSize({ width: 390, height: viewport.height });
+  await page.clock.setFixedTime(new Date('2026-10-05T12:00:00-03:00')); await page.goto('/'); await page.getByRole('button', { name: 'Abrir teste local' }).click(); await expect(page.getByRole('heading', { name: 'Visão geral' })).toBeVisible();
+  if (viewport && viewport.width >= 800) await page.setViewportSize(viewport);
+}
 async function tab(page: Page, name: string) { await page.getByRole('tab', { name: new RegExp(name) }).click(); }
 async function account(page: Page, name: string, value: string) { await tab(page, 'Contas'); await page.getByLabel('Nome da conta', { exact: true }).fill(name); await page.getByLabel('Saldo inicial (R$)', { exact: true }).fill(value); await page.getByRole('button', { name: 'Salvar conta', exact: true }).click(); await expect(page.getByRole('heading', { name: 'Saldos registrados', exact: true }).locator('..').getByText(name, { exact: true })).toBeVisible(); }
 test('contas, Pix, transferência, parcelas, pagamento e persistência', async ({ page }) => {
