@@ -16,7 +16,9 @@ Acompanhar dinheiro em contas, movimentações e compromissos de cartão sem dup
 
 ## Capabilities and Constraints
 
-Contas, receitas/despesas/Pix manual, transferências, compras parceladas, faturas projetadas, pagamentos, edição/exclusão, CSV/OFX e exportação JSON. Dados só entram por ação explícita; não carregar números fictícios para preencher o dashboard. Modo local identificado, não seguro para informações sensíveis. Banco do Brasil, Mercado Pago, PicPay e Inter são prioridades, não conexões ativas. Supabase configurado no cliente; schema remoto e testes autenticados pendentes. PDF, Open Finance, recorrências e orçamentos ainda pendentes. Dias de fechamento e vencimento limitados a 1–28.
+Contas, receitas/despesas/Pix manual, transferências, compras parceladas, faturas projetadas, pagamentos, edição/exclusão, CSV/OFX e exportação JSON. Dados só entram por ação explícita; não carregar números fictícios para preencher o dashboard. Modo local identificado, não seguro para informações sensíveis. Banco do Brasil, Mercado Pago, PicPay e Inter são prioridades, não conexões ativas. Supabase configurado no cliente; schema remoto e testes autenticados pendentes. PDF, Open Finance e orçamentos ainda pendentes. Dias de fechamento e vencimento limitados a 1–28.
+
+Extensão de contas: entrada de fundos pelo extrato, exclusão com confirmação e bloqueio por histórico/vínculos, salário e despesas mensais previstas com confirmação manual. Pausar/remover previsões preserva os lançamentos. Recorrências de dia 29–31 ajustam ao último dia do mês; não executam débitos bancários. Modo online depende da migração mensal preparada, ainda sem comprovação de aplicação no projeto hospedado. Funcionamento e limites em `.project/ACCOUNTS-RECURRING.md`.
 
 ## Brand Commitments
 

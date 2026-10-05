@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T17:22:34-03:00",
+  "title": "Design System: Cifrio — extensão de contas",
+  "extensions": {
+    "colorMeta": {
+  "bg": {
+    "role": "neutral",
+    "displayName": "bg",
+    "tonalRamp": [
+      "oklch(15% 0.0068 247.89)",
+      "oklch(26% 0.0068 247.89)",
+      "oklch(38% 0.0068 247.89)",
+      "oklch(49% 0.0068 247.89)",
+      "oklch(61% 0.0068 247.89)",
+      "oklch(72% 0.0068 247.89)",
+      "oklch(84% 0.0068 247.89)",
+      "oklch(95% 0.0068 247.89)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "surface": {
+    "role": "neutral",
+    "displayName": "surface",
+    "tonalRamp": [
+      "oklch(15% 0.0000 89.88)",
+      "oklch(26% 0.0000 89.88)",
+      "oklch(38% 0.0000 89.88)",
+      "oklch(49% 0.0000 89.88)",
+      "oklch(61% 0.0000 89.88)",
+      "oklch(72% 0.0000 89.88)",
+      "oklch(84% 0.0000 89.88)",
+      "oklch(95% 0.0000 89.88)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "ink": {
+    "role": "neutral",
+    "displayName": "ink",
+    "tonalRamp": [
+      "oklch(15% 0.0935 258.56)",
+      "oklch(26% 0.0935 258.56)",
+      "oklch(38% 0.0935 258.56)",
+      "oklch(49% 0.0935 258.56)",
+      "oklch(61% 0.0935 258.56)",
+      "oklch(72% 0.0935 258.56)",
+      "oklch(84% 0.0935 258.56)",
+      "oklch(95% 0.0935 258.56)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "muted": {
+    "role": "neutral",
+    "displayName": "muted",
+    "tonalRamp": [
+      "oklch(15% 0.0576 254.41)",
+      "oklch(26% 0.0576 254.41)",
+      "oklch(38% 0.0576 254.41)",
+      "oklch(49% 0.0576 254.41)",
+      "oklch(61% 0.0576 254.41)",
+      "oklch(72% 0.0576 254.41)",
+      "oklch(84% 0.0576 254.41)",
+      "oklch(95% 0.0576 254.41)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "primary": {
+    "role": "primary",
+    "displayName": "primary",
+    "tonalRamp": [
+      "oklch(15% 0.1857 255.08)",
+      "oklch(26% 0.1857 255.08)",
+      "oklch(38% 0.1857 255.08)",
+      "oklch(49% 0.1857 255.08)",
+      "oklch(61% 0.1857 255.08)",
+      "oklch(72% 0.1857 255.08)",
+      "oklch(84% 0.1857 255.08)",
+      "oklch(95% 0.1857 255.08)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "soft": {
+    "role": "neutral",
+    "displayName": "soft",
+    "tonalRamp": [
+      "oklch(15% 0.0312 248.16)",
+      "oklch(26% 0.0312 248.16)",
+      "oklch(38% 0.0312 248.16)",
+      "oklch(49% 0.0312 248.16)",
+      "oklch(61% 0.0312 248.16)",
+      "oklch(72% 0.0312 248.16)",
+      "oklch(84% 0.0312 248.16)",
+      "oklch(95% 0.0312 248.16)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "border": {
+    "role": "neutral",
+    "displayName": "border",
+    "tonalRamp": [
+      "oklch(15% 0.0233 246.05)",
+      "oklch(26% 0.0233 246.05)",
+      "oklch(38% 0.0233 246.05)",
+      "oklch(49% 0.0233 246.05)",
+      "oklch(61% 0.0233 246.05)",
+      "oklch(72% 0.0233 246.05)",
+      "oklch(84% 0.0233 246.05)",
+      "oklch(95% 0.0233 246.05)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "negative": {
+    "role": "tertiary",
+    "displayName": "negative",
+    "tonalRamp": [
+      "oklch(15% 0.1496 26.03)",
+      "oklch(26% 0.1496 26.03)",
+      "oklch(38% 0.1496 26.03)",
+      "oklch(49% 0.1496 26.03)",
+      "oklch(61% 0.1496 26.03)",
+      "oklch(72% 0.1496 26.03)",
+      "oklch(84% 0.1496 26.03)",
+      "oklch(95% 0.1496 26.03)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "pale": {
+    "role": "neutral",
+    "displayName": "pale",
+    "tonalRamp": [
+      "oklch(15% 0.0179 245.39)",
+      "oklch(26% 0.0179 245.39)",
+      "oklch(38% 0.0179 245.39)",
+      "oklch(49% 0.0179 245.39)",
+      "oklch(61% 0.0179 245.39)",
+      "oklch(72% 0.0179 245.39)",
+      "oklch(84% 0.0179 245.39)",
+      "oklch(95% 0.0179 245.39)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  },
+  "errorSurface": {
+    "role": "neutral",
+    "displayName": "errorSurface",
+    "tonalRamp": [
+      "oklch(15% 0.0153 22.40)",
+      "oklch(26% 0.0153 22.40)",
+      "oklch(38% 0.0153 22.40)",
+      "oklch(49% 0.0153 22.40)",
+      "oklch(61% 0.0153 22.40)",
+      "oklch(72% 0.0153 22.40)",
+      "oklch(84% 0.0153 22.40)",
+      "oklch(95% 0.0153 22.40)"
+    ],
+    "description": "Rampa sintetizada apenas para o painel; não adiciona tokens ao runtime."
+  }
+},
+    "shadows": [
+      { "name": "container", "value": "0 8px 18px rgba(4, 36, 83, 0.08)", "purpose": "Box e seletor de mês compartilhados; Box também define elevation 2 no React Native." }
+    ],
+    "motion": [],
+    "breakpoints": [
+      { "name": "compact-padding", "value": "360px" },
+      { "name": "wide-padding", "value": "900px", "description": "Padding largo quando width > 900." },
+      { "name": "side-navigation", "value": "1000px" }
+    ],
+    "typographyMeta": {
+      "value": { "displayName": "Saldo por conta", "purpose": "Número tabular BRL em tamanho 23 nesta superfície." },
+      "body": { "displayName": "Corpo", "purpose": "Manrope Regular no web/Android; fonte do sistema no iOS." }
+    }
+  },
+  "components": [
+    {
+      "name": "Botão primário", "kind": "button", "refersTo": "button-primary",
+      "description": "Confirmação financeira explícita; CSS ilustrativo de Pressable.",
+      "html": "<button class=\"ds-primary\">Registrar fundos</button>",
+      "css": ".ds-primary{background:#0474E0;color:#FFFFFF;border:0;border-radius:12px;padding:12px 18px;min-height:48px;font:700 14px/20px Manrope,sans-serif}.ds-primary:hover{cursor:pointer}.ds-primary:focus-visible{outline:2px solid #0474E0;outline-offset:3px}.ds-primary:active{opacity:.75}.ds-primary:disabled{opacity:.5}"
+    },
+    {
+      "name": "Botão secundário", "kind": "button", "refersTo": "button-secondary",
+      "description": "Abrir formulário ou cancelar sem apagar contexto.",
+      "html": "<button class=\"ds-secondary\">Adicionar fundos</button>",
+      "css": ".ds-secondary{background:#E7F2FC;color:#042453;border:0;border-radius:12px;padding:12px 18px;min-height:48px;font:700 14px/20px Manrope,sans-serif}.ds-secondary:hover{cursor:pointer}.ds-secondary:focus-visible{outline:2px solid #0474E0;outline-offset:3px}.ds-secondary:active{opacity:.75}.ds-secondary:disabled{opacity:.5}"
+    },
+    {
+      "name": "Botão destrutivo", "kind": "button", "refersTo": "button-danger",
+      "description": "Remoção acompanhada de aviso e confirmação.",
+      "html": "<button class=\"ds-danger\">Excluir esta conta</button>",
+      "css": ".ds-danger{background:#FAECEB;color:#B2403B;border:0;border-radius:12px;padding:12px 18px;min-height:48px;font:700 14px/20px Manrope,sans-serif}.ds-danger:hover{cursor:pointer}.ds-danger:focus-visible{outline:2px solid #0474E0;outline-offset:3px}.ds-danger:active{opacity:.75}.ds-danger:disabled{opacity:.5}"
+    },
+    {
+      "name": "Campo rotulado", "kind": "input", "refersTo": "field",
+      "description": "Rótulo persistente; foco usa o azul existente.",
+      "html": "<label class=\"ds-field-label\">Valor dos fundos (R$)<input class=\"ds-field\" inputmode=\"decimal\" placeholder=\"0,00\" /></label>",
+      "css": ".ds-field-label{display:flex;flex-direction:column;gap:8px;color:#042453;font:500 13px Manrope,sans-serif}.ds-field{background:#F4F8FC;color:#042453;border:1px solid #D5E3F0;border-radius:12px;padding:14px;min-height:52px;font:400 16px Manrope,sans-serif}.ds-field::placeholder{color:#3E5674}.ds-field:hover{cursor:text}.ds-field:focus-visible{background:#FFFFFF;border-color:#0474E0;outline:none}"
+    },
+    {
+      "name": "Escolhas", "kind": "chip", "refersTo": "choice-selected",
+      "description": "Radio selecionado azul profundo; amostra estática com semântica de grupo.",
+      "html": "<div class=\"ds-choices\" role=\"radiogroup\" aria-label=\"Forma de entrada\"><button class=\"ds-choice ds-chosen\" role=\"radio\" aria-checked=\"true\">Pix</button><button class=\"ds-choice\" role=\"radio\" aria-checked=\"false\">Dinheiro</button></div>",
+      "css": ".ds-choices{display:flex;flex-wrap:wrap;gap:8px}.ds-choice{background:#F4F8FC;color:#042453;border:1px solid #D5E3F0;border-radius:10px;padding:10px 14px;min-height:48px;font:500 13px Manrope,sans-serif}.ds-chosen{background:#042453;color:#FFFFFF;border-color:#042453}.ds-choice:hover{cursor:pointer}.ds-choice:focus-visible{outline:2px solid #0474E0;outline-offset:3px}"
+    },
+    {
+      "name": "Container", "kind": "card", "refersTo": "box",
+      "description": "Superfície compartilhada com título e linha de registro ilustrativa.",
+      "html": "<section class=\"ds-box\"><h2 class=\"ds-heading\">Saldos registrados</h2><div class=\"ds-line\"><span>Conta de exemplo</span><strong class=\"ds-value\">R$ 0,00</strong></div></section>",
+      "css": ".ds-box{background:#FFFFFF;color:#042453;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px;box-shadow:0 8px 18px rgba(4,36,83,.08);font:400 15px/23px Manrope,sans-serif}.ds-heading{margin:0;font:700 18px Manrope,sans-serif}.ds-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid #D5E3F0;padding:14px 0}.ds-value{font:800 23px Manrope,sans-serif;letter-spacing:-.6px;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Destino lateral ativo", "kind": "nav", "refersTo": "navigation-desktop-active",
+      "description": "Tinta sobre Soft para o estado ativo a partir de 1000; mobile mantém Primary sobre branco.",
+      "html": "<nav aria-label=\"Navegação ilustrativa\"><a class=\"ds-nav-active\" aria-current=\"page\" href=\"#contas\">Contas</a></nav>",
+      "css": ".ds-nav-active{display:flex;align-items:center;min-height:52px;border-radius:12px;background:#D7E9FB;color:#042453;padding:0 12px;font:700 13px Manrope,sans-serif;text-decoration:none}.ds-nav-active:hover{cursor:pointer}.ds-nav-active:focus-visible{outline:2px solid #0474E0;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Mesa financeira",
+    "overview": "Este registro prolonga a direção incumbente: valores legíveis, contexto próximo e ações explícitas. Contas e recorrências usam linhas dentro dos containers compartilhados, com formulários inline e avisos recuperáveis. A extensão não estabelece uma nova paleta nem substitui o DESIGN.md da raiz.\n\nO vocabulário vem do código atual e da direção aprovada em `.impeccable/surfaces/accounts-extension.md`. A evidência visual é a prévia web; não há homologação em emulador ou aparelho. Recorrências online dependem da migração SQL ainda pendente no projeto hospedado.",
+    "keyCharacteristics": ["Superfícies claras e hierarquia financeira em azul.", "Controles compartilhados e formulários inline.", "Previsão e registro diferenciados por texto explícito.", "Navegação adaptativa com contraste contextual."],
+    "rules": [{ "name": "The Contrast Rule", "body": "O destino ativo lateral usa tinta azul sobre azul suave; o destino ativo inferior usa azul de ação sobre branco. Não aplique a combinação inferior ao fundo lateral.", "section": "colors" }],
+    "dos": ["Do reutilizar os tokens e controles compartilhados existentes.", "Do manter previsão, registro e origem do valor explícitos em português brasileiro.", "Do preservar quebra de linha, alvos de toque e safe areas.", "Do distinguir evidência web de validação nativa ou hospedada."],
+    "donts": ["Don't transformar previsões em saldo antes da confirmação.", "Don't declarar conexão bancária, débito automático ou migração hospedada validada.", "Don't adicionar uma nova paleta para esta extensão.", "Don't interpretar este registro localizado como substituição do DESIGN.md global."]
+  }
+}
