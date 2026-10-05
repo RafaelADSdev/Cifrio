@@ -1,14 +1,14 @@
 # Tarefas propostas — gestão financeira mobile
 
-Status: backlog de planejamento, sem implementação iniciada. Os arquivos abaixo são destinos sugeridos; a estrutura será confirmada ao iniciar o projeto. Comandos de testes/build serão definidos com o scaffold, sem apresentar comandos inexistentes como executados.
+Status: execução iniciada em 05/10/2026. Primeira entrega local implementada; validação Supabase hospedada, fornecedor bancário e aparelho continuam pendentes. Evidências e cobertura por tarefa em `.project/STATUS.md`. Checkboxes abaixo representam o critério inteiro, não apenas código escrito. Estrutura real em `src/app`, `src/domain`, `src/state`, `src/lib`, `supabase/migrations` e `tests`.
 
 ## 1. Fechar contrato do piloto
 
 Definir bancos/cartões prioritários, plataformas, regras de relatório e amostras de extrato sem segredos versionados.
 
-- [ ] Público e escopo do piloto registrados.
-- [ ] Matriz de bancos, formatos e orçamento preenchida ou explicitamente pendente.
-- [ ] Fluxos de despesa, parcela e importação descritos.
+- [x] Público e escopo do piloto registrados.
+- [x] Matriz de bancos, formatos e orçamento preenchida ou explicitamente pendente.
+- [x] Fluxos de despesa, parcela e importação descritos.
 
 Verificação: revisão dos fluxos com exemplos de valores conhecidos.
 Dependências: nenhuma. Escopo: pequeno. Arquivos: `tasks/plan.md`, `.project/PRODUCT.md`.
@@ -26,8 +26,8 @@ Dependências: 1. Escopo: médio. Arquivos: `src/integrations/banking/adapter.ts
 
 ## Checkpoint A — escopo
 
-- [ ] Revisar direção e riscos antes da implementação do MVP.
-- [ ] Escolha de provedor permanece provisória até teste real e custo confirmado.
+- [x] Revisar direção e riscos antes da implementação do MVP.
+- [x] Escolha de provedor permanece provisória até teste real e custo confirmado.
 
 ## 3. Autenticação e dados isolados
 
@@ -44,9 +44,9 @@ Dependências: 1. Escopo: médio. Arquivos: `src/app/(auth)/index.tsx`, `src/lib
 
 Entregar inclusão, edição, exclusão e consulta de movimentações na conta, incluindo Pix manual.
 
-- [ ] Lançamentos persistem e aparecem no histórico filtrado.
-- [ ] Saldo confere com saldo inicial e movimentações realizadas.
-- [ ] Valores, sinais e datas são validados sem erros de arredondamento.
+- [x] Lançamentos persistem e aparecem no histórico filtrado no modo local; verificação online permanece pendente na tarefa 3.
+- [x] Saldo confere com saldo inicial e movimentações realizadas.
+- [x] Valores, sinais e datas são validados sem erros de arredondamento.
 
 Verificação: cenários determinísticos de saldo e jornada mobile de criar/editar/excluir.
 Dependências: 3. Escopo: médio. Arquivos: `src/features/transactions/form.tsx`, `src/features/transactions/service.ts`, `src/features/transactions/money.ts`, migração gerada pelo CLI, `tests/transactions.test.ts`.
@@ -55,9 +55,9 @@ Dependências: 3. Escopo: médio. Arquivos: `src/features/transactions/form.tsx`
 
 Entregar movimentação atômica entre duas contas do proprietário.
 
-- [ ] Saída e entrada são gravadas juntas ou nenhuma é gravada.
-- [ ] Transferência não altera totais de receita e despesa.
-- [ ] Repetição de requisição não duplica a operação.
+- [x] Saída e entrada são gravadas juntas ou nenhuma é gravada no núcleo e na migração local testada.
+- [x] Transferência não altera totais de receita e despesa.
+- [x] Repetição de requisição não duplica a operação no núcleo e no RPC local testado; concorrência multi-sessão externa pendente.
 
 Verificação: falha durante gravação, reenvio e contas de titulares distintos.
 Dependências: 4. Escopo: médio. Arquivos: `src/features/transfers/form.tsx`, `src/features/transfers/service.ts`, migração gerada pelo CLI, `tests/transfers.test.ts`.
@@ -71,9 +71,9 @@ Dependências: 4. Escopo: médio. Arquivos: `src/features/transfers/form.tsx`, `
 
 Entregar cartão, compras e projeção de parcelas por fatura.
 
-- [ ] Soma das parcelas coincide com a compra, incluindo restos de centavos.
-- [ ] Datas de fechamento e virada de mês seguem regra documentada.
-- [ ] Fatura estimada é distinguida de fatura recebida do banco.
+- [x] Soma das parcelas coincide com a compra, incluindo restos de centavos.
+- [x] Datas de fechamento e virada de mês seguem regra documentada.
+- [x] Fatura estimada é distinguida de fatura recebida do banco.
 
 Verificação: compra de valor indivisível, ano novo e compra próxima ao fechamento.
 Dependências: 4. Escopo: médio. Arquivos: `src/features/cards/form.tsx`, `src/features/cards/purchases.ts`, `src/features/cards/installments.ts`, migração gerada pelo CLI, `tests/installments.test.ts`.
@@ -82,8 +82,8 @@ Dependências: 4. Escopo: médio. Arquivos: `src/features/cards/form.tsx`, `src/
 
 Entregar pagamento parcial/integral e estorno vinculado à compra.
 
-- [ ] Pagamento atualiza conta e obrigação atomicamente.
-- [ ] Relatório não conta compra e pagamento como duas despesas.
+- [x] Pagamento atualiza conta e obrigação atomicamente no núcleo e na migração local.
+- [x] Relatório não conta compra e pagamento como duas despesas.
 - [ ] Estorno e saldo restante da fatura são demonstráveis.
 
 Verificação: pagamento parcial seguido de integral e estorno em outra competência.
@@ -93,8 +93,8 @@ Dependências: 5, 6. Escopo: médio. Arquivos: `src/features/cards/statement.tsx
 
 Entregar upload privado, mapeamento, prévia e confirmação idempotente.
 
-- [ ] CSV com vírgula decimal, delimitadores distintos e datas locais é normalizado.
-- [ ] Linhas inválidas e candidatos a duplicidade são revisáveis.
+- [x] CSV com vírgula decimal, delimitadores distintos e datas locais é normalizado.
+- [x] Linhas inválidas são revisáveis/desmarcáveis; duplicatas de fonte exata são ignoradas e sobreposição entre arquivos exige revisão explícita.
 - [ ] Reimportação não duplica lançamentos; arquivos não são acessíveis por outro usuário.
 
 Verificação: fixtures sintéticas, reimportação, falha de confirmação e acesso ao Storage com dois usuários.
