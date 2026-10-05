@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T20:00:00-03:00",
+  "title": "Design System: Gestão",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Papel frio",
+        "canonical": "#F4F6F8",
+        "tonalRamp": [
+          "oklch(15% 0.009 250)",
+          "oklch(26% 0.009 250)",
+          "oklch(38% 0.009 250)",
+          "oklch(49% 0.009 250)",
+          "oklch(61% 0.009 250)",
+          "oklch(72% 0.009 250)",
+          "oklch(84% 0.009 250)",
+          "oklch(95% 0.009 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Branco de superfície",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta azul",
+        "canonical": "#172B42",
+        "tonalRamp": [
+          "oklch(15% 0.05 250)",
+          "oklch(26% 0.05 250)",
+          "oklch(38% 0.05 250)",
+          "oklch(49% 0.05 250)",
+          "oklch(61% 0.05 250)",
+          "oklch(72% 0.05 250)",
+          "oklch(84% 0.05 250)",
+          "oklch(95% 0.05 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Tinta secundária",
+        "canonical": "#56677B",
+        "tonalRamp": [
+          "oklch(15% 0.04 250)",
+          "oklch(26% 0.04 250)",
+          "oklch(38% 0.04 250)",
+          "oklch(49% 0.04 250)",
+          "oklch(61% 0.04 250)",
+          "oklch(72% 0.04 250)",
+          "oklch(84% 0.04 250)",
+          "oklch(95% 0.04 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Verde operacional",
+        "canonical": "#17664F",
+        "tonalRamp": [
+          "oklch(15% 0.075 165)",
+          "oklch(26% 0.075 165)",
+          "oklch(38% 0.075 165)",
+          "oklch(49% 0.075 165)",
+          "oklch(61% 0.075 165)",
+          "oklch(72% 0.075 165)",
+          "oklch(84% 0.075 165)",
+          "oklch(95% 0.075 165)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "soft": {
+        "role": "primary",
+        "displayName": "Verde suave",
+        "canonical": "#E8F2ED",
+        "tonalRamp": [
+          "oklch(15% 0.014 160)",
+          "oklch(26% 0.014 160)",
+          "oklch(38% 0.014 160)",
+          "oklch(49% 0.014 160)",
+          "oklch(61% 0.014 160)",
+          "oklch(72% 0.014 160)",
+          "oklch(84% 0.014 160)",
+          "oklch(95% 0.014 160)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Linha fria",
+        "canonical": "#DDE4EA",
+        "tonalRamp": [
+          "oklch(15% 0.013 250)",
+          "oklch(26% 0.013 250)",
+          "oklch(38% 0.013 250)",
+          "oklch(49% 0.013 250)",
+          "oklch(61% 0.013 250)",
+          "oklch(72% 0.013 250)",
+          "oklch(84% 0.013 250)",
+          "oklch(95% 0.013 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "negative": {
+        "role": "tertiary",
+        "displayName": "Vermelho de atenção",
+        "canonical": "#B2403B",
+        "tonalRamp": [
+          "oklch(15% 0.13 27)",
+          "oklch(26% 0.13 27)",
+          "oklch(38% 0.13 27)",
+          "oklch(49% 0.13 27)",
+          "oklch(61% 0.13 27)",
+          "oklch(72% 0.13 27)",
+          "oklch(84% 0.13 27)",
+          "oklch(95% 0.13 27)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "dark": {
+        "role": "secondary",
+        "displayName": "Azul profundo",
+        "canonical": "#142A40",
+        "tonalRamp": [
+          "oklch(15% 0.05 250)",
+          "oklch(26% 0.05 250)",
+          "oklch(38% 0.05 250)",
+          "oklch(49% 0.05 250)",
+          "oklch(61% 0.05 250)",
+          "oklch(72% 0.05 250)",
+          "oklch(84% 0.05 250)",
+          "oklch(95% 0.05 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "onDark": {
+        "role": "neutral",
+        "displayName": "Conteúdo claro",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(26% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(49% 0 0)",
+          "oklch(61% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0 0)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "mutedDark": {
+        "role": "neutral",
+        "displayName": "Texto sobre azul",
+        "canonical": "#BACBD8",
+        "tonalRamp": [
+          "oklch(15% 0.025 240)",
+          "oklch(26% 0.025 240)",
+          "oklch(38% 0.025 240)",
+          "oklch(49% 0.025 240)",
+          "oklch(61% 0.025 240)",
+          "oklch(72% 0.025 240)",
+          "oklch(84% 0.025 240)",
+          "oklch(95% 0.025 240)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "accent": {
+        "role": "secondary",
+        "displayName": "Lima suave",
+        "canonical": "#D9EFB6",
+        "tonalRamp": [
+          "oklch(15% 0.075 125)",
+          "oklch(26% 0.075 125)",
+          "oklch(38% 0.075 125)",
+          "oklch(49% 0.075 125)",
+          "oklch(61% 0.075 125)",
+          "oklch(72% 0.075 125)",
+          "oklch(84% 0.075 125)",
+          "oklch(95% 0.075 125)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "pale": {
+        "role": "neutral",
+        "displayName": "Azul claro de contexto",
+        "canonical": "#EDF1F5",
+        "tonalRamp": [
+          "oklch(15% 0.012 250)",
+          "oklch(26% 0.012 250)",
+          "oklch(38% 0.012 250)",
+          "oklch(49% 0.012 250)",
+          "oklch(61% 0.012 250)",
+          "oklch(72% 0.012 250)",
+          "oklch(84% 0.012 250)",
+          "oklch(95% 0.012 250)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      },
+      "errorSurface": {
+        "role": "tertiary",
+        "displayName": "Rosa de recuperação",
+        "canonical": "#FAECEB",
+        "tonalRamp": [
+          "oklch(15% 0.022 25)",
+          "oklch(26% 0.022 25)",
+          "oklch(38% 0.022 25)",
+          "oklch(49% 0.022 25)",
+          "oklch(61% 0.022 25)",
+          "oklch(72% 0.022 25)",
+          "oklch(84% 0.022 25)",
+          "oklch(95% 0.022 25)"
+        ],
+        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Título",
+        "purpose": "Título de página; identifiers Expo no frontmatter."
+      },
+      "headline": {
+        "displayName": "Cabeçalho",
+        "purpose": "Título de agrupamento."
+      },
+      "value": {
+        "displayName": "Valor",
+        "purpose": "Números financeiros tabulares."
+      },
+      "body": {
+        "displayName": "Corpo",
+        "purpose": "Manrope Regular Android/web; fonte do sistema no corpo regular iOS."
+      },
+      "muted": {
+        "displayName": "Contexto",
+        "purpose": "Legendas e explicações."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Campos e escolhas."
+      },
+      "button": {
+        "displayName": "Ação",
+        "purpose": "Texto Bold de botões."
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": [
+      {
+        "name": "compact-padding",
+        "value": "360px"
+      },
+      {
+        "name": "columns",
+        "value": "800px"
+      },
+      {
+        "name": "wide-padding",
+        "value": "900px"
+      },
+      {
+        "name": "sidebar",
+        "value": "1000px"
+      }
+    ],
+    "implementationNotes": "Light theme in React Native; CSS snippets are self-contained illustrative translations, not runtime CSS. No custom motion/shadow tokens. Native device validation pending. Tonal ramps are documentation only."
+  },
+  "components": [
+    {
+      "name": "Botão primário",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
+      "html": "<button class=\"ds-button-primary\">Salvar registro</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#17664F;color:#FFFFFF;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-primary:hover{cursor:pointer}.ds-button-primary:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-primary:active{opacity:.75}.ds-button-primary:disabled{opacity:.5;cursor:default}"
+    },
+    {
+      "name": "Botão secundário",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
+      "html": "<button class=\"ds-button-secondary\">Salvar registro</button>",
+      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#EDF1F5;color:#172B42;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-secondary:hover{cursor:pointer}.ds-button-secondary:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-secondary:active{opacity:.75}.ds-button-secondary:disabled{opacity:.5;cursor:default}"
+    },
+    {
+      "name": "Botão destrutivo",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
+      "html": "<button class=\"ds-button-danger\">Salvar registro</button>",
+      "css": ".ds-button-danger{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#FAECEB;color:#B2403B;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-danger:hover{cursor:pointer}.ds-button-danger:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-danger:active{opacity:.75}.ds-button-danger:disabled{opacity:.5;cursor:default}"
+    },
+    {
+      "name": "Campo com rótulo",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo ilustrativo: o foco troca contorno e fundo como Field.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-account\">Nome da conta</label><input class=\"ds-field\" id=\"ds-account\" placeholder=\"Conta do dia a dia\">",
+      "css": ".ds-field-label{display:block;margin-bottom:8px;font:500 13px Manrope,system-ui,sans-serif;color:#172B42}.ds-field{min-height:52px;padding:14px;border:1px solid #DDE4EA;border-radius:12px;background:#F4F6F8;color:#172B42;font:400 16px Manrope,system-ui,sans-serif}.ds-field::placeholder{color:#56677B}.ds-field:hover{cursor:text}.ds-field:focus-visible{outline:none;border-color:#17664F;background:#FFFFFF}"
+    },
+    {
+      "name": "Escolha selecionada",
+      "kind": "chip",
+      "refersTo": "choice-selected",
+      "description": "Tradução visual de Choices; radio deve ser operado pelo runtime real.",
+      "html": "<button class=\"ds-choice\" role=\"radio\" aria-checked=\"true\">Todas</button>",
+      "css": ".ds-choice{min-height:48px;padding:10px 14px;border:1px solid #142A40;border-radius:10px;background:#142A40;color:#FFFFFF;font:500 13px Manrope,system-ui,sans-serif;cursor:pointer}.ds-choice:hover{cursor:pointer}.ds-choice:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-choice:active{opacity:.75}"
+    },
+    {
+      "name": "Container",
+      "kind": "card",
+      "refersTo": "box",
+      "description": "Agrupamento branco sem sombra; estado vazio ilustrativo, sem registro fictício.",
+      "html": "<section class=\"ds-box\"><h2 class=\"ds-box-title\">Suas contas</h2><p class=\"ds-box-body\">Cadastre sua primeira conta para começar.</p></section>",
+      "css": ".ds-box{display:flex;flex-direction:column;gap:16px;padding:20px;border-radius:16px;background:#FFFFFF;color:#172B42;font-family:Manrope,system-ui,sans-serif}.ds-box-title{margin:0;font-size:18px;font-weight:700}.ds-box-body{margin:0;font-size:15px;line-height:23px}"
+    },
+    {
+      "name": "Painel de saldo",
+      "kind": "card",
+      "refersTo": "wallet",
+      "description": "Saldo vazio registrado: contexto explícito, sem vínculo bancário.",
+      "html": "<section class=\"ds-wallet\"><p class=\"ds-wallet-label\">Saldo registrado · todas as contas</p><p class=\"ds-wallet-value\">R$ 0,00</p><p class=\"ds-wallet-caption\">Não é saldo consultado no banco.</p></section>",
+      "css": ".ds-wallet{display:flex;flex-direction:column;gap:16px;padding:24px;border-radius:16px;background:#142A40;font-family:Manrope,system-ui,sans-serif}.ds-wallet-label{margin:0;color:#BACBD8;font-size:12px;line-height:20px;font-weight:500}.ds-wallet-value{margin:0;color:#FFFFFF;font-size:36px;letter-spacing:-1px;font-weight:800;font-variant-numeric:tabular-nums}.ds-wallet-caption{margin:0;padding-top:12px;border-top:1px solid #405365;color:#BACBD8;font-size:12px;line-height:19px}"
+    },
+    {
+      "name": "Navegação lateral",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Tradução ilustrativa da seleção lateral; sem roteamento no painel.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a class=\"ds-nav-item ds-nav-active\" href=\"#inicio\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"21\" height=\"21\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"/></svg>Início</a><a class=\"ds-nav-item\" href=\"#extrato\">Extrato</a></nav>",
+      "css": ".ds-nav{width:188px;min-width:188px;background:#FFFFFF;padding:28px 12px;font-family:Manrope,system-ui,sans-serif}.ds-nav-item{display:flex;align-items:center;gap:12px;min-height:52px;margin:4px 0;padding:0 12px;border-radius:12px;color:#56677B;text-decoration:none;font-size:13px;font-weight:700}.ds-nav-active{background:#E8F2ED;color:#17664F}.ds-nav-item:hover{cursor:pointer}.ds-nav-item:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-nav-item:active{opacity:.75}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Mesa financeira",
+    "overview": "A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Gestão permanece um nome provisório.\n\nSuperfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.",
+    "keyCharacteristics": [
+      "Hierarquia forte para valores e contexto financeiro explícito.",
+      "Superfícies claras com painéis de destaque em azul profundo.",
+      "Manrope, números tabulares e ícones Feather consistentes.",
+      "Controles confortáveis, navegação adaptativa e estados vazios úteis.",
+      "Distinção visível entre teste local, conta online e conexão bancária pendente."
+    ],
+    "rules": [
+      {
+        "name": "The Context Rule",
+        "body": "Cor nunca substitui o rótulo: saldo registrado, fatura estimada, receita, despesa e teste local devem continuar explícitos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Number Rule",
+        "body": "Valores financeiros usam BRL formatado pelo domínio; preserve números tabulares nos papéis que já os usam e mantenha a explicação próxima do valor.",
+        "section": "typography"
+      },
+      {
+        "name": "The Priority Rule",
+        "body": "A primeira leitura deve permitir entender o período e alcançar uma ação; dados vazios pedem orientação e cadastro, sem números decorativos.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Rule",
+        "body": "Preserve profundidade tonal; não adicione sombras ou movimento ornamental como padrão de novos containers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** preservar tema claro, contraste tonal e hierarquia entre saldo, contexto e ação.",
+      "**Do** manter português brasileiro, BRL e origem/limitação dos valores explícitos.",
+      "**Do** manter alvos de 48 ou mais nos controles compartilhados e proteger safe areas.",
+      "**Do** tratar screenshots com números como dados sintéticos criados pelos testes; o aplicativo começa vazio.",
+      "**Do** preservar foco, rótulos acessíveis, feedback recuperável e revisão de importação."
+    ],
+    "donts": [
+      "**Don't** apresentar conta cadastrada como banco conectado ou projeção como documento bancário.",
+      "**Don't** preencher telas vazias com métricas, gráficos ou registros fictícios.",
+      "**Don't** interpretar painéis escuros como modo escuro ou adicionar animação obrigatória.",
+      "**Don't** reutilizar marcas, fotografias ou fundos das referências de qualidade.",
+      "**Don't** declarar validação em aparelho com base somente na prévia web."
+    ]
+  }
+}

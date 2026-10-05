@@ -38,7 +38,7 @@ Arquivos são lidos no dispositivo, sem upload do original. No modo online, apen
 
 ## Configurar Supabase
 
-Nenhum projeto externo foi alterado. O conector disponível mostrou um projeto de outro produto; falta definir um projeto de desenvolvimento específico. O mapa `C:\Users\alexa\Desktop\Cofre\04-Guias\Acessos-Master.md` não foi encontrado neste computador.
+Nenhum projeto externo foi alterado. O usuário informou o projeto `dhoptxnfzxpocgxmgdrs`, configurado no `.env` local ignorado pelo Git. A chave foi aceita pelo endpoint de configurações do Auth; cadastro por e-mail está habilitado e requer confirmação. O conector administrativo não tem acesso a esse projeto. A API não encontrou `finance_accounts`/`read_finance` no schema cache; a migração continua pendente. O mapa `C:\Users\alexa\Desktop\Cofre\04-Guias\Acessos-Master.md` não foi encontrado neste computador.
 
 1. Selecionar o projeto correto de desenvolvimento e revisar a migração `supabase/migrations/20261005151013_financial_core.sql` antes de aplicar. Não aplicar em outro produto.
 2. Copiar `.env.example` para `.env` e preencher URL HTTPS do projeto e **publishable key**. O app recusa chaves que não sejam publicáveis. Não colocar `service_role`, secret key ou credenciais bancárias em `EXPO_PUBLIC_*`.
@@ -62,6 +62,10 @@ npx.cmd expo export --platform android --platform ios --output-dir dist-native
 ```
 
 Testes de banco usam PGlite (PostgreSQL embarcado) com contexto auth simulado e executam a migração real. Não equivalem a testar Supabase hospedado, PostgREST, autenticação real ou concorrência entre sessões PostgreSQL independentes. Export de bundles Android/iOS não é compilação/distribuição de APK/IPA nem teste em aparelho.
+
+## Sistema visual
+
+Remake com referências reais da Tekton e do Conta Gotas: identidade original em azul profundo/verde, Manrope, Feather e controles compartilhados. Sistema atual em [DESIGN.md](DESIGN.md), contexto em [PRODUCT.md](PRODUCT.md), pesquisa em [.project/REMAKE-BRIEF.md](.project/REMAKE-BRIEF.md) e evidências em [.impeccable/review/](.impeccable/review/). As capturas são da prévia web, com registros sintéticos inseridos pelos testes; não representam conta bancária conectada nem homologação nativa.
 
 ## Próximas fases
 
