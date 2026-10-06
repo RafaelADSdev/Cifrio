@@ -3,10 +3,14 @@
 gradle.beforeProject { project ->
     ['com.android.application', 'com.android.library'].each { pluginId ->
         project.pluginManager.withPlugin(pluginId) {
-            project.extensions.getByName('android').defaultConfig.externalNativeBuild.cmake.arguments(
+            def android = project.extensions.getByName('android')
+            // Shorten intermediate paths so CMake can hash long source paths on Windows.
+            android.externalNativeBuild.cmake.buildStagingDirectory = new File(rootProject.projectDir.parentFile.parentFile, "c/${project.name}")
+            android.defaultConfig.externalNativeBuild.cmake.arguments(
                 '-DCMAKE_JOB_POOLS=cifrio_compile=1;cifrio_link=1',
                 '-DCMAKE_JOB_POOL_COMPILE=cifrio_compile',
-                '-DCMAKE_JOB_POOL_LINK=cifrio_link'
+                '-DCMAKE_JOB_POOL_LINK=cifrio_link',
+                '-DCMAKE_OBJECT_PATH_MAX=250'
             )
         }
     }

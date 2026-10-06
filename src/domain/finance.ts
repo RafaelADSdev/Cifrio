@@ -1,4 +1,4 @@
-import { Account, Card, Entry, FinanceState } from './model';
+import { Account, Card, cardNetworks, cardThemes, Entry, FinanceState } from './model';
 import { addMonth, assertDate } from './money';
 
 export function validateAccount(account: Account) {
@@ -6,6 +6,13 @@ export function validateAccount(account: Account) {
 }
 export function validateCard(card: Card) {
   if (!card.id || !card.name.trim() || !Number.isInteger(card.closingDay) || !Number.isInteger(card.dueDay) || card.closingDay < 1 || card.closingDay > 28 || card.dueDay < 1 || card.dueDay > 28 || !Number.isSafeInteger(card.limit) || card.limit <= 0) throw new Error('Informe nome, limite e dias entre 1 e 28.');
+  if (card.network !== undefined && !cardNetworks.includes(card.network)) throw new Error('Selecione uma bandeira válida.');
+  if (card.theme !== undefined && !cardThemes.includes(card.theme)) throw new Error('Selecione um tema válido.');
+  if (card.lastFour && !/^\d{4}$/.test(card.lastFour)) throw new Error('Informe somente os quatro últimos dígitos ou deixe em branco.');
+}
+export function cardDeleteReason(state: FinanceState, id: string) {
+  if (state.entries.some(entry => entry.cardId === id)) return 'Este cartão tem movimentações. Preserve o histórico; não é possível excluí-lo.';
+  return '';
 }
 export function validateEntry(state: FinanceState, entry: Entry) {
   assertDate(entry.date);

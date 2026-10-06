@@ -1,0 +1,14 @@
+# Versionamento do aplicativo
+
+Aplicar sempre a regra X.Y.Z definida pelo usuário, usando a última versão entregue como base:
+
+- X — MAJOR: mudança drástica, reformulação visual completa, novos recursos que mudam a forma de usar o app, alteração estrutural incompatível ou remoção de funções antigas. Incrementar X e zerar Y e Z.
+- Y — MINOR: novas funcionalidades ou melhorias significativas que preservam o funcionamento existente. Incrementar Y e zerar Z.
+- Z — PATCH: correções de bugs e otimizações de segurança ou desempenho, sem novas funcionalidades. Incrementar apenas Z.
+- Quando uma entrega contiver mudanças de mais de um tipo, usar o nível mais alto presente.
+- Exemplos a partir de 1.1.1: correções → 1.1.2; funcionalidades compatíveis → 1.2.0; mudança maior → 2.0.0.
+- Sincronizar expo.version em app.json, version em package.json, versão raiz e packages[""] em package-lock.json, metadados nativos e nome do APK cifrio-X.Y.Z-arm64.apk.
+- versionCode do Android e buildNumber do iOS são contadores de instalação separados; incrementá-los para uma nova versão entregue.
+- Recompilar a mesma entrega não exige incrementar X.Y.Z. Uma versão explicitamente solicitada pelo usuário deve ser respeitada.
+- Alterar a versão não autoriza renomear o aplicativo ou mudar o identificador do pacote.
+- Antes de entregar o APK, conferir sua versão, contador de instalação e assinatura, e registrar a entrega em .project/ANDROID-APK.md.

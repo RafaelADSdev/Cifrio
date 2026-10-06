@@ -1,415 +1,638 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-10-05T17:18:57Z",
-  "title": "Design System: Cifrio",
-  "extensions": {
-    "colorMeta": {
-      "bg": {
-        "role": "neutral",
-        "displayName": "Papel frio",
-        "canonical": "#F4F6F8",
-        "tonalRamp": [
-          "oklch(15% 0.009 250)",
-          "oklch(26% 0.009 250)",
-          "oklch(38% 0.009 250)",
-          "oklch(49% 0.009 250)",
-          "oklch(61% 0.009 250)",
-          "oklch(72% 0.009 250)",
-          "oklch(84% 0.009 250)",
-          "oklch(95% 0.009 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "surface": {
-        "role": "neutral",
-        "displayName": "Branco de superfície",
-        "canonical": "#FFFFFF",
-        "tonalRamp": [
-          "oklch(15% 0 0)",
-          "oklch(26% 0 0)",
-          "oklch(38% 0 0)",
-          "oklch(49% 0 0)",
-          "oklch(61% 0 0)",
-          "oklch(72% 0 0)",
-          "oklch(84% 0 0)",
-          "oklch(95% 0 0)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "ink": {
-        "role": "neutral",
-        "displayName": "Tinta azul",
-        "canonical": "#172B42",
-        "tonalRamp": [
-          "oklch(15% 0.05 250)",
-          "oklch(26% 0.05 250)",
-          "oklch(38% 0.05 250)",
-          "oklch(49% 0.05 250)",
-          "oklch(61% 0.05 250)",
-          "oklch(72% 0.05 250)",
-          "oklch(84% 0.05 250)",
-          "oklch(95% 0.05 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "muted": {
-        "role": "neutral",
-        "displayName": "Tinta secundária",
-        "canonical": "#56677B",
-        "tonalRamp": [
-          "oklch(15% 0.04 250)",
-          "oklch(26% 0.04 250)",
-          "oklch(38% 0.04 250)",
-          "oklch(49% 0.04 250)",
-          "oklch(61% 0.04 250)",
-          "oklch(72% 0.04 250)",
-          "oklch(84% 0.04 250)",
-          "oklch(95% 0.04 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "primary": {
-        "role": "primary",
-        "displayName": "Verde operacional",
-        "canonical": "#17664F",
-        "tonalRamp": [
-          "oklch(15% 0.075 165)",
-          "oklch(26% 0.075 165)",
-          "oklch(38% 0.075 165)",
-          "oklch(49% 0.075 165)",
-          "oklch(61% 0.075 165)",
-          "oklch(72% 0.075 165)",
-          "oklch(84% 0.075 165)",
-          "oklch(95% 0.075 165)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "soft": {
-        "role": "primary",
-        "displayName": "Verde suave",
-        "canonical": "#E8F2ED",
-        "tonalRamp": [
-          "oklch(15% 0.014 160)",
-          "oklch(26% 0.014 160)",
-          "oklch(38% 0.014 160)",
-          "oklch(49% 0.014 160)",
-          "oklch(61% 0.014 160)",
-          "oklch(72% 0.014 160)",
-          "oklch(84% 0.014 160)",
-          "oklch(95% 0.014 160)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "border": {
-        "role": "neutral",
-        "displayName": "Linha fria",
-        "canonical": "#DDE4EA",
-        "tonalRamp": [
-          "oklch(15% 0.013 250)",
-          "oklch(26% 0.013 250)",
-          "oklch(38% 0.013 250)",
-          "oklch(49% 0.013 250)",
-          "oklch(61% 0.013 250)",
-          "oklch(72% 0.013 250)",
-          "oklch(84% 0.013 250)",
-          "oklch(95% 0.013 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "negative": {
-        "role": "tertiary",
-        "displayName": "Vermelho de atenção",
-        "canonical": "#B2403B",
-        "tonalRamp": [
-          "oklch(15% 0.13 27)",
-          "oklch(26% 0.13 27)",
-          "oklch(38% 0.13 27)",
-          "oklch(49% 0.13 27)",
-          "oklch(61% 0.13 27)",
-          "oklch(72% 0.13 27)",
-          "oklch(84% 0.13 27)",
-          "oklch(95% 0.13 27)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "dark": {
-        "role": "secondary",
-        "displayName": "Azul profundo",
-        "canonical": "#142A40",
-        "tonalRamp": [
-          "oklch(15% 0.05 250)",
-          "oklch(26% 0.05 250)",
-          "oklch(38% 0.05 250)",
-          "oklch(49% 0.05 250)",
-          "oklch(61% 0.05 250)",
-          "oklch(72% 0.05 250)",
-          "oklch(84% 0.05 250)",
-          "oklch(95% 0.05 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "onDark": {
-        "role": "neutral",
-        "displayName": "Conteúdo claro",
-        "canonical": "#FFFFFF",
-        "tonalRamp": [
-          "oklch(15% 0 0)",
-          "oklch(26% 0 0)",
-          "oklch(38% 0 0)",
-          "oklch(49% 0 0)",
-          "oklch(61% 0 0)",
-          "oklch(72% 0 0)",
-          "oklch(84% 0 0)",
-          "oklch(95% 0 0)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "mutedDark": {
-        "role": "neutral",
-        "displayName": "Texto sobre azul",
-        "canonical": "#BACBD8",
-        "tonalRamp": [
-          "oklch(15% 0.025 240)",
-          "oklch(26% 0.025 240)",
-          "oklch(38% 0.025 240)",
-          "oklch(49% 0.025 240)",
-          "oklch(61% 0.025 240)",
-          "oklch(72% 0.025 240)",
-          "oklch(84% 0.025 240)",
-          "oklch(95% 0.025 240)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "accent": {
-        "role": "secondary",
-        "displayName": "Lima suave",
-        "canonical": "#D9EFB6",
-        "tonalRamp": [
-          "oklch(15% 0.075 125)",
-          "oklch(26% 0.075 125)",
-          "oklch(38% 0.075 125)",
-          "oklch(49% 0.075 125)",
-          "oklch(61% 0.075 125)",
-          "oklch(72% 0.075 125)",
-          "oklch(84% 0.075 125)",
-          "oklch(95% 0.075 125)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "pale": {
-        "role": "neutral",
-        "displayName": "Azul claro de contexto",
-        "canonical": "#EDF1F5",
-        "tonalRamp": [
-          "oklch(15% 0.012 250)",
-          "oklch(26% 0.012 250)",
-          "oklch(38% 0.012 250)",
-          "oklch(49% 0.012 250)",
-          "oklch(61% 0.012 250)",
-          "oklch(72% 0.012 250)",
-          "oklch(84% 0.012 250)",
-          "oklch(95% 0.012 250)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      },
-      "errorSurface": {
-        "role": "tertiary",
-        "displayName": "Rosa de recuperação",
-        "canonical": "#FAECEB",
-        "tonalRamp": [
-          "oklch(15% 0.022 25)",
-          "oklch(26% 0.022 25)",
-          "oklch(38% 0.022 25)",
-          "oklch(49% 0.022 25)",
-          "oklch(61% 0.022 25)",
-          "oklch(72% 0.022 25)",
-          "oklch(84% 0.022 25)",
-          "oklch(95% 0.022 25)"
-        ],
-        "tonalRampSource": "Synthesized OKLCH for documentation only; not shipping runtime tokens. Hue/chroma approximations do not replace the canonical hex."
-      }
-    },
-    "typographyMeta": {
-      "display": {
-        "displayName": "Título",
-        "purpose": "Título de página; identifiers Expo no frontmatter."
-      },
-      "headline": {
-        "displayName": "Cabeçalho",
-        "purpose": "Título de agrupamento."
-      },
-      "value": {
-        "displayName": "Valor",
-        "purpose": "Números financeiros tabulares."
-      },
-      "body": {
-        "displayName": "Corpo",
-        "purpose": "Manrope Regular Android/web; fonte do sistema no corpo regular iOS."
-      },
-      "muted": {
-        "displayName": "Contexto",
-        "purpose": "Legendas e explicações."
-      },
-      "label": {
-        "displayName": "Rótulo",
-        "purpose": "Campos e escolhas."
-      },
-      "button": {
-        "displayName": "Ação",
-        "purpose": "Texto Bold de botões."
-      }
-    },
-    "shadows": [],
-    "motion": [],
-    "breakpoints": [
-      {
-        "name": "compact-padding",
-        "value": "360px"
-      },
-      {
-        "name": "columns",
-        "value": "800px"
-      },
-      {
-        "name": "wide-padding",
-        "value": "900px"
-      },
-      {
-        "name": "sidebar",
-        "value": "1000px"
-      }
-    ],
-    "implementationNotes": "Light theme in React Native; CSS snippets are self-contained illustrative translations, not runtime CSS. No custom motion/shadow tokens. Tonal ramps are documentation only. Cifrio extends incumbent seed 4a6b2fab without primitive changes. Brand runtime PNG: assets/brand/cifrio-mark.png, generated provenance and exact prompt in assets/brand/README.md and logo-prompt.txt; no vector or commercial clearance implied. Google runtime PNG: assets/brand/google-g.png, official source recorded in README; panel SVG illustrative. Avatar header routes to /profile, 40 inside48 target; profile preview104. Seven web screens reviewed ship in .impeccable/review/PROFILE-REVIEW.md. Real Google login, online Storage and native device verification pending per .project/GOOGLE-PROFILE-SETUP.md."
-  },
-  "components": [
-    {
-      "name": "Botão primário",
-      "kind": "button",
-      "refersTo": "button-primary",
-      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
-      "html": "<button class=\"ds-button-primary\">Salvar registro</button>",
-      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#17664F;color:#FFFFFF;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-primary:hover{cursor:pointer}.ds-button-primary:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-primary:active{opacity:.75}.ds-button-primary:disabled{opacity:.5;cursor:default}"
-    },
-    {
-      "name": "Botão secundário",
-      "kind": "button",
-      "refersTo": "button-secondary",
-      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
-      "html": "<button class=\"ds-button-secondary\">Salvar registro</button>",
-      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#EDF1F5;color:#172B42;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-secondary:hover{cursor:pointer}.ds-button-secondary:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-secondary:active{opacity:.75}.ds-button-secondary:disabled{opacity:.5;cursor:default}"
-    },
-    {
-      "name": "Botão destrutivo",
-      "kind": "button",
-      "refersTo": "button-danger",
-      "description": "Tradução ilustrativa do Button React Native; feedback pressionado e foco, sem nova cor hover.",
-      "html": "<button class=\"ds-button-danger\">Salvar registro</button>",
-      "css": ".ds-button-danger{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 18px;border:0;border-radius:12px;background:#FAECEB;color:#B2403B;font-family:Manrope,system-ui,sans-serif;font-weight:700;font-size:14px;line-height:20px;cursor:pointer}.ds-button-danger:hover{cursor:pointer}.ds-button-danger:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-button-danger:active{opacity:.75}.ds-button-danger:disabled{opacity:.5;cursor:default}"
-    },
-    {
-      "name": "Campo com rótulo",
-      "kind": "input",
-      "refersTo": "field",
-      "description": "Campo ilustrativo: o foco troca contorno e fundo como Field.",
-      "html": "<label class=\"ds-field-label\" for=\"ds-account\">Nome da conta</label><input class=\"ds-field\" id=\"ds-account\" placeholder=\"Conta do dia a dia\">",
-      "css": ".ds-field-label{display:block;margin-bottom:8px;font:500 13px Manrope,system-ui,sans-serif;color:#172B42}.ds-field{min-height:52px;padding:14px;border:1px solid #DDE4EA;border-radius:12px;background:#F4F6F8;color:#172B42;font:400 16px Manrope,system-ui,sans-serif}.ds-field::placeholder{color:#56677B}.ds-field:hover{cursor:text}.ds-field:focus-visible{outline:none;border-color:#17664F;background:#FFFFFF}"
-    },
-    {
-      "name": "Escolha selecionada",
-      "kind": "chip",
-      "refersTo": "choice-selected",
-      "description": "Tradução visual de Choices; radio deve ser operado pelo runtime real.",
-      "html": "<button class=\"ds-choice\" role=\"radio\" aria-checked=\"true\">Todas</button>",
-      "css": ".ds-choice{min-height:48px;padding:10px 14px;border:1px solid #142A40;border-radius:10px;background:#142A40;color:#FFFFFF;font:500 13px Manrope,system-ui,sans-serif;cursor:pointer}.ds-choice:hover{cursor:pointer}.ds-choice:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-choice:active{opacity:.75}"
-    },
-    {
-      "name": "Container",
-      "kind": "card",
-      "refersTo": "box",
-      "description": "Agrupamento branco sem sombra; estado vazio ilustrativo, sem registro fictício.",
-      "html": "<section class=\"ds-box\"><h2 class=\"ds-box-title\">Suas contas</h2><p class=\"ds-box-body\">Cadastre sua primeira conta para começar.</p></section>",
-      "css": ".ds-box{display:flex;flex-direction:column;gap:16px;padding:20px;border-radius:16px;background:#FFFFFF;color:#172B42;font-family:Manrope,system-ui,sans-serif}.ds-box-title{margin:0;font-size:18px;font-weight:700}.ds-box-body{margin:0;font-size:15px;line-height:23px}"
-    },
-    {
-      "name": "Painel de saldo",
-      "kind": "card",
-      "refersTo": "wallet",
-      "description": "Saldo vazio registrado: contexto explícito, sem vínculo bancário.",
-      "html": "<section class=\"ds-wallet\"><p class=\"ds-wallet-label\">Saldo registrado · todas as contas</p><p class=\"ds-wallet-value\">R$ 0,00</p><p class=\"ds-wallet-caption\">Não é saldo consultado no banco.</p></section>",
-      "css": ".ds-wallet{display:flex;flex-direction:column;gap:16px;padding:24px;border-radius:16px;background:#142A40;font-family:Manrope,system-ui,sans-serif}.ds-wallet-label{margin:0;color:#BACBD8;font-size:12px;line-height:20px;font-weight:500}.ds-wallet-value{margin:0;color:#FFFFFF;font-size:36px;letter-spacing:-1px;font-weight:800;font-variant-numeric:tabular-nums}.ds-wallet-caption{margin:0;padding-top:12px;border-top:1px solid #405365;color:#BACBD8;font-size:12px;line-height:19px}"
-    },
-    {
-      "name": "Navegação lateral",
-      "kind": "nav",
-      "refersTo": "navigation",
-      "description": "Tradução ilustrativa da seleção lateral; sem roteamento no painel.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Principal\"><a class=\"ds-nav-item ds-nav-active\" href=\"#inicio\" aria-current=\"page\"><svg viewBox=\"0 0 24 24\" width=\"21\" height=\"21\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\"/></svg>Início</a><a class=\"ds-nav-item\" href=\"#extrato\">Extrato</a></nav>",
-      "css": ".ds-nav{width:188px;min-width:188px;background:#FFFFFF;padding:28px 12px;font-family:Manrope,system-ui,sans-serif}.ds-nav-item{display:flex;align-items:center;gap:12px;min-height:52px;margin:4px 0;padding:0 12px;border-radius:12px;color:#56677B;text-decoration:none;font-size:13px;font-weight:700}.ds-nav-active{background:#E8F2ED;color:#17664F}.ds-nav-item:hover{cursor:pointer}.ds-nav-item:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-nav-item:active{opacity:.75}"
-    },
-    {
-      "name": "Avatar",
-      "kind": "custom",
-      "refersTo": "avatar",
-      "description": "Tradução de Avatar(size=40,name,uri): foto circular no runtime; fallback de iniciais sintéticas aqui. Cabeçalho usa wrapper clicável48 para /profile; perfil usa104 e ações separadas.",
-      "html": "<button class=\"ds-avatar-link\" aria-label=\"Abrir perfil\"><span class=\"ds-avatar\" aria-hidden=\"true\">AB</span></button>",
-      "css": ".ds-avatar-link{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border:0;border-radius:24px;background:#FFFFFF;cursor:pointer}.ds-avatar{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:20px;background:#EDF1F5;color:#172B42;font:700 12.8px Manrope,system-ui,sans-serif}.ds-avatar-link:hover{cursor:pointer}.ds-avatar-link:focus-visible{outline:2px solid #17664F;outline-offset:3px}",
-      "usage": "Avatar é apresentação; foto/remoção só persistem ao salvar. Foto carregada usa Image no RN e onError leva a iniciais/user. Sem foto padrão."
-    },
-    {
-      "name": "GoogleButton",
-      "kind": "button",
-      "refersTo": "google-button",
-      "description": "Tradução ilustrativa de GoogleButton: SVG inline no painel, PNG Google oficial20 no runtime. Uso exclusivo de autenticação; não comprova OAuth real.",
-      "html": "<button class=\"ds-google\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path fill=\"#4285F4\" d=\"M21.6 12.2c0-.7-.1-1.4-.2-2.1H12v4h5.4c-.2 1.3-.9 2.3-2 3.1v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.6z\"/><path fill=\"#34A853\" d=\"M12 22c2.7 0 5-0.9 6.7-2.5l-3.3-2.6c-.9.6-2.1.9-3.4.9-2.6 0-4.8-1.8-5.6-4.1H3v2.7C4.7 19.8 8.1 22 12 22z\"/><path fill=\"#FBBC05\" d=\"M6.4 13.7c-.2-.6-.3-1.1-.3-1.7s.1-1.2.3-1.7V7.6H3C2.4 8.9 2 10.4 2 12s.4 3.1 1 4.4z\"/><path fill=\"#EA4335\" d=\"M12 6.2c1.5 0 2.8.5 3.9 1.5l2.9-2.9C17 3.1 14.7 2 12 2 8.1 2 4.7 4.2 3 7.6l3.4 2.7C7.2 7.9 9.4 6.2 12 6.2z\"/></svg><span>Continuar com Google</span></button>",
-      "css": ".ds-google{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border:1px solid #747775;border-radius:12px;background:#FFFFFF;color:#1F1F1F;font:500 14px system-ui,sans-serif;cursor:pointer}.ds-google:hover{cursor:pointer}.ds-google:focus-visible{outline:2px solid #17664F;outline-offset:3px}.ds-google:active{opacity:.75}.ds-google:disabled{opacity:.5;cursor:default}",
-      "usage": "Uma instância na entrada quando Supabase está disponível, antes da alternativa e-mail. Manter rótulo, G sem recolorir e estado busy/disabled. Asset runtime: assets/brand/google-g.png, origem oficial em assets/brand/README.md."
-    }
-  ],
-  "narrative": {
-    "northStar": "Mesa financeira",
-    "overview": "A interface organiza dinheiro registrado, movimentações e compromissos como uma mesa financeira: valores alinhados, contexto perto do número e ações fáceis de encontrar. A identidade substitui a direção anterior com autorização do usuário, apoiada no acabamento da Tekton e na organização operacional do Conta Gotas, sem reproduzir suas marcas. Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo, ainda sem validação de marca ou domínio.\n\nSuperfícies claras, azul profundo e verde funcional sustentam uma leitura diária calma e precisa. A hierarquia distingue saldo registrado, resultado do mês e fatura estimada. O sistema visual é claro; painéis escuros locais não representam um modo escuro. Esta descrição e os nomes qualitativos das cores foram propostos pelo implementador a partir do código e do contrato aprovado, sem atribuí-los como escolhas literais do usuário.",
-    "keyCharacteristics": [
-      "Hierarquia forte para valores e contexto financeiro explícito.",
-      "Superfícies claras com painéis de destaque em azul profundo.",
-      "Manrope, números tabulares e ícones Feather consistentes.",
-      "Controles confortáveis, navegação adaptativa e estados vazios úteis.",
-      "Distinção visível entre teste local, conta online e conexão bancária pendente."
-    ],
-    "rules": [
-      {
-        "name": "The Context Rule",
-        "body": "Cor nunca substitui o rótulo: saldo registrado, fatura estimada, receita, despesa e teste local devem continuar explícitos.",
-        "section": "colors"
-      },
-      {
-        "name": "The Number Rule",
-        "body": "Valores financeiros usam BRL formatado pelo domínio; preserve números tabulares nos papéis que já os usam e mantenha a explicação próxima do valor.",
-        "section": "typography"
-      },
-      {
-        "name": "The Priority Rule",
-        "body": "A primeira leitura deve permitir entender o período e alcançar uma ação; dados vazios pedem orientação e cadastro, sem números decorativos.",
-        "section": "layout"
-      },
-      {
-        "name": "The Flat Rule",
-        "body": "Preserve profundidade tonal; não adicione sombras ou movimento ornamental como padrão de novos containers.",
-        "section": "elevation"
-      }
-    ],
-    "dos": [
-      "**Do** preservar tema claro, contraste tonal e hierarquia entre saldo, contexto e ação.",
-      "**Do** manter português brasileiro, BRL e origem/limitação dos valores explícitos.",
-      "**Do** manter alvos de 48 ou mais nos controles compartilhados e proteger safe areas.",
-      "**Do** tratar screenshots com números como dados sintéticos criados pelos testes; o aplicativo começa vazio.",
-      "**Do** preservar foco, rótulos acessíveis, feedback recuperável e revisão de importação."
-    ],
-    "donts": [
-      "**Don't** apresentar conta cadastrada como banco conectado ou projeção como documento bancário.",
-      "**Don't** preencher telas vazias com métricas, gráficos ou registros fictícios.",
-      "**Don't** interpretar painéis escuros como modo escuro ou adicionar animação obrigatória.",
-      "**Don't** reutilizar marcas, fotografias ou fundos das referências de qualidade.",
-      "**Don't** declarar validação em aparelho com base somente na prévia web."
-    ]
-  }
+    "schemaVersion":  2,
+    "generatedAt":  "2026-10-06T03:15:20.8315170Z",
+    "title":  "Design System: Cifrio",
+    "extensions":  {
+                       "colorMeta":  {
+                                         "bg":  {
+                                                    "role":  "neutral",
+                                                    "displayName":  "Azul de fundo",
+                                                    "tonalRamp":  [
+                                                                      "oklch(15% 0.04 255)",
+                                                                      "oklch(25% 0.04 255)",
+                                                                      "oklch(35% 0.04 255)",
+                                                                      "oklch(45% 0.04 255)",
+                                                                      "oklch(55% 0.04 255)",
+                                                                      "oklch(65% 0.04 255)",
+                                                                      "oklch(80% 0.04 255)",
+                                                                      "oklch(95% 0.04 255)"
+                                                                  ]
+                                                },
+                                         "surface":  {
+                                                         "role":  "neutral",
+                                                         "displayName":  "Branco",
+                                                         "tonalRamp":  [
+                                                                           "oklch(15% 0.04 255)",
+                                                                           "oklch(25% 0.04 255)",
+                                                                           "oklch(35% 0.04 255)",
+                                                                           "oklch(45% 0.04 255)",
+                                                                           "oklch(55% 0.04 255)",
+                                                                           "oklch(65% 0.04 255)",
+                                                                           "oklch(80% 0.04 255)",
+                                                                           "oklch(95% 0.04 255)"
+                                                                       ]
+                                                     },
+                                         "ink":  {
+                                                     "role":  "neutral",
+                                                     "displayName":  "Tinta azul-marinho",
+                                                     "tonalRamp":  [
+                                                                       "oklch(15% 0.04 255)",
+                                                                       "oklch(25% 0.04 255)",
+                                                                       "oklch(35% 0.04 255)",
+                                                                       "oklch(45% 0.04 255)",
+                                                                       "oklch(55% 0.04 255)",
+                                                                       "oklch(65% 0.04 255)",
+                                                                       "oklch(80% 0.04 255)",
+                                                                       "oklch(95% 0.04 255)"
+                                                                   ]
+                                                 },
+                                         "muted":  {
+                                                       "role":  "neutral",
+                                                       "displayName":  "Azul de metadados",
+                                                       "tonalRamp":  [
+                                                                         "oklch(15% 0.04 255)",
+                                                                         "oklch(25% 0.04 255)",
+                                                                         "oklch(35% 0.04 255)",
+                                                                         "oklch(45% 0.04 255)",
+                                                                         "oklch(55% 0.04 255)",
+                                                                         "oklch(65% 0.04 255)",
+                                                                         "oklch(80% 0.04 255)",
+                                                                         "oklch(95% 0.04 255)"
+                                                                     ]
+                                                   },
+                                         "primary":  {
+                                                         "role":  "primary",
+                                                         "displayName":  "Azul Cifrio",
+                                                         "tonalRamp":  [
+                                                                           "oklch(15% 0.12 255)",
+                                                                           "oklch(25% 0.12 255)",
+                                                                           "oklch(35% 0.12 255)",
+                                                                           "oklch(45% 0.12 255)",
+                                                                           "oklch(55% 0.12 255)",
+                                                                           "oklch(65% 0.12 255)",
+                                                                           "oklch(80% 0.12 255)",
+                                                                           "oklch(95% 0.12 255)"
+                                                                       ]
+                                                     },
+                                         "onPrimary":  {
+                                                           "role":  "primary",
+                                                           "displayName":  "Branco de ação",
+                                                           "tonalRamp":  [
+                                                                             "oklch(15% 0.04 255)",
+                                                                             "oklch(25% 0.04 255)",
+                                                                             "oklch(35% 0.04 255)",
+                                                                             "oklch(45% 0.04 255)",
+                                                                             "oklch(55% 0.04 255)",
+                                                                             "oklch(65% 0.04 255)",
+                                                                             "oklch(80% 0.04 255)",
+                                                                             "oklch(95% 0.04 255)"
+                                                                         ]
+                                                       },
+                                         "soft":  {
+                                                      "role":  "neutral",
+                                                      "displayName":  "Azul suave",
+                                                      "tonalRamp":  [
+                                                                        "oklch(15% 0.04 255)",
+                                                                        "oklch(25% 0.04 255)",
+                                                                        "oklch(35% 0.04 255)",
+                                                                        "oklch(45% 0.04 255)",
+                                                                        "oklch(55% 0.04 255)",
+                                                                        "oklch(65% 0.04 255)",
+                                                                        "oklch(80% 0.04 255)",
+                                                                        "oklch(95% 0.04 255)"
+                                                                    ]
+                                                  },
+                                         "border":  {
+                                                        "role":  "neutral",
+                                                        "displayName":  "Borda azul",
+                                                        "tonalRamp":  [
+                                                                          "oklch(15% 0.04 255)",
+                                                                          "oklch(25% 0.04 255)",
+                                                                          "oklch(35% 0.04 255)",
+                                                                          "oklch(45% 0.04 255)",
+                                                                          "oklch(55% 0.04 255)",
+                                                                          "oklch(65% 0.04 255)",
+                                                                          "oklch(80% 0.04 255)",
+                                                                          "oklch(95% 0.04 255)"
+                                                                      ]
+                                                    },
+                                         "negative":  {
+                                                          "role":  "neutral",
+                                                          "displayName":  "Vermelho de atenção",
+                                                          "tonalRamp":  [
+                                                                            "oklch(15% 0.12 27)",
+                                                                            "oklch(25% 0.12 27)",
+                                                                            "oklch(35% 0.12 27)",
+                                                                            "oklch(45% 0.12 27)",
+                                                                            "oklch(55% 0.12 27)",
+                                                                            "oklch(65% 0.12 27)",
+                                                                            "oklch(80% 0.12 27)",
+                                                                            "oklch(95% 0.12 27)"
+                                                                        ]
+                                                      },
+                                         "dark":  {
+                                                      "role":  "neutral",
+                                                      "displayName":  "Painel azul-marinho",
+                                                      "tonalRamp":  [
+                                                                        "oklch(15% 0.04 255)",
+                                                                        "oklch(25% 0.04 255)",
+                                                                        "oklch(35% 0.04 255)",
+                                                                        "oklch(45% 0.04 255)",
+                                                                        "oklch(55% 0.04 255)",
+                                                                        "oklch(65% 0.04 255)",
+                                                                        "oklch(80% 0.04 255)",
+                                                                        "oklch(95% 0.04 255)"
+                                                                    ]
+                                                  },
+                                         "onDark":  {
+                                                        "role":  "neutral",
+                                                        "displayName":  "Branco sobre painel",
+                                                        "tonalRamp":  [
+                                                                          "oklch(15% 0.04 255)",
+                                                                          "oklch(25% 0.04 255)",
+                                                                          "oklch(35% 0.04 255)",
+                                                                          "oklch(45% 0.04 255)",
+                                                                          "oklch(55% 0.04 255)",
+                                                                          "oklch(65% 0.04 255)",
+                                                                          "oklch(80% 0.04 255)",
+                                                                          "oklch(95% 0.04 255)"
+                                                                      ]
+                                                    },
+                                         "mutedDark":  {
+                                                           "role":  "neutral",
+                                                           "displayName":  "Metadados sobre painel",
+                                                           "tonalRamp":  [
+                                                                             "oklch(15% 0.04 255)",
+                                                                             "oklch(25% 0.04 255)",
+                                                                             "oklch(35% 0.04 255)",
+                                                                             "oklch(45% 0.04 255)",
+                                                                             "oklch(55% 0.04 255)",
+                                                                             "oklch(65% 0.04 255)",
+                                                                             "oklch(80% 0.04 255)",
+                                                                             "oklch(95% 0.04 255)"
+                                                                         ]
+                                                       },
+                                         "accent":  {
+                                                        "role":  "secondary",
+                                                        "displayName":  "Ciano de apoio",
+                                                        "tonalRamp":  [
+                                                                          "oklch(15% 0.12 184)",
+                                                                          "oklch(25% 0.12 184)",
+                                                                          "oklch(35% 0.12 184)",
+                                                                          "oklch(45% 0.12 184)",
+                                                                          "oklch(55% 0.12 184)",
+                                                                          "oklch(65% 0.12 184)",
+                                                                          "oklch(80% 0.12 184)",
+                                                                          "oklch(95% 0.12 184)"
+                                                                      ]
+                                                    },
+                                         "pale":  {
+                                                      "role":  "neutral",
+                                                      "displayName":  "Azul discreto",
+                                                      "tonalRamp":  [
+                                                                        "oklch(15% 0.04 255)",
+                                                                        "oklch(25% 0.04 255)",
+                                                                        "oklch(35% 0.04 255)",
+                                                                        "oklch(45% 0.04 255)",
+                                                                        "oklch(55% 0.04 255)",
+                                                                        "oklch(65% 0.04 255)",
+                                                                        "oklch(80% 0.04 255)",
+                                                                        "oklch(95% 0.04 255)"
+                                                                    ]
+                                                  },
+                                         "lineOnDark":  {
+                                                            "role":  "neutral",
+                                                            "displayName":  "Borda sobre painel",
+                                                            "tonalRamp":  [
+                                                                              "oklch(15% 0.04 255)",
+                                                                              "oklch(25% 0.04 255)",
+                                                                              "oklch(35% 0.04 255)",
+                                                                              "oklch(45% 0.04 255)",
+                                                                              "oklch(55% 0.04 255)",
+                                                                              "oklch(65% 0.04 255)",
+                                                                              "oklch(80% 0.04 255)",
+                                                                              "oklch(95% 0.04 255)"
+                                                                          ]
+                                                        },
+                                         "errorSurface":  {
+                                                              "role":  "neutral",
+                                                              "displayName":  "Superfície de erro",
+                                                              "tonalRamp":  [
+                                                                                "oklch(15% 0.04 27)",
+                                                                                "oklch(25% 0.04 27)",
+                                                                                "oklch(35% 0.04 27)",
+                                                                                "oklch(45% 0.04 27)",
+                                                                                "oklch(55% 0.04 27)",
+                                                                                "oklch(65% 0.04 27)",
+                                                                                "oklch(80% 0.04 27)",
+                                                                                "oklch(95% 0.04 27)"
+                                                                            ]
+                                                          },
+                                         "cardForest":  {
+                                                            "role":  "neutral",
+                                                            "displayName":  "Azul Cifrio",
+                                                            "tonalRamp":  [
+                                                                              "oklch(15% 0.04 255)",
+                                                                              "oklch(25% 0.04 255)",
+                                                                              "oklch(35% 0.04 255)",
+                                                                              "oklch(45% 0.04 255)",
+                                                                              "oklch(55% 0.04 255)",
+                                                                              "oklch(65% 0.04 255)",
+                                                                              "oklch(80% 0.04 255)",
+                                                                              "oklch(95% 0.04 255)"
+                                                                          ]
+                                                        },
+                                         "cardForestMuted":  {
+                                                                 "role":  "neutral",
+                                                                 "displayName":  "Azul Cifrio metadados",
+                                                                 "tonalRamp":  [
+                                                                                   "oklch(15% 0.04 255)",
+                                                                                   "oklch(25% 0.04 255)",
+                                                                                   "oklch(35% 0.04 255)",
+                                                                                   "oklch(45% 0.04 255)",
+                                                                                   "oklch(55% 0.04 255)",
+                                                                                   "oklch(65% 0.04 255)",
+                                                                                   "oklch(80% 0.04 255)",
+                                                                                   "oklch(95% 0.04 255)"
+                                                                               ]
+                                                             },
+                                         "cardForestBorder":  {
+                                                                  "role":  "neutral",
+                                                                  "displayName":  "Azul Cifrio borda",
+                                                                  "tonalRamp":  [
+                                                                                    "oklch(15% 0.04 255)",
+                                                                                    "oklch(25% 0.04 255)",
+                                                                                    "oklch(35% 0.04 255)",
+                                                                                    "oklch(45% 0.04 255)",
+                                                                                    "oklch(55% 0.04 255)",
+                                                                                    "oklch(65% 0.04 255)",
+                                                                                    "oklch(80% 0.04 255)",
+                                                                                    "oklch(95% 0.04 255)"
+                                                                                ]
+                                                              },
+                                         "cardForestAccent":  {
+                                                                  "role":  "neutral",
+                                                                  "displayName":  "Azul Cifrio detalhe",
+                                                                  "tonalRamp":  [
+                                                                                    "oklch(15% 0.04 184)",
+                                                                                    "oklch(25% 0.04 184)",
+                                                                                    "oklch(35% 0.04 184)",
+                                                                                    "oklch(45% 0.04 184)",
+                                                                                    "oklch(55% 0.04 184)",
+                                                                                    "oklch(65% 0.04 184)",
+                                                                                    "oklch(80% 0.04 184)",
+                                                                                    "oklch(95% 0.04 184)"
+                                                                                ]
+                                                              },
+                                         "cardCarbon":  {
+                                                            "role":  "neutral",
+                                                            "displayName":  "Azul-marinho",
+                                                            "tonalRamp":  [
+                                                                              "oklch(15% 0.04 255)",
+                                                                              "oklch(25% 0.04 255)",
+                                                                              "oklch(35% 0.04 255)",
+                                                                              "oklch(45% 0.04 255)",
+                                                                              "oklch(55% 0.04 255)",
+                                                                              "oklch(65% 0.04 255)",
+                                                                              "oklch(80% 0.04 255)",
+                                                                              "oklch(95% 0.04 255)"
+                                                                          ]
+                                                        },
+                                         "cardCarbonMuted":  {
+                                                                 "role":  "neutral",
+                                                                 "displayName":  "Azul-marinho metadados",
+                                                                 "tonalRamp":  [
+                                                                                   "oklch(15% 0.04 255)",
+                                                                                   "oklch(25% 0.04 255)",
+                                                                                   "oklch(35% 0.04 255)",
+                                                                                   "oklch(45% 0.04 255)",
+                                                                                   "oklch(55% 0.04 255)",
+                                                                                   "oklch(65% 0.04 255)",
+                                                                                   "oklch(80% 0.04 255)",
+                                                                                   "oklch(95% 0.04 255)"
+                                                                               ]
+                                                             },
+                                         "cardCarbonBorder":  {
+                                                                  "role":  "neutral",
+                                                                  "displayName":  "Azul-marinho borda",
+                                                                  "tonalRamp":  [
+                                                                                    "oklch(15% 0.04 255)",
+                                                                                    "oklch(25% 0.04 255)",
+                                                                                    "oklch(35% 0.04 255)",
+                                                                                    "oklch(45% 0.04 255)",
+                                                                                    "oklch(55% 0.04 255)",
+                                                                                    "oklch(65% 0.04 255)",
+                                                                                    "oklch(80% 0.04 255)",
+                                                                                    "oklch(95% 0.04 255)"
+                                                                                ]
+                                                              },
+                                         "cardCarbonAccent":  {
+                                                                  "role":  "neutral",
+                                                                  "displayName":  "Azul-marinho detalhe",
+                                                                  "tonalRamp":  [
+                                                                                    "oklch(15% 0.04 255)",
+                                                                                    "oklch(25% 0.04 255)",
+                                                                                    "oklch(35% 0.04 255)",
+                                                                                    "oklch(45% 0.04 255)",
+                                                                                    "oklch(55% 0.04 255)",
+                                                                                    "oklch(65% 0.04 255)",
+                                                                                    "oklch(80% 0.04 255)",
+                                                                                    "oklch(95% 0.04 255)"
+                                                                                ]
+                                                              },
+                                         "cardOcean":  {
+                                                           "role":  "neutral",
+                                                           "displayName":  "Ciano",
+                                                           "tonalRamp":  [
+                                                                             "oklch(15% 0.04 255)",
+                                                                             "oklch(25% 0.04 255)",
+                                                                             "oklch(35% 0.04 255)",
+                                                                             "oklch(45% 0.04 255)",
+                                                                             "oklch(55% 0.04 255)",
+                                                                             "oklch(65% 0.04 255)",
+                                                                             "oklch(80% 0.04 255)",
+                                                                             "oklch(95% 0.04 255)"
+                                                                         ]
+                                                       },
+                                         "cardOceanMuted":  {
+                                                                "role":  "neutral",
+                                                                "displayName":  "Ciano metadados",
+                                                                "tonalRamp":  [
+                                                                                  "oklch(15% 0.04 255)",
+                                                                                  "oklch(25% 0.04 255)",
+                                                                                  "oklch(35% 0.04 255)",
+                                                                                  "oklch(45% 0.04 255)",
+                                                                                  "oklch(55% 0.04 255)",
+                                                                                  "oklch(65% 0.04 255)",
+                                                                                  "oklch(80% 0.04 255)",
+                                                                                  "oklch(95% 0.04 255)"
+                                                                              ]
+                                                            },
+                                         "cardOceanBorder":  {
+                                                                 "role":  "neutral",
+                                                                 "displayName":  "Ciano borda",
+                                                                 "tonalRamp":  [
+                                                                                   "oklch(15% 0.04 255)",
+                                                                                   "oklch(25% 0.04 255)",
+                                                                                   "oklch(35% 0.04 255)",
+                                                                                   "oklch(45% 0.04 255)",
+                                                                                   "oklch(55% 0.04 255)",
+                                                                                   "oklch(65% 0.04 255)",
+                                                                                   "oklch(80% 0.04 255)",
+                                                                                   "oklch(95% 0.04 255)"
+                                                                               ]
+                                                             },
+                                         "cardOceanAccent":  {
+                                                                 "role":  "neutral",
+                                                                 "displayName":  "Ciano detalhe",
+                                                                 "tonalRamp":  [
+                                                                                   "oklch(15% 0.04 184)",
+                                                                                   "oklch(25% 0.04 184)",
+                                                                                   "oklch(35% 0.04 184)",
+                                                                                   "oklch(45% 0.04 184)",
+                                                                                   "oklch(55% 0.04 184)",
+                                                                                   "oklch(65% 0.04 184)",
+                                                                                   "oklch(80% 0.04 184)",
+                                                                                   "oklch(95% 0.04 184)"
+                                                                               ]
+                                                             },
+                                         "cardPlum":  {
+                                                          "role":  "neutral",
+                                                          "displayName":  "Azul profundo",
+                                                          "tonalRamp":  [
+                                                                            "oklch(15% 0.04 255)",
+                                                                            "oklch(25% 0.04 255)",
+                                                                            "oklch(35% 0.04 255)",
+                                                                            "oklch(45% 0.04 255)",
+                                                                            "oklch(55% 0.04 255)",
+                                                                            "oklch(65% 0.04 255)",
+                                                                            "oklch(80% 0.04 255)",
+                                                                            "oklch(95% 0.04 255)"
+                                                                        ]
+                                                      },
+                                         "cardPlumMuted":  {
+                                                               "role":  "neutral",
+                                                               "displayName":  "Azul profundo metadados",
+                                                               "tonalRamp":  [
+                                                                                 "oklch(15% 0.04 255)",
+                                                                                 "oklch(25% 0.04 255)",
+                                                                                 "oklch(35% 0.04 255)",
+                                                                                 "oklch(45% 0.04 255)",
+                                                                                 "oklch(55% 0.04 255)",
+                                                                                 "oklch(65% 0.04 255)",
+                                                                                 "oklch(80% 0.04 255)",
+                                                                                 "oklch(95% 0.04 255)"
+                                                                             ]
+                                                           },
+                                         "cardPlumBorder":  {
+                                                                "role":  "neutral",
+                                                                "displayName":  "Azul profundo borda",
+                                                                "tonalRamp":  [
+                                                                                  "oklch(15% 0.04 255)",
+                                                                                  "oklch(25% 0.04 255)",
+                                                                                  "oklch(35% 0.04 255)",
+                                                                                  "oklch(45% 0.04 255)",
+                                                                                  "oklch(55% 0.04 255)",
+                                                                                  "oklch(65% 0.04 255)",
+                                                                                  "oklch(80% 0.04 255)",
+                                                                                  "oklch(95% 0.04 255)"
+                                                                              ]
+                                                            },
+                                         "cardPlumAccent":  {
+                                                                "role":  "neutral",
+                                                                "displayName":  "Azul profundo detalhe",
+                                                                "tonalRamp":  [
+                                                                                  "oklch(15% 0.04 255)",
+                                                                                  "oklch(25% 0.04 255)",
+                                                                                  "oklch(35% 0.04 255)",
+                                                                                  "oklch(45% 0.04 255)",
+                                                                                  "oklch(55% 0.04 255)",
+                                                                                  "oklch(65% 0.04 255)",
+                                                                                  "oklch(80% 0.04 255)",
+                                                                                  "oklch(95% 0.04 255)"
+                                                                              ]
+                                                            }
+                                     },
+                       "typographyMeta":  {
+                                              "display":  {
+                                                              "displayName":  "Valores",
+                                                              "purpose":  "Valores gerais; variantes de saldo por superfície."
+                                                          },
+                                              "headline":  {
+                                                               "displayName":  "Título de página",
+                                                               "purpose":  "Identificar a tela."
+                                                           },
+                                              "title":  {
+                                                            "displayName":  "Título de caixa",
+                                                            "purpose":  "Agrupar conteúdo."
+                                                        },
+                                              "body":  {
+                                                           "displayName":  "Texto principal",
+                                                           "purpose":  "Leitura; padrão de sistema para regular no iOS."
+                                                       },
+                                              "label":  {
+                                                            "displayName":  "Metadados",
+                                                            "purpose":  "Explicações e informações auxiliares."
+                                                        }
+                                          },
+                       "shadows":  [
+
+                                   ],
+                       "motion":  [
+                                      {
+                                          "name":  "arrive",
+                                          "value":  "cubic-bezier(0.16, 1, 0.3, 1)",
+                                          "purpose":  "Curva de chegada compartilhada."
+                                      },
+                                      {
+                                          "name":  "month-shift",
+                                          "value":  "28px / 420ms",
+                                          "purpose":  "Deslocamento mensal; removido com movimento reduzido."
+                                      },
+                                      {
+                                          "name":  "month-opacity",
+                                          "value":  "0.72 → 1 / 280ms",
+                                          "purpose":  "Fade mensal; 160ms no caminho reduzido."
+                                      },
+                                      {
+                                          "name":  "section-arrival",
+                                          "value":  "10px / 360ms; opacity 0.8 → 1 / 280ms",
+                                          "purpose":  "Entrada de seção; caminho reduzido de 120ms sem deslocamento inicial."
+                                      },
+                                      {
+                                          "name":  "share-fill",
+                                          "value":  "460ms; reduced 120ms",
+                                          "purpose":  "Animação de proporção limitada ao intervalo 0–1."
+                                      }
+                                  ],
+                       "breakpoints":  [
+                                           {
+                                               "name":  "compact-padding",
+                                               "value":  "360px"
+                                           },
+                                           {
+                                               "name":  "two-columns",
+                                               "value":  "800px"
+                                           },
+                                           {
+                                               "name":  "generous-padding",
+                                               "value":  "900px"
+                                           },
+                                           {
+                                               "name":  "sidebar",
+                                               "value":  "1000px"
+                                           }
+                                       ]
+                   },
+    "components":  [
+                       {
+                           "name":  "Ação primária",
+                           "kind":  "button",
+                           "description":  "Cápsula de ação com os estados compartilhados.",
+                           "html":  "\u003cbutton class=\"ds-button-primary\"\u003eSalvar\u003c/button\u003e",
+                           "css":  ".ds-button-primary{font-family:Manrope,Arial,sans-serif;background:#0474E0;color:#FFFFFF;border:0;border-radius:24px;padding:12px 20px;min-height:48px;font-size:14px;font-weight:700;line-height:20px;cursor:pointer}.ds-button-primary:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}.ds-button-primary:disabled{opacity:.5}.ds-button-primary:hover,.ds-button-primary:active{background:#042453;color:#FFFFFF}",
+                           "refersTo":  "button-primary"
+                       },
+                       {
+                           "name":  "Ação secundária",
+                           "kind":  "button",
+                           "description":  "Cápsula de ação com os estados compartilhados.",
+                           "html":  "\u003cbutton class=\"ds-button-secondary\"\u003eSalvar\u003c/button\u003e",
+                           "css":  ".ds-button-secondary{font-family:Manrope,Arial,sans-serif;background:#E7F2FC;color:#042453;border:0;border-radius:24px;padding:12px 20px;min-height:48px;font-size:14px;font-weight:700;line-height:20px;cursor:pointer}.ds-button-secondary:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}.ds-button-secondary:disabled{opacity:.5}.ds-button-secondary:hover,.ds-button-secondary:active{background:#D7E9FB}",
+                           "refersTo":  "button-secondary"
+                       },
+                       {
+                           "name":  "Ação de risco",
+                           "kind":  "button",
+                           "description":  "Cápsula de ação com os estados compartilhados.",
+                           "html":  "\u003cbutton class=\"ds-button-danger\"\u003eSalvar\u003c/button\u003e",
+                           "css":  ".ds-button-danger{font-family:Manrope,Arial,sans-serif;background:#FAECEB;color:#B2403B;border:0;border-radius:24px;padding:12px 20px;min-height:48px;font-size:14px;font-weight:700;line-height:20px;cursor:pointer}.ds-button-danger:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}.ds-button-danger:disabled{opacity:.5}",
+                           "refersTo":  "button-danger"
+                       },
+                       {
+                           "name":  "Campo",
+                           "kind":  "input",
+                           "description":  "Campo com rótulo visível e foco azul.",
+                           "html":  "\u003clabel class=\"ds-field-label\"\u003eValor (R$)\u003cinput class=\"ds-field\" placeholder=\"0,00\" /\u003e\u003c/label\u003e",
+                           "css":  ".ds-field-label{font-family:Manrope,Arial,sans-serif;display:grid;gap:8px;color:#042453;font-size:13px;font-weight:500}.ds-field{font-family:Manrope,Arial,sans-serif;background:#F4F8FC;color:#042453;border:1px solid #D5E3F0;border-radius:12px;padding:14px;min-height:52px;font-size:16px;caret-color:#0474E0}.ds-field::placeholder{color:#3E5674}.ds-field:focus{background:#FFFFFF;border-color:#0474E0}.ds-field:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}",
+                           "refersTo":  "field"
+                       },
+                       {
+                           "name":  "Escolha selecionada",
+                           "kind":  "chip",
+                           "description":  "Opção de formulário selecionada.",
+                           "html":  "\u003cbutton class=\"ds-choice\" role=\"radio\" aria-checked=\"true\"\u003eReceita\u003c/button\u003e",
+                           "css":  ".ds-choice{font-family:Manrope,Arial,sans-serif;background:#0474E0;color:#FFFFFF;border:1px solid #0474E0;border-radius:10px;padding:10px 14px;min-height:48px;font-size:13px;font-weight:500;cursor:pointer}.ds-choice:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}",
+                           "refersTo":  "choice-selected"
+                       },
+                       {
+                           "name":  "Caixa",
+                           "kind":  "card",
+                           "description":  "Superfície compartilhada para conteúdo e formulários.",
+                           "html":  "\u003csection class=\"ds-panel\"\u003e\u003ch2\u003eSuas contas\u003c/h2\u003e\u003cp\u003eCadastre sua primeira conta.\u003c/p\u003e\u003c/section\u003e",
+                           "css":  ".ds-panel{font-family:Manrope,Arial,sans-serif;background:#FFFFFF;color:#042453;border:1px solid #D5E3F0;border-radius:16px;padding:20px;display:grid;gap:16px}.ds-panel h2{margin:0;font-size:18px;font-weight:700}.ds-panel p{margin:0;color:#3E5674;font-size:13px;line-height:21px}",
+                           "refersTo":  "panel"
+                       },
+                       {
+                           "name":  "Carteira",
+                           "kind":  "card",
+                           "description":  "Carteira azul-marinho compacta com texto branco; amostra sem saldo ilustrativo.",
+                           "html":  "\u003csection class=\"ds-wallet\"\u003e\u003cspan\u003eSaldo registrado\u003c/span\u003e\u003cstrong\u003eSem contas cadastradas\u003c/strong\u003e\u003c/section\u003e",
+                           "css":  ".ds-wallet{font-family:Manrope,Arial,sans-serif;background:#042453;color:#FFFFFF;border:1px solid #5C8FBE;border-radius:16px;padding:12px;display:grid;gap:8px}.ds-wallet span{color:#D5E4F5;font-size:12px;line-height:20px}.ds-wallet strong{font-size:20px;font-weight:800}",
+                           "refersTo":  "wallet"
+                       },
+                       {
+                           "name":  "Navegação mobile",
+                           "kind":  "nav",
+                           "description":  "Cápsula branca de seis destinos; amostra sem inset de dispositivo.",
+                           "html":  "\u003cnav class=\"ds-nav\" aria-label=\"Navegação principal\"\u003e\u003cbutton class=\"ds-nav-item\" aria-current=\"page\"\u003e\u003csvg width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"\u003e\u003crect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/\u003e\u003crect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/\u003e\u003crect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/\u003e\u003crect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/\u003e\u003c/svg\u003eInício\u003c/button\u003e\u003cbutton class=\"ds-nav-item\"\u003eExtrato\u003c/button\u003e\u003cbutton class=\"ds-nav-item\"\u003eCartões\u003c/button\u003e\u003cbutton class=\"ds-nav-item\"\u003eAssinaturas\u003c/button\u003e\u003cbutton class=\"ds-nav-item\"\u003eImportar\u003c/button\u003e\u003cbutton class=\"ds-nav-item\"\u003eContas\u003c/button\u003e\u003c/nav\u003e",
+                           "css":  ".ds-nav{font-family:Manrope,Arial,sans-serif;display:flex;background:#FFFFFF;border:1px solid #D5E3F0;border-radius:32px;padding:6px;gap:0}.ds-nav-item{font-family:Manrope,Arial,sans-serif;flex:1;min-width:0;min-height:52px;background:transparent;border:0;color:#3E5674;font-weight:700;font-size:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer}.ds-nav-item[aria-current]{color:#0474E0}.ds-nav-item:focus-visible{outline:2px solid #0474E0;outline-offset:3px;}"
+                       },
+                       {
+                           "name":  "Cartão completo — Ciano",
+                           "kind":  "card",
+                           "description":  "Identidade Ciano, com geometria circular e texto branco; amostra sem número ou saldo fictício.",
+                           "html":  "\u003csection class=\"ds-credit\"\u003e\u003cdiv class=\"ds-credit-header\"\u003e\u003cstrong\u003eMeu cartão\u003c/strong\u003e\u003cspan\u003eCRÉDITO\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"ds-credit-final\"\u003e\u003csvg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"\u003e\u003crect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/\u003e\u003cpath d=\"M2 10h20\"/\u003e\u003c/svg\u003e\u003cspan\u003eFinal não informado\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"ds-credit-footer\"\u003e\u003cdiv\u003e\u003cspan\u003eFatura em aberto\u003c/span\u003e\u003cstrong\u003eSem compras\u003c/strong\u003e\u003c/div\u003e\u003cspan\u003eVence dia 17\u003c/span\u003e\u003c/div\u003e\u003c/section\u003e",
+                           "css":  ".ds-credit{font-family:Manrope,Arial,sans-serif;position:relative;overflow:hidden;background:#075880;border:1px solid #478BAC;border-radius:16px;padding:20px;min-height:190px;display:grid;gap:24px;color:#FFFFFF}.ds-credit::before{content:\"\";position:absolute;width:160px;height:160px;border-radius:80px;border:24px solid #478BAC;opacity:.35;right:-60px;top:-70px;pointer-events:none}.ds-credit::after{content:\"\";position:absolute;width:120px;height:120px;border-radius:60px;background:#478BAC;opacity:.2;right:-20px;bottom:-80px;pointer-events:none}.ds-credit-header{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:38px}.ds-credit-header strong{font-size:17px;font-weight:700;flex:1}.ds-credit-header\u003espan{font-size:19px;font-weight:800}.ds-credit-final{display:flex;align-items:center;justify-content:space-between;gap:12px}.ds-credit-final svg{color:#23D2BF}.ds-credit-final span{font-size:17px;font-weight:500;letter-spacing:1.5px}.ds-credit-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.ds-credit-footer div{display:grid;gap:3px;flex:1}.ds-credit-footer span{color:#D5EFF8;font-size:11px}.ds-credit-footer strong{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}"
+                       },
+                       {
+                           "name":  "Cartão compacto — Azul Cifrio",
+                           "kind":  "custom",
+                           "description":  "Cartão de 270px na faixa do início; pressionar abre o cartão escolhido.",
+                           "html":  "\u003cbutton class=\"ds-credit-action\" aria-label=\"Ver fatura de Meu cartão\"\u003e\u003cdiv class=\"ds-credit\"\u003e\u003cdiv class=\"ds-credit-header\"\u003e\u003cstrong\u003eMeu cartão\u003c/strong\u003e\u003cspan\u003eCRÉDITO\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"ds-credit-final\"\u003e\u003csvg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"\u003e\u003crect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\"/\u003e\u003cpath d=\"M2 10h20\"/\u003e\u003c/svg\u003e\u003cspan\u003eFinal não informado\u003c/span\u003e\u003c/div\u003e\u003cdiv class=\"ds-credit-footer\"\u003e\u003cdiv\u003e\u003cspan\u003eFatura em aberto\u003c/span\u003e\u003cstrong\u003eSem compras\u003c/strong\u003e\u003c/div\u003e\u003cspan\u003eVence dia 17\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\u003c/button\u003e",
+                           "css":  ".ds-credit-action{width:270px;padding:0;background:transparent;border:0;text-align:left;cursor:pointer}.ds-credit-action:active{opacity:.8}.ds-credit-action:focus-visible{outline:2px solid #0474E0;outline-offset:3px}.ds-credit{font-family:Manrope,Arial,sans-serif;position:relative;overflow:hidden;background:#042453;border:1px solid #5C8FBE;border-radius:16px;padding:16px;min-height:156px;display:grid;gap:16px;color:#FFFFFF}.ds-credit::before{content:\"\";position:absolute;width:160px;height:160px;border-radius:80px;border:24px solid #5C8FBE;opacity:.35;right:-60px;top:-70px;pointer-events:none}.ds-credit::after{content:\"\";position:absolute;width:120px;height:120px;border-radius:60px;background:#5C8FBE;opacity:.2;right:-20px;bottom:-80px;pointer-events:none}.ds-credit-header{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:38px}.ds-credit-header strong{font-size:14px;font-weight:700;flex:1}.ds-credit-header\u003espan{font-size:19px;font-weight:800}.ds-credit-final{display:flex;align-items:center;justify-content:space-between;gap:12px}.ds-credit-final svg{color:#23D2BF}.ds-credit-final span{font-size:17px;font-weight:500;letter-spacing:1.5px}.ds-credit-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}.ds-credit-footer div{display:grid;gap:3px;flex:1}.ds-credit-footer span{color:#D5E4F5;font-size:11px}.ds-credit-footer strong{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums}"
+                       }
+                   ],
+    "narrative":  {
+                      "northStar":  "Mesa financeira clara",
+                      "overview":  "Cifrio organiza registros financeiros pessoais em superfícies claras, tinta azul-marinho, ações azuis e detalhes ciano. Números destacados, controles compactos e listas legíveis dão prioridade à consulta e ao registro diário. Esta documentação descreve a implementação da versão 2.1.1.\n\nAs cores originais Cifrio são a autoridade visual, conforme `.project/ORIGINAL-COLORS.md`. A organização compacta inspirada na Finza permanece, mas a paleta verde e preta daquela demo foi rejeitada pelo usuário. O símbolo raster, o nome Cifrio e o login Google permanecem. Composição e jornada estão nos contratos de superfície; não definem um modo global de design.",
+                      "keyCharacteristics":  [
+                                                 "Fundo azul muito claro e superfícies brancas com bordas discretas.",
+                                                 "Azul de ação com texto branco; ciano como detalhe de apoio.",
+                                                 "Carteira e cartões azuis com texto branco explícito.",
+                                                 "Valores tabulares, cápsulas, círculos e painéis de curvas moderadas.",
+                                                 "Português brasileiro e estados vazios sem números ilustrativos."
+                                             ],
+                      "rules":  [
+                                    {
+                                        "name":  "Contraste por Superfície",
+                                        "body":  "Usar `ink` sobre superfícies claras e `onDark` sobre painéis azuis; ações primárias usam `onPrimary`.",
+                                        "section":  "colors"
+                                    }
+                                ],
+                      "dos":  [
+                                  "Do preservar a identidade original clara e azul Cifrio.",
+                                  "Do usar branco explícito dentro de carteira e cartões azuis.",
+                                  "Do preservar os pixels da marca, o login Google, safe areas e movimento reduzido.",
+                                  "Do manter foco visível, rótulos acessíveis e os seis destinos existentes.",
+                                  "Do diferenciar registros pessoais de consulta bancária e deixar estados vazios explícitos."
+                              ],
+                      "donts":  [
+                                    "Don\u0027t restaurar o fundo preto e o verde-lima rejeitados pelo usuário.",
+                                    "Don\u0027t recolorir o botão Google nem tratar temas de cartão como acentos de interface.",
+                                    "Don\u0027t reduzir por opacidade o botão azul no hover ou na pressão.",
+                                    "Don\u0027t inventar saldos, números de cartão, bandeiras ou conexão bancária.",
+                                    "Don\u0027t tratar a referência Finza como autoridade de cor ou alterar a identidade Cifrio."
+                                ]
+                  }
 }

@@ -25,6 +25,7 @@ export default function ProfileScreen() {
       {loading && <Loading />}<Button title={saving ? 'Salvando perfil…' : 'Salvar perfil'} icon="check" onPress={() => void submit()} disabled={busy} />
     </Box>
     {!!message && <Notice error={failed}>{message}</Notice>}{!!error && <Notice error>{error}</Notice>}
+    <Box title="Recursos"><Button title="Ver estatísticas" secondary icon="bar-chart-2" onPress={() => router.push('/statistics')} /><Button title="Central de ajuda" secondary icon="help-circle" onPress={() => router.push('/help')} /></Box>
     <Box title="Privacidade e acesso"><Text style={styles.muted}>{mode === 'demo' ? 'Perfil de teste salvo só neste dispositivo. Evite dados pessoais sensíveis.' : 'Nome nos dados de apresentação da sua conta. Fotos enviadas ao Storage privado, acessíveis por links temporários.'}</Text><Text style={styles.muted}>A foto escolhida só é enviada quando você toca em Salvar perfil. Remover e salvar limpa a foto atual.</Text>
       <Button title="Atualizar perfil" secondary icon="refresh-cw" disabled={busy} onPress={() => void refresh()} />
       <Button title="Exportar meu perfil (JSON)" secondary icon="download" disabled={busy} onPress={() => void exportJson('cifrio-perfil.json', JSON.stringify({ format: 'cifrio-profile-v1', exportedAt: new Date().toISOString(), displayName: profile.displayName, avatarPath: profile.avatarPath, ...(mode === 'demo' ? { avatarDataUrl: profile.avatarUrl } : {}) }, null, 2)).catch(() => { setFailed(true); setMessage('Não foi possível exportar seu perfil.'); })} />

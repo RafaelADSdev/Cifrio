@@ -1,6 +1,11 @@
-import { categories, Entry, FinanceState, Recurring } from './model';
+import { categories, Entry, FinanceState, Recurring, RecurringPlan } from './model';
+export function recurringPlan(item: Recurring): RecurringPlan {
+  return item.plan === 'subscription' ? 'subscription' : 'fixed';
+}
 export function validateRecurring(state: FinanceState, item: Recurring) {
   if (!item.id || !state.accounts.some(account => account.id === item.accountId)) throw new Error('Selecione uma conta válida.');
+  if (item.plan && item.plan !== 'fixed' && item.plan !== 'subscription') throw new Error('Tipo de recorrência inválido.');
+  if (recurringPlan(item) === 'subscription' && item.kind !== 'expense') throw new Error('Assinaturas são sempre despesas.');
   if (!item.description?.trim() || item.description.length > 120 || !['income', 'expense'].includes(item.kind) || !categories.includes(item.category)) throw new Error('Revise a descrição, tipo e categoria.');
   if (!Number.isSafeInteger(item.amount) || item.amount <= 0 || item.amount > 100_000_000_000) throw new Error('Informe um valor maior que zero.');
   if (!Number.isInteger(item.day) || item.day < 1 || item.day > 31 || !/^20\d{2}-(0[1-9]|1[0-2])$/.test(item.startMonth) || typeof item.active !== 'boolean') throw new Error('Use dia de 1 a 31 e início no formato AAAA-MM.');

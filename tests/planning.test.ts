@@ -2,7 +2,8 @@ import { expect, it } from 'vitest';
 import { applyOperation } from '../src/domain/operations';
 import { hydrateState } from '../src/domain/model';
 import { Entry, FinanceState } from '../src/domain/model';
-import { budgetStatus, installmentAgenda, monthReadings, suggestCategory } from '../src/domain/planning';
+import { budgetStatus, installmentAgenda, installmentProgress, monthReadings, spendingBreakdown, statementDueDate, suggestCategory } from '../src/domain/planning';
+import { statement } from '../src/domain/finance';
 import { importEntries } from '../src/domain/imports';
 
 const state: FinanceState = { accounts: [{ id: 'a', name: 'BB', bank: 'BB', openingBalance: 100000 }], cards: [{ id: 'c', name: 'Cartão', closingDay: 10, dueDay: 17, limit: 500000 }], entries: [] };
@@ -20,7 +21,22 @@ it('projeta parcelas futuras e manda compra no fechamento para o mês seguinte',
   const agenda = installmentAgenda(bought, '2026-10', 4);
   expect(agenda.map(month => month.month)).toEqual(['2026-11', '2026-12', '2027-01']);
   expect(agenda[0]).toMatchObject({ total: 3334, remaining: 3334 });
-  expect(agenda[0].items[0]).toMatchObject({ description: 'Sofá', index: 1, count: 3, dueDay: 17 });
+  expect(agenda[0].items[0]).toMatchObject({ description: 'Sofá', index: 1, count: 3, dueDay: 17, dueDate: statementDueDate('2026-11', state.cards[0]) });
+});
+
+it('conta parcelas pagas quando a fatura do mês está quitada', () => {
+  const bought = { ...state, entries: [entry({ id: 'buy', kind: 'card_purchase', accountId: undefined, cardId: 'c', amount: 9000, installments: 3, date: '2026-10-10', description: 'Sofá' })] };
+  expect(installmentProgress(bought, 'buy')).toMatchObject({ total: 3, paidInstallments: 0, remainingInstallments: 3 });
+  const paidFirst = { ...bought, entries: [...bought.entries, entry({ id: 'pay', kind: 'card_payment', accountId: 'a', cardId: 'c', amount: statement(bought, 'c', '2026-11').total, statementMonth: '2026-11', date: '2026-11-17', description: 'Fatura' })] };
+  expect(installmentProgress(paidFirst, 'buy')).toMatchObject({ paidInstallments: 1, remainingInstallments: 2 });
+});
+
+it('monta o gráfico de gastos por categoria com percentuais', () => {
+  const next = { ...state, entries: [entry({ amount: 4000, category: 'Alimentação' }), entry({ id: 'b', amount: 6000, category: 'Transporte', description: 'Uber' })] };
+  const chart = spendingBreakdown(next, '2026-10');
+  expect(chart.total).toBe(10000);
+  expect(chart.slices.map(slice => slice.category)).toEqual(['Transporte', 'Alimentação']);
+  expect(chart.slices[0]).toMatchObject({ amount: 6000, share: 0.6 });
 });
 
 it('mede o limite pela parcela da fatura, não pela data da compra', () => {

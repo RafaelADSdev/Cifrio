@@ -13,5 +13,7 @@ export async function capture(page: Page, path: string) {
     if (element instanceof HTMLElement) { element.style.scrollBehavior = 'auto'; element.scrollTop = 0; }
   }));
   await readyImages(page);
+  // Let the app's longest 420ms month transition settle before capturing text.
+  await page.waitForTimeout(500);
   await page.screenshot({ path });
 }

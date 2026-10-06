@@ -1,7 +1,7 @@
 import { expect, it } from 'vitest';
 import { emptyState, Recurring } from '../src/domain/model';
 import { applyOperation } from '../src/domain/operations';
-import { recurringEntry, recurringDate } from '../src/domain/recurring';
+import { recurringEntry, recurringDate, recurringPlan } from '../src/domain/recurring';
 import { balance } from '../src/domain/finance';
 const base = () => ({ ...emptyState(), accounts: [{ id: 'a', name: 'Conta', bank: 'BB', openingBalance: 10000 }] });
 const salary: Recurring = { id: 's', accountId: 'a', description: 'Salário', kind: 'income', category: 'Salário', amount: 200000, day: 31, startMonth: '2026-01', active: true };
@@ -27,6 +27,13 @@ it('recusa data anterior ao início, pausa, conta inexistente e valor inválido'
     expect(() => applyOperation(base(), { id: 'op', action: 'recurring', records: [bad] })).toThrow();
   }
 });
+it('separa assinaturas de contas fixas no plano da recorrência', () => {
+  const sub = { ...salary, id: 'sub', kind: 'expense' as const, category: 'Lazer', description: 'Streaming', plan: 'subscription' as const };
+  const withSub = applyOperation(base(), { id: 'op', action: 'recurring', records: [sub] });
+  expect(recurringPlan(withSub.recurring![0])).toBe('subscription');
+  expect(recurringPlan(salary)).toBe('fixed');
+});
+
 it('exclui somente contas sem histórico e sem recorrências vinculadas', () => {
   expect(applyOperation(base(), { id: 'op', action: 'account_delete', records: [{ id: 'a' }] }).accounts).toHaveLength(0);
   const withSchedule = applyOperation(base(), { id: 'op', action: 'recurring', records: [salary] });

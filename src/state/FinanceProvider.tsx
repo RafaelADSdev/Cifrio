@@ -39,18 +39,31 @@ export function FinanceProvider({ children }: { children: React.ReactNode }) {
   }
   useEffect(() => {
     if (!supabase) { setLoading(false); return; }
-    let mounted = true;
+    let mounted = true, authEventSeen = false;
+    let userId: string | null | undefined;
     const update = (next: Session | null) => {
       if (!mounted) return;
-      generation.current++; setState(emptyState()); setSession(next); setMode(next ? 'remote' : 'welcome'); setLoading(false); setError('');
+      const nextUserId = next?.user.id ?? null;
+      setSession(next);
+      // getSession and INITIAL_SESSION can report the same account separately.
+      // Repeated sign-in/token events must not invalidate its pending ledger load.
+      if (userId === nextUserId) return;
+      userId = nextUserId;
+      generation.current++; setState(emptyState()); setMode(next ? 'remote' : 'welcome'); setLoading(!!next); setError('');
     };
-    supabase.auth.getSession().then(({ data, error }) => { if (error) setError('Não foi possível recuperar a sessão.'); update(data.session); });
-    const { data } = supabase.auth.onAuthStateChange((event, next) => {
-      // Editing presentation metadata must not clear an already loaded ledger.
-      if (event === 'USER_UPDATED' || event === 'TOKEN_REFRESHED') setSession(next);
-      else update(next);
+    const { data } = supabase.auth.onAuthStateChange((_event, next) => {
+      authEventSeen = true;
+      update(next);
     });
-    return () => { mounted = false; data.subscription.unsubscribe(); };
+    void supabase.auth.getSession().then(({ data, error }) => {
+      // A newer auth event takes precedence over this startup snapshot.
+      if (!mounted || authEventSeen) return;
+      if (error) { setError('Não foi possível recuperar a sessão. Tente abrir o aplicativo novamente.'); setLoading(false); return; }
+      update(data.session);
+    }).catch(() => {
+      if (mounted && !authEventSeen) { setError('Não foi possível recuperar a sessão. Tente abrir o aplicativo novamente.'); setLoading(false); }
+    });
+    return () => { mounted = false; generation.current++; data.subscription.unsubscribe(); };
   }, []);
   useEffect(() => { if (mode === 'remote' && session) void refresh(); }, [mode, session?.user.id]);
   async function startDemo() {

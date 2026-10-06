@@ -22,7 +22,9 @@ Extensão de contas: entrada de fundos pelo extrato, exclusão com confirmação
 
 ## Brand Commitments
 
-Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo; ainda sem validação de marca ou domínio. Símbolo C azul-marinho com detalhe verde, com origem em `assets/brand/README.md`. Voz em português brasileiro. Usuário aprovou substituir a identidade visual usando acabamento da Tekton e organização do Conta Gotas como referências principais, sem copiar marcas.
+Cifrio é a identidade de trabalho autorizada pelo pedido de nome e logo; ainda sem validação de marca ou domínio. Símbolo existente com origem em `assets/brand/README.md`, preservado sem recolorir. Voz em português brasileiro. A Finza inspira a organização compacta, os atalhos e a apresentação dos cartões. Em 06/10/2026 o usuário esclareceu que as cores iniciais do Cifrio devem permanecer: fundo claro, branco, azul-marinho, azul e ciano. Verde-lima e fundo preto da interpretação anterior foram descartados. O wordmark usa tinta azul-marinho no fundo claro. Contrato vigente em `.project/ORIGINAL-COLORS.md`; os registros Finza anteriores são históricos.
+
+No refinamento compacto, bandeira e final de quatro dígitos são opcionais e informados pelo usuário. Em 2.1.1 os temas dos cartões usam variações de azul e ciano; os identificadores internos anteriores permanecem para preservar os cadastros. Login Google, funções e layout compacto continuam presentes.
 
 ## Evidence on Hand
 

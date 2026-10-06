@@ -1,0 +1,1 @@
+-- Sem dados iniciais. O reset local aplica apenas as migrações.

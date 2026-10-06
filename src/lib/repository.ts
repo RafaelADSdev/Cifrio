@@ -9,9 +9,9 @@ export async function loadRemote(): Promise<FinanceState> {
 }
 export async function saveRemote(operation: Operation) {
   if (!supabase) throw new Error('Supabase não configurado.');
-  if (operation.action === 'account_delete' || operation.action === 'recurring_delete') {
+  if (operation.action === 'account_delete' || operation.action === 'card_delete' || operation.action === 'recurring_delete') {
     const id = (operation.records[0] as { id: string }).id;
-    const table = operation.action === 'account_delete' ? 'finance_accounts' : 'finance_schedules';
+    const table = operation.action === 'account_delete' ? 'finance_accounts' : operation.action === 'card_delete' ? 'finance_cards' : 'finance_schedules';
     const { data, error } = await supabase.from(table).delete().eq('id', id).select('id');
     if (error || !data?.length) throw new Error('Não foi possível excluir. Atualize os dados; confira vínculos, permissões e a migração de recorrências.');
     return;

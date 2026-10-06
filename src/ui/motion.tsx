@@ -46,7 +46,7 @@ export function Desk({ children }: { children: React.ReactNode }) {
   return <Animated.View style={[{ gap: 24 }, style]}>{children}</Animated.View>;
 }
 
-export function ShareBar({ ratio, color, track = '#E3F0E7' }: { ratio: number; color: string; track?: string }) {
+export function ShareBar({ ratio, color, track = '#E7F2FC' }: { ratio: number; color: string; track?: string }) {
   const reduced = useReducedMotion() === true;
   const scale = useSharedValue(reduced ? ratio : 0);
   useEffect(() => { scale.value = withTiming(Math.max(0, Math.min(1, ratio)), { duration: reduced ? 120 : 460, easing: arrive }); }, [ratio, reduced, scale]);

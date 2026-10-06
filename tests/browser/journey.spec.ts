@@ -50,7 +50,7 @@ test('CSV é revisado e reimportação não duplica lançamentos', async ({ page
     await page.getByRole('button', { name: 'Confirmar importação' }).click();
     await expect(page.getByText(i ? '0 movimentações importadas. 2 já existentes foram ignoradas.' : '2 movimentações importadas. 0 já existentes foram ignoradas.', { exact: true })).toBeVisible();
   }
-  await tab(page, 'Extrato'); await expect(page.getByText('Receita importada', { exact: true })).toHaveCount(1);
+  await tab(page, 'Extrato'); await expect(page.getByRole('button', { name: 'Editar Receita importada', exact: true })).toHaveCount(1);
   await tab(page, 'Importar'); await capture(page, '.impeccable/review/imports-mobile.png');
 });
 for (const width of [320, 390, 768, 1440]) test(`interface sem overflow e acessível em ${width}px`, async ({ page }) => {

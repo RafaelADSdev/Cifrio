@@ -29,7 +29,7 @@ export default function Welcome() {
   return <Page title="Seu dinheiro, com clareza." subtitle="Contas, gastos e compromissos em um só lugar.">
     {loading ? <Loading /> : <>
       <View style={{ flexDirection: wide ? 'row' : 'column', gap: 20 }}>
-        <View style={{ backgroundColor: colors.dark, borderRadius: 16, padding: 28, gap: 20, flex: wide ? 1 : undefined, boxShadow: '0 12px 24px rgba(4, 36, 83, 0.16)' }}>
+        <View style={{ backgroundColor: colors.dark, borderRadius: 16, padding: 28, gap: 20, flex: wide ? 1 : undefined, borderWidth: 1, borderColor: colors.lineOnDark }}>
           <View style={{ width: 48, height: 4, borderRadius: 2, backgroundColor: colors.accent }} />
           <Text style={{ fontFamily: fonts.display, fontSize: 32, lineHeight: 39, letterSpacing: -0.8, color: colors.onDark }}>Mais clareza.{ '\n' }Menos dinheiro{ '\n' }sem destino.</Text>
           <Text style={{ fontFamily: fonts.regular, color: colors.mutedDark, lineHeight: 23, fontSize: 14 }}>Veja suas contas, organize seus gastos e acompanhe o que ainda está por vir.</Text>

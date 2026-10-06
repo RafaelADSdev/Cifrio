@@ -12,6 +12,8 @@ it('exclusões são filtradas pelo id e exigem confirmação do servidor', async
   expect(api.from).toHaveBeenCalledWith('finance_accounts'); expect(api.eq).toHaveBeenCalledWith('id', 'a'); expect(api.select).toHaveBeenCalledWith('id');
   await saveRemote({ id: 'op2', action: 'recurring_delete', records: [{ id: 's' }] });
   expect(api.from).toHaveBeenLastCalledWith('finance_schedules');
+  await saveRemote({ id: 'op4', action: 'card_delete', records: [{ id: 'c' }] });
+  expect(api.from).toHaveBeenLastCalledWith('finance_cards');
   api.select.mockResolvedValue({ data: [], error: null });
   await expect(saveRemote({ id: 'op3', action: 'account_delete', records: [{ id: 'a' }] })).rejects.toThrow(/excluir/);
 });

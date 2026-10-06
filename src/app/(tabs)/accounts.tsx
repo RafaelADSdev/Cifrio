@@ -19,7 +19,7 @@ export default function Accounts() {
     <Box title="Saldos registrados"><AccountActions /></Box>
     <Box title="Adicionar conta"><Field label="Nome da conta" value={name} onChangeText={setName} placeholder="Ex.: Conta do dia a dia" maxLength={80} /><Choices label="Instituição" options={banks.map(b => ({ value: b, label: b }))} value={bank} onChange={setBank} /><Field label="Saldo inicial (R$)" value={opening} onChangeText={setOpening} keyboardType="decimal-pad" /><Text style={styles.muted}>Use o saldo anterior às movimentações que você vai registrar ou importar.</Text><Button title="Salvar conta" onPress={() => void save()} disabled={busy} /></Box>
     {!!message && <Notice>{message}</Notice>}
-    <RecurringAccounts />
+    <RecurringAccounts plan="fixed" />
     <Box title="Conexões bancárias"><Text style={styles.muted}>Banco do Brasil, Mercado Pago, PicPay e Inter estão no piloto. Sincronização automática ainda depende da validação de acesso e do fornecedor.</Text><Text style={styles.text}>Nenhum banco conectado.</Text></Box>
     <Box title="Seu acesso"><Text style={styles.muted}>{mode === 'demo' ? 'Teste local. Não use este armazenamento como cofre de dados reais.' : 'Dados associados à sua conta Supabase.'}</Text><Button title="Exportar registros (JSON)" secondary disabled={busy} onPress={() => void exportRecords(state).catch(e => setMessage(e.message))} />{mode === 'remote' && <Button title="Atualizar dados" secondary onPress={() => void refresh()} disabled={busy} />}<Button title="Sair" secondary disabled={busy} onPress={() => void leave().catch(e => setMessage(e.message))} /></Box>
   </Page>;
