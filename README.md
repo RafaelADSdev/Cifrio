@@ -22,6 +22,62 @@ Identidade de trabalho: azul profundo, verde de acento, Manrope. Marca e domíni
 
 ---
 
+## Patch notes
+
+Histórico das atualizações documentadas, com a versão mais nova primeiro. Após toda atualização, esta seção deve ser atualizada com a versão, a data e as mudanças realizadas. A regra permanente está em [AGENTS.md](AGENTS.md).
+
+### 2.2.1 — 06/10/2026
+
+- Corrigido o alinhamento do ícone de instalação, com o símbolo centralizado e margens equilibradas.
+- Removido o bloco quadrado da aba ativa na barra inferior. A seleção agora usa uma cápsula arredondada ao redor do ícone, com rótulos alinhados e símbolo de casa em Início.
+- Preservados os módulos, os destinos da navegação e as funções existentes.
+- APK ARM64 gerado com contador de instalação 7 e assinatura compatível com as versões anteriores. Tipo e versão do pacote, assinatura e ícone incorporado foram conferidos.
+- TypeScript e quatro testes de navegador passaram em 320, 390, 768 e 1440px. Aparência conferida na prévia web; instalação e execução em celular ainda não verificadas.
+- Adicionados os patch notes ao README, incluindo o histórico documentado das primeiras entregas, e a regra de atualizá-los após toda atualização do projeto.
+
+### 2.2.0 — 06/10/2026
+
+- Substituído o gráfico de gastos por uma pizza com animação suave, legenda, valores e percentuais, respeitando a preferência de movimento reduzido.
+- Reorganizado o bloco “Já comprometido”, com total em aberto dos próximos três meses e detalhamento por mês e parcela.
+- Simplificada a barra inferior para Início, Extrato, Cartões, Contas e Mais. Importação e assinaturas continuam acessíveis pelo menu Mais; desktop mantém a navegação lateral.
+- Atualizados os testes para os novos caminhos de navegação. TypeScript, 87 testes locais, 13 testes de navegador e exports web/Android/iOS passaram.
+- APK ARM64 gerado com contador de instalação 6 e assinatura verificada. Sem teste de instalação ou execução em celular nesta entrega.
+
+### 2.1.1 — 06/10/2026
+
+- Restauradas as cores originais do Cifrio: fundos claros, branco, azul-marinho, azul e ciano.
+- Corrigido o contraste dos textos, botões e estados selecionados, preservando o layout compacto, a marca e o login Google.
+- Atualização do código; nenhum APK específico desta versão foi entregue.
+
+### 2.1.0 — 06/10/2026
+
+- Melhorado o início compacto, com atalhos de movimentação, resumo mensal e faixa horizontal de cartões.
+- Adicionados bandeira, tema e últimos quatro dígitos opcionais aos cartões, com seleção e abertura da fatura correspondente.
+- Recolhido o formulário após salvar um cartão e corrigida a navegação direta para a tela de cartões sem sessão.
+- Atualização do código; nenhum APK específico desta versão foi entregue.
+
+### 1.1.1 — 05/10/2026
+
+- Corrigida a recuperação da sessão ao reabrir o aplicativo. Eventos repetidos de autenticação da mesma conta deixam de limpar os dados financeiros já carregados.
+- Melhorado o tratamento de carregamento, falhas de recuperação, troca de conta e saída, evitando que respostas antigas sejam aplicadas à conta atual.
+- Substituída a abertura padrão do Expo pela marca do Cifrio, com fundo claro e espera pelo carregamento das fontes.
+- Ajustada a compilação Android para usar caminhos curtos no Windows e reaplicar a configuração nativa da abertura.
+- APK ARM64 entregue com contador de instalação 2. Versão interna, bundle e assinatura v2 foram conferidos; mantida a assinatura do pacote anterior.
+- TypeScript e 86 testes locais passaram antes da compilação. Instalação e reabertura em celular não foram verificadas nesta entrega.
+
+### 0.1.0 — 05/10/2026 — primeiro APK
+
+- Disponibilizado o primeiro APK Android do Cifrio, com contas, movimentações, cartões e faturas, resumo mensal, importação revisada de arquivos e autenticação.
+- Configurado o fluxo de compilação local para Windows, com ajustes de caminhos e uso de memória necessários à geração do APK.
+- APK ARM64 gerado com contador de instalação 1, pacote `com.cifrio.app` e nome Cifrio. Compilação, verificações de release, versão, arquitetura e assinatura v2 passaram.
+- Uma recompilação desta versão incorporou as correções de sessão e abertura posteriormente entregues como 1.1.1. Não houve teste de execução em celular.
+
+O primeiro pacote registrado usa a versão **0.1.0**. Não há registro de entregas independentes como **1.0.0** ou **1.1.0** nos documentos consultados.
+
+Detalhes de compilação e entregas anteriores: [histórico de APKs](.project/ANDROID-APK.md). A correção de sessão e abertura está detalhada em [SESSION-RESTORE.md](.project/SESSION-RESTORE.md).
+
+---
+
 ## O que ele faz
 
 | | |

@@ -1,0 +1,22 @@
+---
+description: Atualizar os patch notes do README após toda atualização do projeto
+alwaysApply: true
+---
+
+# Patch notes obrigatórios
+
+- Toda atualização deve incluir uma atualização na seção `Patch notes` do `README.md`, no mesmo conjunto de mudanças e antes da conclusão ou entrega do APK.
+- Registrar versão, data em `DD/MM/AAAA` e tópicos curtos em português sobre funcionalidades, mudanças visuais, correções, desempenho, segurança ou documentação, conforme o caso.
+- Manter as versões mais recentes primeiro e preservar as anteriores.
+- Aplicar o versionamento X.Y.Z definido em `AGENTS.md`. Complementar a entrada existente para a mesma entrega, sem duplicá-la ou incrementar a versão apenas para escrever o histórico.
+- Distinguir código atualizado de APK compilado e entregue. Registrar somente validações realizadas e suas limitações relevantes.
+- Registros em `.project/` complementam, mas não substituem, os patch notes do README.
+
+Exemplo:
+
+```markdown
+### 2.2.1 — 06/10/2026
+
+- Corrigido o alinhamento do ícone de instalação.
+- Melhorado o destaque da aba ativa na barra inferior.
+```

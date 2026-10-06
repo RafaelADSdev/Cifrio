@@ -1,5 +1,17 @@
 # APK Android do Cifrio
 
+## Entrega 2.2.1 verificada — 06/10/2026
+
+- Arquivo: `artifacts/cifrio-2.2.1-arm64.apk`, 45.272.562 bytes (45,3 MB).
+- Correções visuais: ícone de instalação centralizado e seleção da barra inferior em cápsula tonal apenas ao redor do ícone. Destinos, módulos e funções preservados.
+- `aapt dump badging`: pacote `com.cifrio.app`, nome Cifrio, versão `2.2.1`, versionCode `7`, ABI `arm64-v8a`, minSdk 24 e targetSdk 36.
+- Gradle `:app:assembleRelease`, incluindo `lintVitalRelease`: BUILD SUCCESSFUL em 12m28s; 541 tarefas executadas e 28 atualizadas.
+- Assinatura APK v2 válida, certificado SHA-256 `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`, igual às entregas anteriores e compatível com atualização.
+- Bundle Hermes presente, 3.992.252 bytes. Ícone foreground mapeado em `aapt dump resources`, extraído de `res/5c.webp` e conferido em `.project/evidence/launcher-2.2.1-apk.webp`: símbolo centralizado no canvas de 432×432px.
+- SHA-256: `F3AFD4DC2AA3386FE08BBEA5C258E5A4BAAF53C146497B6BD955E07768EDFFA9`. Arquivo em artifacts idêntico ao original compilado.
+- Fontes e assets atuais sincronizados na cópia ASCII `C:\CifrioBuild\b-7c677980\app`; dependências não alteradas, prebuild executado e intermediários existentes usados pelo Gradle. Log: `.project/evidence/apk-2.2.1-build.log`.
+- Versões Expo/package/lock/Android sincronizadas em 2.2.1; contadores Android/iOS 7. TypeScript e quatro testes de navegador passaram em 320/390/768/1440px. Aparência da barra conferida na prévia web; sem aparelho ou emulador disponível, instalação e execução nativas ainda não verificadas.
+
 ## Entrega 2.2.0 verificada — 06/10/2026
 
 - Arquivo: `artifacts/cifrio-2.2.0-arm64.apk`, 45.291.618 bytes (45,3 MB).

@@ -97,7 +97,7 @@ components:
 
 **Creative North Star: "Mesa financeira clara"**
 
-Cifrio organiza registros financeiros pessoais em superfícies claras, tinta azul-marinho, ações azuis e detalhes ciano. Números destacados, controles compactos e listas legíveis dão prioridade à consulta e ao registro diário. Esta documentação descreve a implementação da versão 2.2.0.
+Cifrio organiza registros financeiros pessoais em superfícies claras, tinta azul-marinho, ações azuis e detalhes ciano. Números destacados, controles compactos e listas legíveis dão prioridade à consulta e ao registro diário. Esta documentação descreve a implementação da versão 2.2.1.
 
 As cores originais Cifrio são a autoridade visual, conforme `.project/ORIGINAL-COLORS.md`. A organização compacta inspirada na Finza permanece, mas a paleta verde e preta daquela demo foi rejeitada pelo usuário. O símbolo raster, o nome Cifrio e o login Google permanecem. Composição e jornada estão nos contratos de superfície; não definem um modo global de design.
 
@@ -196,7 +196,7 @@ Bandeira e últimos quatro dígitos são opcionais: ausência mostra CRÉDITO e 
 Campos têm fundo claro, contorno azul suave, raio de 12px, preenchimento de 14px e altura mínima de 52px. Foco muda a borda para azul de ação e fundo para branco. Manter rótulos visíveis, placeholder `muted` e foco de teclado visível.
 
 ### Navigation
-Os seis destinos permanecem: Início, Extrato, Cartões, Assinaturas, Importar e Contas. Feather (21px) acompanha Manrope Bold. Mobile usa cinco itens (Início, Extrato, Cartões, Contas e Mais) em cápsula branca, ativo azul sobre `soft` e inativo `muted`. Importar e Assinaturas ficam em Mais. Desktop usa superfície branca, rótulos ao lado dos ícones e item ativo azul-marinho sobre `soft`.
+Os seis destinos permanecem: Início, Extrato, Cartões, Assinaturas, Importar e Contas. Feather (22px) acompanha Manrope Bold. Mobile usa cinco itens (Início, Extrato, Cartões, Contas e Mais) em cápsula branca. A seleção tem tinta azul-marinho e cápsula `soft` de 52×32px, raio de 16px, apenas ao redor do ícone; o rótulo fica abaixo, sem bloco quadrado de fundo. Inativos usam `muted`; Início usa o símbolo de casa. Importar e Assinaturas ficam em Mais. Desktop usa superfície branca, rótulos ao lado dos ícones e item ativo azul-marinho sobre `soft`.
 
 ### Atalhos e atividade
 Quatro atalhos têm altura mínima de 72px, círculos de 48px, ícones azuis de 22px e rótulos de 11px. Importar e Assinaturas aparecem como ações secundárias após os cartões. Atividade mostra até cinco registros em linhas brancas e círculos de 44px. Receita usa azul de ação, transferência tinta azul-marinho e saída vermelho; texto complementa a cor.

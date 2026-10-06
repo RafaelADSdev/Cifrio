@@ -3,7 +3,7 @@ import { ColorValue, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFinance } from '../../state/FinanceProvider';
 import { colors, fonts, Icon, IconName, Loading, styles, systemBottomInset, systemTopInset, TAB_BAR_BODY } from '../../ui/components';
-const icon = (name: IconName) => ({ color }: { color: ColorValue }) => <Icon name={name} color={color} size={21} />;
+const icon = (name: IconName, compact = false) => ({ color, focused }: { color: ColorValue; focused: boolean }) => <View style={compact ? { width: 52, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? colors.soft : 'transparent' } : undefined}><Icon name={name} color={color} size={22} /></View>;
 export default function TabsLayout() {
   const { mode, loading, error } = useFinance();
   const insets = useSafeAreaInsets();
@@ -16,14 +16,14 @@ export default function TabsLayout() {
   return <View style={{ flex: 1, backgroundColor: colors.bg }}>
     {mode === 'demo' && <View style={{ backgroundColor: colors.soft, paddingTop: topInset, paddingBottom: 8, paddingHorizontal: 12 }}><Text style={[styles.muted, { textAlign: 'center', fontSize: 11 }]}>Teste local · dados neste dispositivo · sem conexão bancária</Text></View>}
     {!!error && <Text accessibilityRole="alert" style={styles.error}>{error}</Text>}
-    <Tabs safeAreaInsets={{ top: 0, bottom: 0, left: 0, right: 0 }} screenOptions={{ headerShown: false, tabBarPosition: expanded ? 'left' : 'bottom', tabBarLabelPosition: expanded ? 'beside-icon' : 'below-icon', tabBarActiveTintColor: colors.ink, tabBarInactiveTintColor: colors.muted, tabBarActiveBackgroundColor: colors.soft, tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: expanded ? 13 : 11, lineHeight: expanded ? 18 : 14, flexShrink: 0 }, tabBarItemStyle: expanded ? { marginVertical: 4, borderRadius: 12, minHeight: 52 } : { marginHorizontal: 2, borderRadius: 16, minHeight: 56, paddingVertical: 2 }, tabBarStyle: expanded ? { backgroundColor: colors.surface, borderRightColor: colors.border, width: 188, minWidth: 188, paddingTop: 28, paddingHorizontal: 12, paddingBottom: bottomInset } : { backgroundColor: colors.surface, borderTopWidth: 0, borderWidth: 1, borderColor: colors.border, borderRadius: 32, marginHorizontal: 12, marginBottom: tabBarMargin, height: TAB_BAR_BODY, paddingHorizontal: 4, paddingTop: 4, paddingBottom: 4 } }}>
-      <Tabs.Screen name="index" options={{ title: 'Início', tabBarIcon: icon('grid') }} />
-      <Tabs.Screen name="transactions" options={{ title: 'Extrato', tabBarIcon: icon('list') }} />
-      <Tabs.Screen name="cards" options={{ title: 'Cartões', tabBarIcon: icon('credit-card') }} />
-      <Tabs.Screen name="subscriptions" options={{ title: 'Assinaturas', href: expanded ? '/subscriptions' : null, tabBarIcon: icon('tv') }} />
-      <Tabs.Screen name="imports" options={{ title: 'Importar', href: expanded ? '/imports' : null, tabBarIcon: icon('download') }} />
-      <Tabs.Screen name="accounts" options={{ title: 'Contas', tabBarIcon: icon('briefcase') }} />
-      <Tabs.Screen name="more" options={{ title: 'Mais', href: expanded ? null : undefined, tabBarIcon: icon('more-horizontal') }} />
+    <Tabs safeAreaInsets={{ top: 0, bottom: 0, left: 0, right: 0 }} screenOptions={{ headerShown: false, tabBarPosition: expanded ? 'left' : 'bottom', tabBarLabelPosition: expanded ? 'beside-icon' : 'below-icon', tabBarActiveTintColor: colors.ink, tabBarInactiveTintColor: colors.muted, tabBarActiveBackgroundColor: expanded ? colors.soft : 'transparent', tabBarIconStyle: expanded ? undefined : { width: 52, height: 32 }, tabBarLabelStyle: { fontFamily: fonts.bold, fontSize: expanded ? 13 : 11, lineHeight: expanded ? 18 : 16, marginTop: expanded ? 0 : 4, flexShrink: 0 }, tabBarItemStyle: expanded ? { marginVertical: 4, borderRadius: 12, minHeight: 52 } : { marginHorizontal: 2, minHeight: 56, paddingVertical: 4 }, tabBarStyle: expanded ? { backgroundColor: colors.surface, borderRightColor: colors.border, width: 188, minWidth: 188, paddingTop: 28, paddingHorizontal: 12, paddingBottom: bottomInset } : { backgroundColor: colors.surface, borderTopWidth: 0, borderWidth: 1, borderColor: colors.border, borderRadius: 32, marginHorizontal: 12, marginBottom: tabBarMargin, height: TAB_BAR_BODY, paddingHorizontal: 4, paddingTop: 4, paddingBottom: 4 } }}>
+      <Tabs.Screen name="index" options={{ title: 'Início', tabBarIcon: icon('home', !expanded) }} />
+      <Tabs.Screen name="transactions" options={{ title: 'Extrato', tabBarIcon: icon('list', !expanded) }} />
+      <Tabs.Screen name="cards" options={{ title: 'Cartões', tabBarIcon: icon('credit-card', !expanded) }} />
+      <Tabs.Screen name="subscriptions" options={{ title: 'Assinaturas', href: expanded ? '/subscriptions' : null, tabBarIcon: icon('tv', !expanded) }} />
+      <Tabs.Screen name="imports" options={{ title: 'Importar', href: expanded ? '/imports' : null, tabBarIcon: icon('download', !expanded) }} />
+      <Tabs.Screen name="accounts" options={{ title: 'Contas', tabBarIcon: icon('briefcase', !expanded) }} />
+      <Tabs.Screen name="more" options={{ title: 'Mais', href: expanded ? null : undefined, tabBarIcon: icon('more-horizontal', !expanded) }} />
     </Tabs>
   </View>;
 }

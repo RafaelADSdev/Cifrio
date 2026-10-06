@@ -12,3 +12,13 @@ Aplicar sempre a regra X.Y.Z definida pelo usuário, usando a última versão en
 - Recompilar a mesma entrega não exige incrementar X.Y.Z. Uma versão explicitamente solicitada pelo usuário deve ser respeitada.
 - Alterar a versão não autoriza renomear o aplicativo ou mudar o identificador do pacote.
 - Antes de entregar o APK, conferir sua versão, contador de instalação e assinatura, e registrar a entrega em .project/ANDROID-APK.md.
+
+# Patch notes obrigatórios no README
+
+- Após toda atualização do projeto, atualizar a seção `Patch notes` do `README.md` no mesmo conjunto de mudanças, antes de considerar a tarefa concluída ou entregar um APK.
+- Registrar versão, data em `DD/MM/AAAA` e um resumo em português do que mudou para o usuário: funcionalidades, melhorias visuais, correções, desempenho, segurança ou documentação, conforme a atualização.
+- Manter as versões mais recentes primeiro e preservar o histórico anterior. Não substituir o histórico apenas pela última atualização.
+- Usar a versão da entrega conforme a regra X.Y.Z acima. Ao complementar ou recompilar a mesma entrega, atualizar sua entrada sem duplicá-la nem incrementar a versão apenas para escrever os patch notes.
+- Distinguir mudanças no código de APKs realmente compilados e entregues. Só registrar testes, compilações e validações que tenham sido executados; mencionar limitações relevantes.
+- O histórico no README é obrigatório mesmo quando houver registros complementares em `.project/ANDROID-APK.md` ou outros documentos.
+- Formato de entrada: `### X.Y.Z — DD/MM/AAAA`, seguido de tópicos curtos sobre a atualização.
