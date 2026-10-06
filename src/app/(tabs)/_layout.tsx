@@ -1,9 +1,25 @@
 import { Redirect, Tabs } from 'expo-router';
+import { useEffect } from 'react';
+import Animated, { cancelAnimation, ReduceMotion, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { motionTokens, useMotionSettings } from '../../ui/motionPreferences';
 import { ColorValue, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFinance } from '../../state/FinanceProvider';
 import { colors, fonts, Icon, IconName, Loading, styles, systemBottomInset, systemTopInset, TAB_BAR_BODY } from '../../ui/components';
-const icon = (name: IconName, compact = false) => ({ color, focused }: { color: ColorValue; focused: boolean }) => <View style={compact ? { width: 52, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? colors.soft : 'transparent' } : undefined}><Icon name={name} color={color} size={22} /></View>;
+function TabIcon({ name, compact, color, focused }: { name: IconName; compact: boolean; color: ColorValue; focused: boolean }) {
+  const { disabled } = useMotionSettings();
+  const selection = useSharedValue(focused ? 1 : 0);
+  useEffect(() => {
+    if (disabled) { cancelAnimation(selection); selection.value = focused ? 1 : 0; }
+    else selection.value = withTiming(focused ? 1 : 0, { duration: motionTokens.release, easing: motionTokens.easing, reduceMotion: ReduceMotion.Never });
+  }, [focused, disabled, selection]);
+  const indicator = useAnimatedStyle(() => ({ opacity: selection.value }));
+  return <View style={compact ? { width: 52, height: 32, alignItems: 'center', justifyContent: 'center' } : undefined}>
+    {compact && <Animated.View pointerEvents="none" style={[{ position: 'absolute', inset: 0, borderRadius: 16, backgroundColor: colors.soft }, indicator]} />}
+    <Icon name={name} color={color} size={22} />
+  </View>;
+}
+const icon = (name: IconName, compact = false) => ({ color, focused }: { color: ColorValue; focused: boolean }) => <TabIcon name={name} compact={compact} color={color} focused={focused} />;
 export default function TabsLayout() {
   const { mode, loading, error } = useFinance();
   const insets = useSafeAreaInsets();

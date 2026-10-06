@@ -26,6 +26,16 @@ Identidade de trabalho: azul profundo, verde de acento, Manrope. Marca e domíni
 
 Histórico das atualizações documentadas, com a versão mais nova primeiro. Após toda atualização, esta seção deve ser atualizada com a versão, a data e as mudanças realizadas. A regra permanente está em [AGENTS.md](AGENTS.md).
 
+### 2.3.0 — 06/10/2026
+
+- Refinada a UI com UI/UX Pro Max e Design Motion Principles: cartões com cantos e sombra suaves, legenda do gráfico mais legível e melhor hierarquia de total, meses e parcelas em “Já comprometido”. Mantidas a identidade clara e azul e as regras financeiras.
+- Reduzida a transição de mês para 220ms e a entrada do gráfico para 320ms, sem giro. Botões dão feedback discreto de pressão; a cápsula da aba ativa muda suavemente sem deslocar ícones ou rótulos.
+- Limites por categoria ficam recolhidos até a ação “Definir limites”, mantendo a leitura dos gastos mais direta e preservando rascunhos ao fechar os controles.
+- Corrigida a altura das seções no celular para impedir que faturas projetadas se sobreponham aos controles de limite.
+- Preferência de movimento reduzido atualizada com o app aberto, cancelando animações em andamento. Navegação por teclado fica imediata; telas e detalhes de parcelas também respeitam a preferência.
+- Verificados TypeScript, 87 testes locais e 26 cenários de navegador: 25 no build web exportado e OAuth PKCE simulado separado na origem local autorizada. Contraste, navegação e ausência de overflow conferidos em 320, 390, 768 e 1440px. Exports web, Android e iOS gerados; execução em celular ainda não verificada.
+- APK ARM64 2.3.0 gerado, com contador de instalação 8 e assinatura compatível com as entregas anteriores. Compilação release, versão interna, pacote, arquitetura, bundle e integridade do arquivo conferidos. Instalação e execução em celular ainda não verificadas. Detalhes no [histórico de APKs](.project/ANDROID-APK.md).
+
 ### 2.2.1 — 06/10/2026
 
 - Corrigido o alinhamento do ícone de instalação, com o símbolo centralizado e margens equilibradas.
@@ -34,6 +44,7 @@ Histórico das atualizações documentadas, com a versão mais nova primeiro. Ap
 - APK ARM64 gerado com contador de instalação 7 e assinatura compatível com as versões anteriores. Tipo e versão do pacote, assinatura e ícone incorporado foram conferidos.
 - TypeScript e quatro testes de navegador passaram em 320, 390, 768 e 1440px. Aparência conferida na prévia web; instalação e execução em celular ainda não verificadas.
 - Adicionados os patch notes ao README, incluindo o histórico documentado das primeiras entregas, e a regra de atualizá-los após toda atualização do projeto.
+- Criado o [vídeo de apresentação do Cifrio](brag-output/brag.mp4), com 22 segundos em Full HD, animações, música e demonstração de registro, gastos por categoria e próximas parcelas. As telas foram recriadas a partir dos componentes do app com valores fictícios identificados. [Capa](brag-output/brag.jpg) e [legenda para compartilhar](brag-output/share-copy.txt) incluídas; entrega visual sem alteração da versão do aplicativo.
 
 ### 2.2.0 — 06/10/2026
 

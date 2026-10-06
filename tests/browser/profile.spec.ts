@@ -44,7 +44,7 @@ test('OAuth PKCE simulado retorna sessão e editar nome não apaga o extrato', a
     const url = new URL(route.request().url());
     if (url.pathname === '/auth/v1/authorize') {
       expect(url.searchParams.get('provider')).toBe('google'); expect(url.searchParams.get('code_challenge_method')).toBe('s256'); expect(url.searchParams.get('code_challenge')).toBeTruthy();
-      return route.fulfill({ status: 302, headers: { location: 'http://localhost:8081/auth/callback?code=fixture-code' } });
+      return route.fulfill({ status: 302, headers: { location: new URL('/auth/callback?code=fixture-code', page.url()).href } });
     }
     if (url.pathname === '/auth/v1/token') {
       const input = route.request().postDataJSON(); expect(input.auth_code).toBe('fixture-code'); expect(input.code_verifier.length).toBeGreaterThan(20); exchanged = true;

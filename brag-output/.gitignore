@@ -1,0 +1,7 @@
+tooling/
+qc/
+composition/.hyperframes/
+composition/.thumbnails/
+composition/.waveform-cache/
+composition/renders/
+*.log

@@ -202,7 +202,7 @@ Os seis destinos permanecem: Início, Extrato, Cartões, Assinaturas, Importar e
 Quatro atalhos têm altura mínima de 72px, círculos de 48px, ícones azuis de 22px e rótulos de 11px. Importar e Assinaturas aparecem como ações secundárias após os cartões. Atividade mostra até cinco registros em linhas brancas e círculos de 44px. Receita usa azul de ação, transferência tinta azul-marinho e saída vermelho; texto complementa a cor.
 
 ### Gráficos
-Gasto mensal destacado usa azul e branco; isso é decisão do resumo, não semântica global de despesa. Categorias usam pizza SVG em todas as plataformas, entrada animada de 650ms e legenda com valores e percentuais. Movimento reduzido remove a animação. Gráficos vazios não representam dados existentes. Barras usam trilha `pale` e preenchimento azul ou vermelho ao exceder o limite.
+Gasto mensal destacado usa azul e branco; isso é decisão do resumo, não semântica global de despesa. Categorias usam pizza SVG em todas as plataformas, entrada discreta de 320ms, sem rotação e legenda com valores e percentuais. Movimento reduzido remove a animação. Gráficos vazios não representam dados existentes. Barras usam trilha `pale` e preenchimento azul ou vermelho ao exceder o limite.
 
 ## Do's and Don'ts
 
@@ -219,3 +219,10 @@ Gasto mensal destacado usa azul e branco; isso é decisão do resumo, não semâ
 - **Don't** reduzir por opacidade o botão azul no hover ou na pressão.
 - **Don't** inventar saldos, números de cartão, bandeiras ou conexão bancária.
 - **Don't** tratar a referência Finza como autoridade de cor ou alterar a identidade Cifrio.
+
+
+### Movimento e leitura — 2.3.0
+
+Priorizar feedback e orientação: pressão 90ms, retorno e seleção da aba 160ms, troca de mês 220ms, revelação de controles 240ms, barras 260ms e gráfico 320ms. Usar a curva cubic-bezier(0.22, 1, 0.36, 1), animando apenas transform e opacity. Sem pulsos, giros ou entrada decorativa de toda a tela. Respeitar movimento reduzido mesmo quando a preferência muda com o app aberto; navegação por teclado deve ser imediata.
+
+Cartões gerais usam raio de 20px, borda suave e sombra discreta. Já comprometido diferencia total futuro, mês e estado em aberto. Limites por categoria abrem por ação explícita; fechar os controles preserva os dados e valores digitados.

@@ -1,5 +1,18 @@
 # APK Android do Cifrio
 
+## Entrega 2.3.0 verificada — 06/10/2026
+
+- Arquivo: `artifacts/cifrio-2.3.0-arm64.apk`, 45.277.686 bytes (45,3 MB).
+- Inclui refinamento de interface e movimentos com UI/UX Pro Max e Design Motion Principles, editor de limites recolhível, suporte a alterações de movimento reduzido com o app aberto e correção de sobreposição entre seções no celular.
+- `aapt dump badging`: nome Cifrio, pacote `com.cifrio.app`, versão `2.3.0`, versionCode `8`, ABI `arm64-v8a`, minSdk 24 (Android 7.0), targetSdk 36.
+- Gradle `:app:assembleRelease`, incluindo `lintVitalRelease`: BUILD SUCCESSFUL em 11m06s; 541 tarefas executadas e 28 atualizadas.
+- `apksigner verify --verbose --print-certs`: assinatura APK v2 válida, certificado Android Debug SHA-256 `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`, igual às entregas anteriores e compatível com atualização sobre 2.2.1.
+- Bundle JavaScript/Hermes incorporado: `assets/index.android.bundle`, 3.997.376 bytes. Bibliotecas `libreanimated.so` e `libworklets.so` presentes para ARM64.
+- SHA-256: `2B4DBF38E3BA53CB6ED23B73A2FF5FCDBCF00D8AE0E425B14C27A0149C2414EC`. Arquivo entregue idêntico ao APK original compilado.
+- Fontes, assets e configurações sincronizados em `C:\CifrioBuild\b-7c677980\app`, com prebuild Android executado antes da compilação. Integridade dos arquivos de UI/movimento e metadados conferida contra o projeto. Log: `.project/evidence/apk-2.3.0-build.log`.
+- Mantida a versão da entrega 2.3.0 e os contadores Android/iOS 8. Verificações de código, testes e exports estão em `UI-MOTION-2.3.0.md`; nenhum novo incremento por compilar esta mesma entrega.
+- Nenhum dispositivo conectado por ADB. Instalação e execução nativas ainda não verificadas. APK de instalação direta com assinatura de teste, conforme os limites de distribuição abaixo.
+
 ## Entrega 2.2.1 verificada — 06/10/2026
 
 - Arquivo: `artifacts/cifrio-2.2.1-arm64.apk`, 45.272.562 bytes (45,3 MB).

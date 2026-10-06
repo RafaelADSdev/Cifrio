@@ -4,6 +4,7 @@ import { FinanceState } from '../domain/model';
 import { addMonth, money, monthLabel, today } from '../domain/money';
 import { AgendaItem, agendaItemsByDueMonth, installmentProgress, monthlyDueLoad } from '../domain/planning';
 import { Box, Button, colors, fonts, Icon, MonthPicker, styles } from './components';
+import { useMotionSettings } from './motionPreferences';
 
 const weekdays = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 
@@ -29,6 +30,7 @@ function Stat({ label, value }: { label: string; value: number }) {
 }
 
 export function InstallmentAgendaCalendar({ state }: { state: FinanceState }) {
+  const { disabled: motionDisabled } = useMotionSettings();
   const { height } = useWindowDimensions();
   const [month, setMonth] = useState(today().slice(0, 7));
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
@@ -87,7 +89,7 @@ export function InstallmentAgendaCalendar({ state }: { state: FinanceState }) {
       </Pressable>)}
       {!visibleItems.length && <Text style={styles.muted}>Nenhuma parcela neste período.</Text>}
     </View>
-    <Modal visible={!!progress} transparent animationType="fade" onRequestClose={() => setEntryId('')}>
+    <Modal visible={!!progress} transparent animationType={motionDisabled ? 'none' : 'fade'} onRequestClose={() => setEntryId('')}>
       <Pressable accessibilityRole="button" accessibilityLabel="Fechar detalhes da parcela" onPress={() => setEntryId('')} style={{ flex: 1, backgroundColor: 'rgba(4, 36, 83, 0.45)', justifyContent: 'center', padding: 16 }}>
         <Pressable onPress={e => e.stopPropagation()} style={[styles.box, { maxWidth: 480, alignSelf: 'center', width: '100%', maxHeight: height * 0.88, padding: 0, overflow: 'hidden' }]}>
           {progress && <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ padding: 20, gap: 16 }}>

@@ -3,7 +3,7 @@
     "name": "Cifrio",
     "slug": "gestao-financeira",
     "scheme": "gestao",
-    "version": "2.2.1",
+    "version": "2.3.0",
     "orientation": "portrait",
     "icon": "./assets/brand/launcher-centered.png",
     "userInterfaceStyle": "light",
@@ -18,7 +18,7 @@
         "foregroundImage": "./assets/brand/launcher-foreground-centered.png",
         "backgroundColor": "#F4F8FC"
       },
-      "versionCode": 7
+      "versionCode": 8
     },
     "plugins": [
       "expo-router",
@@ -53,7 +53,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "7"
+      "buildNumber": "8"
     },
     "experiments": {
       "typedRoutes": true

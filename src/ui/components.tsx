@@ -5,7 +5,9 @@ import { router, useSegments } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFinance } from '../state/FinanceProvider';
 import { useProfile } from '../state/ProfileProvider';
-import { SlidingLabel } from './motion';
+import { SlidingLabel, usePressFeedback } from './motion';
+import Animated from 'react-native-reanimated';
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 export const brandMark = require('../../assets/brand/cifrio-mark.png');
 export const brandLogo = require('../../assets/brand/cifrio-logo.png');
 
@@ -17,7 +19,7 @@ export const styles = StyleSheet.create({
   page: { flex: 1, backgroundColor: colors.bg }, content: { width: '100%', maxWidth: 1120, alignSelf: 'center', padding: 20, gap: 20, paddingBottom: 40 },
   title: { fontSize: 26, fontFamily: fonts.display, color: colors.ink, letterSpacing: -0.6 }, heading: { fontSize: 18, fontFamily: fonts.bold, color: colors.ink },
   text: { fontFamily: fonts.regular, fontSize: 15, lineHeight: 23, color: colors.ink }, muted: { fontFamily: fonts.regular, fontSize: 13, lineHeight: 21, color: colors.muted },
-  box: { backgroundColor: colors.surface, borderRadius: 16, padding: 20, gap: 16, borderWidth: 1, borderColor: colors.border },
+  box: { backgroundColor: colors.surface, borderRadius: 20, padding: 20, gap: 16, borderWidth: 1, borderColor: colors.border, boxShadow: '0 2px 8px rgba(4,36,83,0.04)' },
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' },
   value: { fontSize: 28, fontFamily: fonts.display, color: colors.ink, letterSpacing: -0.6, fontVariant: ['tabular-nums'] },
   button: { backgroundColor: colors.primary, borderRadius: 24, paddingHorizontal: 20, minHeight: 48, paddingVertical: 12, flexDirection: 'row', gap: 8, justifyContent: 'center', alignItems: 'center' },
@@ -71,9 +73,11 @@ export function Page({ title, subtitle, children, action, compact = false }: { t
     <View style={styles.row}><View style={{ gap: 4, flex: 1 }}><Text accessibilityRole="header" style={styles.title}>{title}</Text>{subtitle && <Text style={styles.muted}>{subtitle}</Text>}</View>{action}</View>{children}
   </ScrollView></View>;
 }
-export function Button({ title, onPress, disabled, secondary, icon, label, danger }: { title: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: IconName; label?: string; danger?: boolean }) {
+export function Button({ title, onPress, disabled, secondary, icon, label, danger, expanded }: { title: string; onPress: () => void; disabled?: boolean; secondary?: boolean; icon?: IconName; label?: string; danger?: boolean; expanded?: boolean }) {
   const [focused, setFocused] = useState(false);
-  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{ disabled: !!disabled }} disabled={disabled} onPress={onPress} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={({ pressed, hovered }) => [styles.button, secondary && { backgroundColor: colors.pale }, danger && { backgroundColor: colors.errorSurface }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }, !secondary && !danger && (pressed || hovered) && { backgroundColor: colors.dark }, secondary && (pressed || hovered) && { backgroundColor: colors.soft }, { opacity: disabled ? 0.5 : 1 }]}>{icon && <Icon name={icon} size={18} color={danger ? colors.negative : secondary ? colors.ink : colors.onPrimary} />}<Text style={[styles.buttonText, secondary && { color: colors.ink }, danger && { color: colors.negative }]}>{label ?? title}</Text></Pressable>;
+  const feedback = usePressFeedback();
+  const [pressed, setPressed] = useState(false), [hovered, setHovered] = useState(false);
+  return <AnimatedPressable accessibilityRole="button" accessibilityLabel={title} aria-expanded={expanded} accessibilityState={{ disabled: !!disabled, ...(expanded !== undefined && { expanded }) }} disabled={disabled} onPress={onPress} onPressIn={event => { setPressed(true); feedback.onPressIn(event); }} onPressOut={() => { setPressed(false); feedback.onPressOut(); }} onHoverIn={() => setHovered(true)} onHoverOut={() => setHovered(false)} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} style={[styles.button, feedback.style, secondary && { backgroundColor: colors.pale }, danger && { backgroundColor: colors.errorSurface }, focused && { outlineColor: colors.primary, outlineWidth: 2, outlineOffset: 3 }, !secondary && !danger && (pressed || hovered) && { backgroundColor: colors.dark }, secondary && (pressed || hovered) && { backgroundColor: colors.soft }, { opacity: disabled ? 0.5 : 1 }]}>{icon && <Icon name={icon} size={18} color={danger ? colors.negative : secondary ? colors.ink : colors.onPrimary} />}<Text style={[styles.buttonText, secondary && { color: colors.ink }, danger && { color: colors.negative }]}>{label ?? title}</Text></AnimatedPressable>;
 }
 export function GoogleButton({ onPress, disabled }: { onPress: () => void; disabled?: boolean }) {
   const [focused, setFocused] = useState(false);

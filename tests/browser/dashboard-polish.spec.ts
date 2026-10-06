@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-test.use({ baseURL: process.env.POLISH_BASE_URL ?? 'http://localhost:8081' });
+if (process.env.POLISH_BASE_URL) test.use({ baseURL: process.env.POLISH_BASE_URL });
 for (const width of [320, 390, 768, 1440]) test('pizza, compromissos e navegação em ' + width, async ({ page }) => {
  const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
  await page.setViewportSize({width:390,height:900});

@@ -1,6 +1,6 @@
 import { navigateTab } from './navigation';
 import { expect, test } from '@playwright/test';
-test.use({ baseURL: process.env.PDF_TEST_BASE_URL ?? 'http://localhost:8081' });
+if (process.env.PDF_TEST_BASE_URL) test.use({ baseURL: process.env.PDF_TEST_BASE_URL });
 
 // Synthetic ASCII fixture only. Never attach the personal Ourocard sample to browser traces.
 function pdf(lines: string[], protectedFile = false) {
