@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation';
 import { expect, test } from '@playwright/test';
 test.use({ baseURL: process.env.PDF_TEST_BASE_URL ?? 'http://localhost:8081' });
 
@@ -32,7 +33,7 @@ test('PDF externo ao Metro revisa só o cartão do perfil, sem upload do arquivo
   await page.getByLabel('Nome da conta', { exact: true }).fill('Conta PDF');
   await page.getByLabel('Saldo inicial (R$)', { exact: true }).fill('100');
   await page.getByRole('button', { name: 'Salvar conta', exact: true }).click();
-  await page.getByRole('tab', { name: /Importar/ }).click();
+  await navigateTab(page, 'Importar');
   await expect(page.getByRole('heading', { name: 'Importar extrato', exact: true })).toBeVisible();
   page.on('request', request => requests.push({ method: request.method(), path: new URL(request.url()).pathname }));
   const chooser = page.waitForEvent('filechooser'); await page.getByRole('button', { name: 'Escolher CSV, OFX ou PDF' }).click();

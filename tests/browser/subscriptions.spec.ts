@@ -1,3 +1,4 @@
+import { navigateTab } from './navigation';
 import { expect, test } from '@playwright/test';
 
 test('assinaturas: cadastro, total do mês e confirmação de pagamento', async ({ page }) => {
@@ -8,7 +9,7 @@ test('assinaturas: cadastro, total do mês e confirmação de pagamento', async 
   await page.getByLabel('Nome da conta', { exact: true }).fill('Débito');
   await page.getByLabel('Saldo inicial (R$)', { exact: true }).fill('500');
   await page.getByRole('button', { name: 'Salvar conta', exact: true }).click();
-  await page.getByRole('tab', { name: /Assinaturas/ }).click();
+  await navigateTab(page, 'Assinaturas');
   await page.getByRole('button', { name: 'Adicionar assinatura', exact: true }).click();
   await page.getByLabel('Nome da assinatura', { exact: true }).fill('Netflix teste');
   await page.getByLabel('Valor mensal (R$)', { exact: true }).fill('55');

@@ -154,7 +154,7 @@ Valores destacados usam números tabulares. Rótulos curtos não substituem os n
 
 O conteúdo ocupa toda a largura até 1120px, centralizado, com intervalo padrão de 20px. O preenchimento lateral é 16px abaixo de 360px, 20px normalmente e 36px acima de 900px. Caixas usam 20px de preenchimento; painéis compactos usam 12–16px. Page compacto, usado no início e em cartões, tem intervalo de 12px e preenchimento superior de 16px; a entrada mantém o padrão.
 
-Dashboard e entrada passam para duas colunas em 800px. Em 1000px, cinco abas inferiores dão lugar à barra lateral de 188px. A cápsula mobile tem margem horizontal de 12px, inferior de 8px e altura base de 68px acrescida do inset inferior.
+Dashboard e entrada passam para duas colunas em 800px. Em 1000px, cinco abas inferiores dão lugar à barra lateral de 188px. A cápsula mobile tem margem horizontal de 12px, altura de 72px e margem inferior de 12px acrescida do inset do sistema. O inset não é aplicado novamente dentro da barra.
 
 Preservar safe areas, incluindo a reserva Android existente quando o sistema informa inset zero. Textos, linhas e escolhas podem quebrar; a faixa horizontal de cartões tem rolagem própria. Na web, fundo, seleção, caret e foco acompanham a paleta clara. A barra de status usa ícones escuros.
 

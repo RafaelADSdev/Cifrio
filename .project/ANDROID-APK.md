@@ -1,5 +1,19 @@
 # APK Android do Cifrio
 
+## Entrega 2.2.0 verificada — 06/10/2026
+
+- Arquivo: `artifacts/cifrio-2.2.0-arm64.apk`, 45.291.618 bytes (45,3 MB).
+- Inclui gráfico de pizza animado, resumo mensal de valores já comprometidos e navegação mobile com cinco destinos e menu Mais.
+- `aapt dump badging`: nome Cifrio, pacote `com.cifrio.app`, versão `2.2.0`, versionCode `6`, ABI `arm64-v8a`, Android mínimo API 24 (7.0), target API 36.
+- Gradle `:app:assembleRelease`, incluindo `lintVitalRelease`: BUILD SUCCESSFUL em 19m53s, 569 tarefas executadas.
+- `apksigner verify --verbose --print-certs`: assinatura APK v2 válida, certificado Android Debug SHA-256 `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`, idêntico ao APK 1.1.1. Assinatura compatível com atualização sobre a entrega anterior.
+- Bundle Hermes incorporado: `assets/index.android.bundle`, 3.992.056 bytes. Bibliotecas ARM64 do aplicativo e das animações presentes.
+- SHA-256 do APK: `346EC3F9ABF00B139BCE979AC4CBB8C8480771E56A2D436F49E4284AB2AB84BB`. Hash do arquivo em artifacts idêntico ao original compilado.
+- Cópia de compilação: `C:\CifrioBuild\b-7c677980\app`. Log: `.project/evidence/apk-2.2.0-build.log`.
+- Metadados conferidos no caminho ASCII da cópia de build porque o aapt não aceita o acento do caminho Gestão neste ambiente.
+- Configuração Expo/package/lock/Android sincronizada em 2.2.0; Android versionCode 6 e iOS buildNumber 6. Sem novo incremento por compilar a mesma entrega.
+- Nenhum dispositivo conectado por ADB. Instalação e execução em celular ainda não verificadas. APK para instalação direta; assinatura atual é de teste, conforme os limites abaixo.
+
 ## Correção das cores originais — 2.1.1
 
 Paleta azul/ciano/clara restaurada, mantendo layout e funções compactas. Configurações Expo/package/lock/native Android em 2.1.1, versionCode 5, iOS buildNumber 5. Próximo APK esperado: cifrio-2.1.1-arm64.apk. Não há APK novo compilado ou entregue nesta correção. Histórico anterior abaixo.
